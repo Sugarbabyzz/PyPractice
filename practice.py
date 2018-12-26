@@ -518,7 +518,28 @@ for confirmed_user in confirmed_users:
     print(confirmed_user.title())
 # 2、删除包含特定值的所有列表元素
 #   remove()方法只能删除列表中的特定值依次，多次删除需要借助while
+pets = ['dog', 'cat', 'dog', 'rabbit', 'cat', 'cat']
+print(pets)
 
+while 'cat' in pets:
+    pets.remove('cat')
+print(pets)
+# 3、使用用户输入来填充字典
+responses = {}
+polling_active = True
+
+while polling_active:
+    name = "John" #input
+    response = "Yes" #input
+    responses[name] = response
+
+    repeat = 'no' #input
+    if repeat == 'no':
+        polling_active = False
+
+print("\n---Poll Results---")
+for name,response in responses.items():
+    print(name + " want " + response)
 
 
 
