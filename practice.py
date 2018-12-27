@@ -718,15 +718,83 @@ make_pizza(16, 'green', 'yellow', 'blue')
 
 
 
+#****** 9.1 创建和使用类 ******
+# 1、创建Dog类
+class Dog():
+
+    def __init__(self, name, age):
+        # 初始化属性name和age
+        # 开头和末尾各有两个下划线，这是一个特殊的方法：
+        # 每当根据Dog类创建新实例时，Python都会自动运行它
+        # 形参self时必不可少的，还必须位于其他形参的前面
+        # 每个与类相关联的方法调用都自动传递实参self，它是一个指向实例本身的引用，让实例能够访问类中的属性和方法
+        # 每当我们根据Dog类创建实例时，都只需给出最后两个形参（name和age）提供至，而不需要传递self，它会自动传递
+        self.name = name
+        self.age = age
+
+    def sit(self):
+        # 方法：蹲下
+        # 不需要传递额外的参数，self自动传递
+        print(self.name.title() + " is now sitting.")
+
+    def roll_over(self):
+        # 方法：打滚
+        print(self.name.title() + " is rolled over!")
+# 2、根据类创建实例
+#   并未显式的包含return语句，但自动返回一个表示这条小狗的实例
+#   命名规则：首字母大写的名称一般指类
+#   访问属性和方法：可使用句点表示法，指定实例的名称和要访问的属性或调用的方法
+my_dog = Dog('willie', 6)
+print("My dog`s name is " + my_dog.name + ", age is " + str(my_dog.age))
+
+#****** 9.2 使用类和实例 ******
+#   可以直接修改实例的属性，也可以编写方法以特定的方式进行修改
+# 1、创建Car类
+class Car():
+
+    def __init__(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+        self.odometer_reading = 0  # 给属性指定默认值
+
+    def get_descriptive_name(self):
+        long_name = str(self.year) + ' ' + self.make + ' ' + self.model
+        return long_name.title()
+
+    def update_odometer(self, mileage):     # 通过方法修改属性的值
+        self.odometer_reading = mileage
+
+    def increment_odometer(self, miles):
+        self.odometer_reading += miles
+
+
+my_new_car = Car('Audi', 'a4', 2016)
+print(my_new_car.get_descriptive_name())
+# 2、给属性指定默认值
+# 在_init_中设定，如上
+print(my_new_car.odometer_reading)
+# 3、修改属性的值
+#   1）直接修改属性的值
+my_new_car.odometer_reading = 23
+print(my_new_car.odometer_reading)
+#   2）通过方法修改属性的值
+my_new_car.update_odometer(40)
+print(my_new_car.odometer_reading)
+#   3）通过方法对属性的值进行递增
+my_new_car.increment_odometer(100)
+print(my_new_car.odometer_reading)
+
+#****** 9.3 继承 ******
+#   一个类继承另一个类时，将自动获得另一个类的所有属性和方法
+#   原有的类成为父类，而新类成为子类
+#   子类继承了其父类所有属性和方法，同时还可以定义自己的属性和方法
+# 1、子类的方法_init_()
+#   创建子类的实例时，Python首先需要完成的任务时给父类的所有属性赋值
 
 
 
 
-
-
-#****** 4.1 遍历整个列表 ******
-#****** 4.1 遍历整个列表 ******
-#****** 4.1 遍历整个列表 ******
 #****** 4.1 遍历整个列表 ******
 #****** 4.1 遍历整个列表 ******
 #****** 4.1 遍历整个列表 ******
