@@ -789,8 +789,27 @@ print(my_new_car.odometer_reading)
 #   一个类继承另一个类时，将自动获得另一个类的所有属性和方法
 #   原有的类成为父类，而新类成为子类
 #   子类继承了其父类所有属性和方法，同时还可以定义自己的属性和方法
+#   创建子类时，父类必须包含在当前文件中，且位于子类前面
 # 1、子类的方法_init_()
 #   创建子类的实例时，Python首先需要完成的任务时给父类的所有属性赋值
+#   在Car类基础上创建ElectricCar类
+#   super()是一个特殊函数，将父类和子类关联起来
+#   super调用了父类的_init_()方法，让ElectricCar实例包含父类的所有属性
+class ElectricCar(Car):
+
+    def __init__(self, make, model, year):
+        super().__init__(make, model, year)
+        self.battery_size =70   # 定义子类的属性
+
+    def describle_battery(self):    # 定义子类的方法
+        print("This car has s " + str(self.battery_size) + "-kWh battery.")
+my_tesla = ElectricCar('tesla', 'model s', 2016)
+print(my_tesla.get_descriptive_name())
+# 2、给子类定义属性和方法
+my_tesla.describle_battery()
+# 3、重写父类的方法
+#   在执行父类子类同名方法时，Python将忽略父类中的方法，而执行子类中的方法
+# 4、将实例用作属性
 
 
 
