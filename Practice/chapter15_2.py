@@ -147,6 +147,8 @@ hist.render_to_file('die_visual_of_a_D6_and_a_D10.svg')
 print(results)
 print(frequencies)
 
+
+
 # 结果：可能性最大的点数不是一个，而是5个。
 # 因为出现最小点数和最大点数的组合都只有一种，而中间点数的组合数有6种
 
