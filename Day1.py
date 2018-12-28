@@ -40,3 +40,15 @@
 # x = gw*100+sw*10+bw
 # print(x)
 
+# part 7
+# 画等边三角形 （*）
+# for i in range(1,7):
+#     for j in range(1,6-i+1):
+#         print(" ", end='')
+#     for j in range(1,2*i-1+1):
+#         print("*",end='')
+#     print()
+
+# part 8
+# 字符串是不可修改，但可以重写，和元组一个道理
+
