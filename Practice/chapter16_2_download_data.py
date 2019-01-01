@@ -119,9 +119,25 @@ line_chart.render_to_file('收盘价对数变换折线图（￥）.svg')
 #   这里以10为底的对数函数math.log10计算收盘价，日期仍然保持不变。这种方式成为半对数（semi-logarithmic）变换
 
 # 6、收盘价均值
+#   绘制2017年前11个月的日均值、前49周的日均值，以及每周中各天的日均值
 
+#   将之前的绘图代码封装成函数，以便重复使用
+from itertools import groupby
 
+def draw_line(x_data, y_data, title, y_legend):
+    xy_map = []
+    for x,y in groupby(sorted(zip(x_data, y_data)), key=lambda _: _[0]):
+        y_list = [v for _, v in y]
+        xy_map.append([x, sum(y_list) / len(y_list)])
+    x_unique, y_mean = [*zip(*xy_map)]
+    line_chart = pygal.Line()
+    line_chart.title = title
+    line_chart.x_labels = x_unique
+    line_chart.add(y_legend, y_mean)
+    line_chart.render_to_file(title + '.svg')
+    return line_chart
 
+''' 这部分不会了，需要用到时候再看吧 书p332'''
 
 
 
