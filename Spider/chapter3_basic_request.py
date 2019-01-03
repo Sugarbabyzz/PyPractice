@@ -42,6 +42,8 @@ print(type(r.json()))
 #   抓取知乎-发现页面为例
 #   加入headers信息，包括User-Agent字段信息，即浏览器标识信息，防止反爬
 #   用正则表达式匹配出所有问题的内容
+
+'''
 import requests
 import re
 
@@ -54,4 +56,7 @@ pattern = re.compile('explore-feed.*?question_line.*?>(.*?)</a>', re.S)
 titles = re.findall(pattern, r.text)
 print(r.text)
 print(titles)
+'''
+
+#   *抓取二进制数据
 
