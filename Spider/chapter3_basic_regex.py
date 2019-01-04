@@ -10,11 +10,17 @@ import re
 #   传入要匹配的字符串以及正则表达式
 #   返回匹配的结果
 
-content = 'Hello 1234567 World_This' \
-          ' is a Regex Demo'
-print(len(content))
-result = re.match('^He.*?(\d+).*Demo$', content)
+content = '''Hello 1234567 World_This 
+            is a Regex Demo'''
+
+result = re.match('^He.*?(\d+).*Demo$', content, re.S)
+
 print(result)
-print(result.group())
 print(result.group(1))
-print(result.span())
+
+content = '(百度)www.baidu.com'
+result = re.match('\(百度\)www\.baidu\.com', content)
+print(result.group())
+
+# 3、search()
+
