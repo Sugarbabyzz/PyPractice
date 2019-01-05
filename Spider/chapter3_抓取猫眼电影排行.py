@@ -23,11 +23,12 @@ import requests
 import re
 import json
 import time
-from requests.exceptions import RequestException
+from requests import RequestException
 
 '''传入url参数，将抓取的页面结果返回'''
 def get_one_page(url):
     try:
+        # 伪装成电脑浏览器的访问
         headers = {
             'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36'
         }
@@ -48,9 +49,11 @@ def parse_one_page(html):
         + '.*?integer.*?>(.*?)</i>.*?fraction.*?>(.*?)</i>.*?</dd>',
         re.S
     )
+    # items是一个列表，匹配的每条记录以元组形式存储在列表中
     items = re.findall(pattern, html)
     for item in items:
-        # yield关键字是一个generator，返回生成的字典
+        # yield关键字是一个generator
+        # 将列表中每个元组，都转换为字典，并一条条的返回
         yield {
             'index': item[0],
             'image': item[1],
@@ -62,6 +65,9 @@ def parse_one_page(html):
 
 '''实现将字典写入到文本文件的过程，content参数即一部电影的提取结果，是一个字典'''
 def write_to_file(content):
+    # json相关的四个函数 见 https://www.cnblogs.com/xiaomingzaixian/p/7286793.html
+    # json.dumps()将yield生成的字典，转换为字符串
+    # json.load()是将字符串转换为字典
     with open('result.txt', 'a', encoding='utf-8') as f:
         f.write(json.dumps(content, ensure_ascii=False) + '\n')
 
@@ -75,6 +81,7 @@ def main(offset):
         write_to_file(item)
 
 '''主程序'''
+# https://www.cnblogs.com/1204guo/p/7966461.html 关于下面这句的解释
 if __name__ == '__main__':
     for i in range(10):
         main(offset=i*10)
