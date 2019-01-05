@@ -22,25 +22,35 @@
 import requests
 import re
 import json
+import time
+from requests.exceptions import RequestException
 
 '''传入url参数，将抓取的页面结果返回'''
 def get_one_page(url):
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36'
-    }
-    response = requests.get(url, headers=headers)
-    if response.status_code == 200:
-        return response.text
-    return None
+    try:
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36'
+        }
+        response = requests.get(url, headers=headers)
+        if response.status_code == 200:
+            return response.text
+        return None
+    except RequestException:
+        return None
+
+
 
 '''解析页面，正则表达式提取出内容，并生成字典'''
 def parse_one_page(html):
     pattern = re.compile(
-        '<dd>.*?board-index.*?>(.*?)</i>.*?data-src="(.*?)".*?name.*?<a.*?>(.*?)</a>.*?star.*?>(.*?)</p>.*?releasetime.*?>(.*?)</p>.*?integer.*?>(.*?)</i>.*?fraction.*?>(.*?)</i>.*?</dd>',
+        '<dd>.*?board-index.*?>(.*?)</i>.*?data-src="(.*?)".*?name.*?<a'
+        + '.*?>(.*?)</a>.*?star.*?>(.*?)</p>.*?releasetime.*?>(.*?)</p>'
+        + '.*?integer.*?>(.*?)</i>.*?fraction.*?>(.*?)</i>.*?</dd>',
         re.S
     )
     items = re.findall(pattern, html)
     for item in items:
+        # yield关键字是一个generator，返回生成的字典
         yield {
             'index': item[0],
             'image': item[1],
@@ -53,21 +63,22 @@ def parse_one_page(html):
 '''实现将字典写入到文本文件的过程，content参数即一部电影的提取结果，是一个字典'''
 def write_to_file(content):
     with open('result.txt', 'a', encoding='utf-8') as f:
-        print(type(json.dumps(content)))
         f.write(json.dumps(content, ensure_ascii=False) + '\n')
 
 
-
-
 '''主函数'''
-def main():
-    url = 'http://maoyan.com/board/4'
+def main(offset):
+    url = 'http://maoyan.com/board/4?offset=' + str(offset)
     html = get_one_page(url)
     for item in parse_one_page(html):
+        print(item)
         write_to_file(item)
 
 '''主程序'''
-main()
+if __name__ == '__main__':
+    for i in range(10):
+        main(offset=i*10)
+        time.sleep(1)   # 猫眼多了反爬虫，速度过快会无响应，所以加了延时等待
 
 # 5、正则提取
 #   不要在Elemtns选项卡中直接查看源码，那里的源码可能经过Javacript操作而与原始请求不同
@@ -82,4 +93,7 @@ main()
 
 # 7、整合代码
 #   实现main()方法
+
+# 8、分页爬取
+#   给链接传入offset参数
 
