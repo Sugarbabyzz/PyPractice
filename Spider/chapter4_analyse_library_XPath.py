@@ -16,6 +16,7 @@ import lxml
 # 4、实例
 from lxml import etree
 
+#  1）对网页进行解析
 text = '''
 <div>
 <ul>
@@ -28,6 +29,19 @@ text = '''
 </div>
 '''
 
-html = etree.HTML(text)
+html = etree.HTML(text)  # 一个最后一个li节点没有闭合，etree模块自动闭合
 result = etree.tostring(html)
 print(result.decode('utf-8'))
+
+#   2）对文本文件进行解析
+html = etree.parse('./test.html', etree.HTMLParser())
+result = etree.tostring(html)
+print(result.decode('utf-8'))
+
+# 5、所有节点
+#   一般用//开头的XPath规则来选取所有符合要求的节点，*表示所有节点都会被获取
+#   返回的是一个列表，每个元素是Element类型，其后跟了节点的名称
+html = etree.parse('./test.html', etree.HTMLParser())
+result = html.xpath('//*')
+print(result)
+
