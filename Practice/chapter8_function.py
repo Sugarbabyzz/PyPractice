@@ -138,29 +138,29 @@ print(user_profile)
 #   import语句循序在当前运行的程序文件中使用模块中的代码
 # 1、导入整个模块
 #   import让Python打开文件pizza.py，并将其中的所有函数都复制到这个程序中，可使用所有定义了的函数
-import pizza
+from Practice import pizza, pizza as p
+
 pizza.make_pizza(16, 'green', 'yellow', 'blue')
 # 2、导入特定的函数
 #   通过逗号分割函数名，可根据需要从模块中导入任意数量的函数
 #   用这种语法，调用函数时就无需使用句点
 #   import语句中显式地导入了函数
-from pizza import make_pizza, build_profile, sum2
+from Practice.pizza import sum2
 sum2(10,2)
 # 3、使用as给函数指定别名
 #   如果要导入的函数的名称可能与程序中现有的名称冲突，或者函数的名称太长，可指定简短而独一无二的别名
 #   关键字 as 可将函数重命名为提供的别名
 #   下面将函数make_pizza()重命名为mp()
-from pizza import make_pizza as mp
+from Practice.pizza import make_pizza as mp
 mp(16, 'green', 'yellow', 'blue')
 # 4、使用as给模块指定别名
-import pizza as p
 p.make_pizza(16, 'green', 'yellow', 'blue')
 # 5、导入模块中的所有函数
 #   使用星号（*）运算符可让Python导入模块中的所有函数
 #   导入了所有函数，调用函数时无需使用句点
 #   注意：并非自己编写的大型模块时，最好不要采用这种导入方法：如果模块中有函数的名称与你的项目中使用的名称相同，会覆盖函数
 #   最佳解决：要么只导入需要使用的函数，要么导入整个模块并使用句点表示法
-from pizza import *
+from Practice.pizza import *
 make_pizza(16, 'green', 'yellow', 'blue')
 
 #****** 8.7 函数编写指南 ******

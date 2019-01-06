@@ -29,7 +29,7 @@ with open('text_files/filename.txt') as file_object:
 #   2）绝对路径
 #      绝对路径，可读取系统任何地方的文件，需要提供完整的路径
 #      在Windows中，最前面需要加盘符和冒号（C:\），路径用反斜杠（\）
-file_path = '/Users/sugar/Documents/GitHub/PyPractice/text_files/filename.txt'
+file_path = '/Users/sugar/Documents/GitHub/PyPractice/Practice/text_files/filename.txt'
 with open(file_path) as file_object:
     contents = file_object.read()
     print(contents)

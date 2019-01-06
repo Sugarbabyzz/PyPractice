@@ -108,24 +108,24 @@ my_tesla.battery.describe_battery()'''
 #****** 9.4 导入类 ******
 #   Python允许将类存储在模块中，然后在主程序中导入所需的模块
 # 1、导入单个类
-from car import Car
+from Practice.car import Car
 
 my_new_car = Car('Ferrari', '458', 2016)
 print(my_new_car.get_descriptive_name())
 # 2、在一个模块中存储多个类
-from car import ElectricCar
+from Practice.car import ElectricCar
 
 my_tesla = ElectricCar('biyadi', 'qin', 2016)
 print(my_tesla.get_descriptive_name())
 # 3、从一个模块中导入一个类
-from car import Car,ElectricCar
+from Practice.car import Car,ElectricCar
 
 my_new_car = Car('benz', '458', 2016)
 print(my_new_car.get_descriptive_name())
 my_tesla = ElectricCar('aodi', 'qin', 2016)
 print(my_tesla.get_descriptive_name())
 # 4、导入整个模块
-import car
+from Practice import car
 
 my_new_car = car.Car('benz', '458', 2016)
 print(my_new_car.get_descriptive_name())
@@ -135,7 +135,6 @@ print(my_tesla.get_descriptive_name())
 #   不推荐这种导入方式，
 #   ⑴没有明确指出使用了模块中哪些类
 #   ⑵如果不小心导入了一个与程序文件中其他东西同名的类，会引发错误
-from car import *
 # 6、在一个模块中导入另一个模块
 #   例如：将Car类存储在一个.py中，将ElectricCar和Battery类存储在一个.py中
 #   在第二个.py文件的开头，写 import car from Car，即将一个模块导入了另一个模块
