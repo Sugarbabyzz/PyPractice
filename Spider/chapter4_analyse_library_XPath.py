@@ -45,3 +45,68 @@ html = etree.parse('./test.html', etree.HTMLParser())
 result = html.xpath('//*')
 print(result)
 
+#   选取所有的li节点，将*换成li即可
+html = etree.parse('./test.html', etree.HTMLParser())
+result = html.xpath('//li')
+print(result)
+print(result[0])
+
+# 6、子节点
+#   通过/或//即可查找元素的子节点或子孙节点
+html = etree.parse('./test.html', etree.HTMLParser())
+result = html.xpath('//li/a')
+print(result)
+
+#   通过'//ul/a'获取的结果是空列表，ul下只有li子节点
+
+# 7、父节点
+#   1）选中a节点，获取父节点，再获取class属性
+html = etree.parse('./test.html', etree.HTMLParser())
+result = html.xpath('//a[@href="link4.html"]/../@class')
+print(result)
+
+#   2）也可以通过partent::来获取父节点
+html = etree.parse('./test.html', etree.HTMLParser())
+result = html.xpath('//a[@href="link4.html"]/parent::*/@class')
+print(result)
+
+# 8、属性匹配
+#   可以用@进行属性过滤
+html = etree.parse('./test.html', etree.HTMLParser())
+result = html.xpath('//li[@class="item-0"]')
+print(result)
+
+# 9、文本获取
+#   用text()方法获取节点中的文本
+#   获取上面li节点中的文本，文本内容在li节点下子节点a里
+#   1）要获取子孙节点内部的所有文本，用//加text()方式，文本信息最全面，夹杂特殊字符
+#   2）要获取某些特定子孙节点下的所有文本，先选取到特定的子孙节点，再调用text()方法获取内部文本，最整洁
+html = etree.parse('./test.html', etree.HTMLParser())
+result = html.xpath('//li[@class="item-0"]/a/text()')
+print(result)
+
+# 10、属性获取
+#   注意与属性匹配进行区分
+html = etree.parse('./test.html', etree.HTMLParser())
+result = html.xpath('//li/a/@href')
+print(result)
+
+# 11、属性多值匹配
+#   用contains()函数，第一个参数传入属性名称，第二个参数传入属性值
+#   以下li节点中，class属性中包含 li li-first两个值
+text = '''
+    <li class="li li-first"><a href="link.html">first item</a></li>
+'''
+html = etree.HTML(text)
+result = html.xpath('//li[contains(@class, "li")]/a/text()')
+print(result)
+
+# 12、多属性匹配
+#   使用运算符and来连接
+#   以下li节点同时包含class和name属性
+text = '''
+    <li class="li li-first" name="item"><a href="link.html">first item</a></li>
+'''
+html = etree.HTML(text)
+result = html.xpath('//li[contains(@class, "li") and @name="item"]/a/text()')
+print(result)
