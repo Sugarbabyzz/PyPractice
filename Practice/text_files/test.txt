@@ -1,0 +1,4 @@
+{'name': '张三', 'age':18, 'address':'北京'}
+{'name': '李四', 'age':18, 'address':'河北'}
+{'name': '王五', 'age':18, 'address':'北京'}
+{'name': '小明', 'age':18, 'address':'南京'}
