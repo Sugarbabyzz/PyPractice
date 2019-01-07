@@ -54,7 +54,36 @@
 
 # part 9
 # 字符串切割
-a = '2010-10-27'
+# a = '2010-10-27'
 # print(a.split('-'))
 # print(a.partition('-'))
 
+# part 10
+# yield!
+#
+# def generator(n):
+#     i = 0
+#     while i < n:
+#         yield i
+#         i += 1
+#
+# a = generator(1000)
+# print(next(a))
+# print(next(a))
+# print(next(a))
+
+# part 11
+#   装饰器
+
+def hanshu(func):
+    def neibu():
+        print("***************")
+        func()
+        print("***************")
+    return neibu
+
+@hanshu
+def hanshu2():
+    print('lalala')
+
+hanshu2()
