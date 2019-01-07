@@ -3,6 +3,7 @@
 #****** 3.1 列表 ******
 # 列表
 bicycles = [ 'trek', 'cannondale', 'redline', 'specialized']
+# 这个是字典哟 dict = {'name': 'hello', 'age': 'world'}
 print(bicycles)
 # python列表下标是从0开始的
 print(bicycles[0])
