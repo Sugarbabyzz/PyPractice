@@ -169,4 +169,74 @@ print(list(soup.a.parents)[0].attrs['class'])
 #   1）find_all()
 #   传入一些属性或文本，就可以得到所有符合条件的元素
 #   API： find_all(name, attrs, recursive, text, **kwargs)
+#   返回的是列表类型，每个元素都是Tag类型，可以进行嵌套查询
 
+#   ⒈name
+#   查询所有节点名称
+html = '''
+<div class="panel">
+<div class="panel-heading">
+<h4>Hello</h4>
+</div>
+<div class="panel-body">
+<ul class="list" id="list-1">
+<li class="element">Foo</li>
+<li class="element">Bar</li>
+<li class="element">Jay</li>
+</ul>
+<ul class="list list-small" id="list-2">
+<li class="element">Foo</li>
+<li class="element">Bar</li>
+</ul>
+</div>
+</div>
+'''
+soup = BeautifulSoup(html, 'lxml')
+print(soup.find_all(name='ul'))
+print(type(soup.find_all(name='ul')[0]))
+#   嵌套查询
+for ul in soup.find_all(name='ul'):
+    print(ul.find_all(name='li'))
+
+#   ⒉attrs
+#   传入一些属性来查询，参数是字典类型，结果是列表类型
+html = '''
+<div class="panel">
+<div class="panel-heading">
+<h4>Hello</h4>
+</div>
+<div class="panel-body">
+<ul class="list" id="list-1" name="elements">
+<li class="element">Foo</li>
+<li class="element">Bar</li>
+<li class="element">Jay</li>
+</ul>
+<ul class="list list-small" id="list-2">
+<li class="element">Foo</li>
+<li class="element">Bar</li>
+</ul>
+</div>
+</div>
+'''
+soup = BeautifulSoup(html, 'lxml')
+print(soup.find_all(attrs={'id': 'list-1'}))
+print(soup.find_all(attrs={'name': 'elements'}))
+#   其实不用写attrs，可省略，直接 find_all(id='list-1')
+
+#   ⒊text
+#   匹配节点的文本，传入的形式可以是字符串，也可以是正则表达式对象
+import re
+html = '''
+<div class="panel">
+<div class="panel-heading">
+<a>Hello, this is a link</a>
+<a>Hello, this is a link, too.</a>
+</div>
+</div>
+'''
+soup = BeautifulSoup(html, 'lxml')
+print(soup.find_all(text=re.compile('link')))
+
+#   2）find()
+#   只返回第一个匹配的元素，类型是Tag
+#   方法见书P181
