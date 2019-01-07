@@ -1,7 +1,7 @@
 
 
 #****** 3.1 列表 ******
-# 列表，也就是数组
+# 列表
 bicycles = [ 'trek', 'cannondale', 'redline', 'specialized']
 print(bicycles)
 # python列表下标是从0开始的
