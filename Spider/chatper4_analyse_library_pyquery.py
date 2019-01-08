@@ -171,5 +171,94 @@ print(li.html())
 
 
 # 7、节点操作
+#   对节点进行动态修改，如给节点添加一个class、移除某个节点等
+
+#  * addClass 和 removeClass
+
+html = '''
+<div class="wrap">
+<div id="container">
+<ul class="list">
+<li class="item-0">first item</li>
+<li class="item-1"><a href="link2.html">second item</a></li>
+<li class="item-0 active"><a href="link3.html"><span class="bold">third item</span></a></li>
+<li class="item-1 active"><a href ="link4.html">fourth item</a></li>
+<li class="item-0"><a href="link5.html">fifth item</a></li>
+</ul>
+</div>
+</div>
+'''
+doc = pq(html)
+li = doc('.item-0.active')
+print(li)
+li.remove_class('active')
+print(li)
+li.add_class('active')
+print(li)
+
+#  * attr、text和html
+html = '''
+<ul class="list">
+<li class="item-0 active"><a href="link3.html"><span class="bold">third item</span></a></li>
+</ul>
+'''
+doc = pq(html)
+li = doc('.item-0.active')
+print(li)
+li.attr('name', 'link')
+print(li)
+li.text('changed item')
+print(li)
+li.html('<span>changed item</span>')
+print(li)
+
+#  *remove()
+html = '''
+<div class="wrap">
+    Hello, World
+<p>This is a paragraph.</p>
+</div>
+'''
+doc = pq(html)
+wrap = doc('.wrap')
+print(wrap.text())
+#  只要Hello World
+wrap.find('p').remove()
+print(wrap.text())
 
 
+# 8、伪类选择器
+#   CSS选择器之所以强大，是因为支持多种多样的伪类选择器
+html = '''
+<div class="wrap">
+<div id="container">
+<ul class="list">
+<li class="item-0">first item</li>
+<li class="item-1"><a href="link2.html">second item</a></li>
+<li class="item-0 active"><a href="link3.html"><span class="bold">third item</span></a></li>
+<li class="item-1 active"><a href ="link4.html">fourth item</a></li>
+<li class="item-0"><a href="link5.html">fifth item</a></li>
+</ul>
+</div>
+</div>
+'''
+
+doc = pq(html)
+# 选择第一个li节点
+li = doc('li:first-child')
+print(li)
+# 选择最后一个li节点
+li = doc('li:last-child')
+print(li)
+# 选择第二个li节点
+li = doc('li:nth-child(2)')
+print(li)
+# 选择第三个li之后的li节点
+li = doc('li:gt(2)')
+print(li)
+# 选择偶数位置的li节点
+li = doc('li:nth-child(2n)')
+print(li)
+# 选择包含second文本的li节点
+li = doc('li:contains(second)')
+print(li)
