@@ -132,8 +132,44 @@ doc = pq(html)
 a = doc('.item-0.active a')
 print(a)
 print(a.attr('href'))
+#   用attr属性获取属性
+print(a.attr.href)
+#   但是attr()只能得到第一个节点的属性，要获取所有a节点的属性，就要遍历
+doc = pq(html)
+a = doc('a')
+for item in a.items():
+    print(item.attr('href'))
 
-#  
+#  *获取文本
+#   总结：html()方法返回的是第一个节点的内部HTML文本，多个节点的结果，需要遍历
+#        text()方法返回的是所有节点取文本后合并成一个字符串，不需要遍历
 
+#   获取其内部的文本，调用text()方法实现
+#   此时会忽略掉节点内部包含的所有HTML，只返回纯文字内容
+html = '''
+<div class="wrap">
+<div id="container">
+<ul class="list">
+<li class="item-0">first item</li>
+<li class="item-1"><a href="link2.html">second item</a></li>
+<li class="item-0 active"><a href="link3.html"><span class="bold">third item</span></a></li>
+<li class="item-1 active"><a href ="link4.html">fourth item</a></li>
+<li class="item-0"><a href="link5.html">fifth item</a></li>
+</ul>
+</div>
+</div>
+'''
+doc = pq(html)
+a = doc('.item-0.active')
+print(li)
+print(li.text())
+
+#   获取这个节点内部的HTML文本，调用html()方法实现
+li = doc('.item-0.active')
+print(li)
+print(li.html())
+
+
+# 7、节点操作
 
 
