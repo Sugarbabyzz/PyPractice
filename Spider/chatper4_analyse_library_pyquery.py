@@ -124,4 +124,16 @@ for li in lis:
     print(li, type(li))
 
 
+# 6、获取信息
+
+#  *获取属性
+#   用attr()方法获取属性
+doc = pq(html)
+a = doc('.item-0.active a')
+print(a)
+print(a.attr('href'))
+
+#  
+
+
 
