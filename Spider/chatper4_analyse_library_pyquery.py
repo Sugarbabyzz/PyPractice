@@ -104,5 +104,24 @@ container = items.parents('.wrap')
 print(type(container))
 print(container)
 
+#  *兄弟节点
+#   用siblings()方法，返回所有兄弟节点，可传入CSS选择器
+doc = pq(html)
+li = doc('.list .item-0.active')
+print(li.siblings())
+
+#  *遍历
+#   单个节点，可以直接打印输出，也可以转成字符串
+doc = pq(html)
+li = doc('.item-0.active')
+print(li)
+print(str(li))
+#   多个节点，遍历，用items()方法，返回生成器类型
+doc = pq(html)
+lis = doc('li').items()  # lis是generator类型
+print(type(lis))
+for li in lis:
+    print(li, type(li))
+
 
 
