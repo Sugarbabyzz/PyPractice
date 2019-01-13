@@ -36,6 +36,27 @@ print(type(data))
 print(data[0]['name'])
 print(data[0].get('name'))  # 推荐这种，key数错的不报错，返回None
 
+#   若从JSON文本中读取内容，可以先读取再loads转化
+with open('data.json', 'r') as file:
+    str = file.read()
+    data = json.loads(str)
+    print(data)
+    print(type(data))
+
+
+# 3、输出JSON
+#   利用dumps()方法将JSON对象转化为字符串
+
+data = [{
+    "name": "Bob",
+    "gender": "male",
+    "birthday": "1992-10-18"
+}]
+# indent代表缩进字符个数，可以保存JSON的格式
+# 中文字符会变成Unicode字符，需要制定参数ensure_ascii为False，并规定文件输出的编码
+with open('data.json', 'w') as file:
+    file.write(json.dumps(data, indent=2))
+
 
 
 
