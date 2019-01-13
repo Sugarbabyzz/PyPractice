@@ -17,6 +17,7 @@
 #   我们可以将JSON形式的字符串，转换为可操作的数据结构，如列表或字典
 import json
 
+#   JSON的数据必须用双引号来包围，不能使用单引号
 str = '''
 [{
     "name": "Bob",
@@ -32,8 +33,8 @@ print(type(str))
 data = json.loads(str)
 print(data)
 print(type(data))
-
-
+print(data[0]['name'])
+print(data[0].get('name'))  # 推荐这种，key数错的不报错，返回None
 
 
 
