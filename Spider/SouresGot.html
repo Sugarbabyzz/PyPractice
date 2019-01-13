@@ -1,0 +1,2019 @@
+/usr/local/bin/python3.7 /Users/sugar/Documents/GitHub/PyPractice/Spider/chapter5_data_store_txt.py
+<!DOCTYPE html>
+<html lang="zh-CN" dropEffect="none" class="no-js no-auth ">
+<head>
+    <meta charset="utf-8"/>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="renderer" content="webkit"/>
+    <meta http-equiv="X-ZA-Response-Id" content="e0bad0105e6fa2bdff5c88949c8f0bad">
+
+    <meta http-equiv="X-ZA-Experiment"
+          content="default:None,ge3:ge3_9,ge2:ge2_1,nwebQAGrowth:experiment,is_office:false,nweb_growth_people:default,app_store_rate_dialog:close,nweb_search_suggest:default,search_advert_position:1,live_store:ls_a2_b2_c1_f2,nweb_search:nweb_search_heifetz,search_hybrid_tabs:pin-3#album-7,new_live_feed_mediacard:new,hybrid_zhmore_video:yes,ad_r:a,growth_search:s2,qaweb_related_readings_content_control:close,android_pass_through_push:all,android_search_tab_style:search_tab_style_b,android_db_recommend_action:open,android_db_feed_hash_tag_style:button,is_new_noti_panel:no">
+    <title>发现 - 知乎</title>
+
+    <meta name="apple-itunes-app" content="app-id=432274380, app-argument=zhihu://explore">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta http-equiv="mobile-agent" content="format=html5;url=https://www.zhihu.com/explore">
+    <meta id="znonce" name="znonce" content="17ce5a5914754e059371ee06c2234d78">
+
+
+    <link rel="apple-touch-icon" href="https://static.zhihu.com/static/revved/img/ios/touch-icon-152.87c020b9.png"
+          sizes="152x152">
+    <link rel="apple-touch-icon" href="https://static.zhihu.com/static/revved/img/ios/touch-icon-120.496c913b.png"
+          sizes="120x120">
+    <link rel="apple-touch-icon" href="https://static.zhihu.com/static/revved/img/ios/touch-icon-76.dcf79352.png"
+          sizes="76x76">
+    <link rel="apple-touch-icon" href="https://static.zhihu.com/static/revved/img/ios/touch-icon-60.9911cffb.png"
+          sizes="60x60">
+
+
+    <link rel="shortcut icon" href="https://static.zhihu.com/static/favicon.ico" type="image/x-icon">
+
+    <link rel="search" type="application/opensearchdescription+xml" href="https://static.zhihu.com/static/search.xml"
+          title="知乎"/>
+    <link rel="stylesheet" href="https://static.zhihu.com/static/revved/-/css/z.3e5da9dd.css">
+
+
+    <meta name="google-site-verification" content="FTeR0c8arOPKh8c5DYh_9uu98_zJbaWw53J-Sch9MTg"/>
+
+
+    <!--[if lt IE 9]>
+    <script src="https://static.zhihu.com/static/components/respond/dest/respond.min.js"></script>
+    <link href="https://static.zhihu.com/static/components/respond/cross-domain/respond-proxy.html" id="respond-proxy"
+          rel="respond-proxy"/>
+    <link href="/static/components/respond/cross-domain/respond.proxy.gif" id="respond-redirect"
+          rel="respond-redirect"/>
+    <script src="/static/components/respond/cross-domain/respond.proxy.js"></script>
+    <![endif]-->
+    <script src="https://static.zhihu.com/static/revved/-/js/instant.35b468b8.js"></script>
+
+</head>
+
+<body class="zhi page-explore">
+
+
+<div role="navigation" class="zu-top" data-za-module="TopNavBar">
+    <div class="zg-wrap modal-shifting clearfix" id="zh-top-inner">
+        <a href="/" class="zu-top-link-logo" id="zh-top-link-logo" data-za-c="view_home" data-za-a="visit_home"
+           data-za-l="top_navigation_zhihu_logo">知乎</a>
+
+
+        <ul class="topnav-noauth clearfix">
+            <li>
+                <a href="javascript:;" class="js-signup-noauth"><i class="zg-icon zg-icon-dd-home"></i>注册知乎</a>
+            </li>
+            <li>
+                <a href="javascript:;" class="js-signin-noauth">登录</a>
+            </li>
+        </ul>
+
+
+        <button class="zu-top-add-question" id="zu-top-add-question">提问</button>
+
+
+        <div role="search" id="zh-top-search" class="zu-top-search">
+            <form method="GET" action="/search" id="zh-top-search-form" class="zu-top-search-form">
+
+
+                <input type="hidden" name="type" value="content">
+                <label for="q" class="hide-text">知乎搜索</label><input type="text" class="zu-top-search-input" id="q"
+                                                                    name="q" autocomplete="off" value="" maxlength="100"
+                                                                    placeholder="搜索你感兴趣的内容…">
+                <button type="submit" class="zu-top-search-button"><span class="hide-text">搜索</span><span
+                        class="sprite-global-icon-magnifier-dark"></span></button>
+            </form>
+        </div>
+
+
+        <div id="zg-top-nav" class="zu-top-nav">
+            <ul class="zu-top-nav-ul zg-clear">
+
+                <li class="zu-top-nav-li " id="zh-top-nav-home">
+                    <a class="zu-top-nav-link" href="/" id="zh-top-link-home" data-za-c="view_home"
+                       data-za-a="visit_home" data-za-l="top_navigation_home">首页</a>
+                </li>
+
+
+                <li class="top-nav-topic-selector zu-top-nav-li " id="zh-top-nav-topic">
+                    <a class="zu-top-nav-link" href="/topic" id="top-nav-dd-topic">话题</a>
+                </li>
+
+                <li class="zu-top-nav-li current" id="zh-top-nav-explore">
+                    <a class="zu-top-nav-link" href="/explore">发现</a>
+                </li>
+
+
+            </ul>
+            <div class="zu-top-nav-live zu-noti7-popup zg-r5px no-hovercard" id="zh-top-nav-live-new" role="popup"
+                 tabindex="0">
+                <div class="zu-top-nav-live-inner zg-r5px">
+                    <div class="zu-top-live-icon">&nbsp;</div>
+                    <div class="zu-home-noti-inner" id="zh-top-nav-live-new-inner">
+                        <div class="zm-noti7-popup-tab-container clearfix" tabindex="0">
+                            <button class="zm-noti7-popup-tab-item message">
+                                <span class="icon">消息</span>
+                            </button>
+                            <button class="zm-noti7-popup-tab-item user">
+                                <span class="icon">用户</span>
+                            </button>
+                            <button class="zm-noti7-popup-tab-item thanks">
+                                <span class="icon">赞同和感谢</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="zm-noti7-frame-border top"></div>
+                    <div class="zm-noti7-frame">
+                        <div class="zm-noti7-content message">
+                            <div class="zm-noti7-content-inner">
+                                <div class="zm-noti7-content-body">
+                                    <div class="zm-noti7-popup-loading">
+                                        <span class="noti-spinner-loading"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="zm-noti7-content user" style="display:none;">
+                            <div class="zm-noti7-content-inner">
+                                <div class="zm-noti7-content-body">
+                                    <div class="zm-noti7-popup-loading">
+                                        <span class="noti-spinner-loading"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="zm-noti7-content thanks" style="display:none;">
+                            <div class="zm-noti7-content-inner">
+                                <div class="zm-noti7-content-body">
+                                    <div class="zm-noti7-popup-loading">
+                                        <span class="noti-spinner-loading"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="zm-noti7-frame-border bottom"></div>
+                    <div class="zm-noti7-popup-footer">
+                        <a href="/notifications" class="zm-noti7-popup-footer-all zg-right">查看全部 &raquo;</a>
+                        <a href="/settings/notification" class="zm-noti7-popup-footer-set" title="通知设置"><i
+                                class="zg-icon zg-icon-settings"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<div class="zu-global-notify" id="zh-global-message" style="display:none">
+    <div class="zg-wrap">
+        <div class="zu-global-nitify-inner">
+            <a class="zu-global-notify-close" href="javascript:;" title="关闭" name="close">x</a>
+            <span class="zu-global-notify-icon"></span>
+            <span class="zu-global-notify-msg"></span>
+        </div>
+    </div>
+</div>
+
+
+<div class="zg-wrap zu-main clearfix " role="main">
+    <div class="zu-main-content">
+        <div class="zu-main-content-inner">
+
+
+            <div id="zh-recommend">
+                <div id="zh-recommend-title" class="page-title">
+                    <i class="zg-icon zg-icon-feedlist"></i>
+                    <span>编辑推荐</span>
+                    <a href="/explore/recommendations" class="zg-link-gray zg-right" data-za-c="explore"
+                       data-za-a="visit_explore_recommendations" data-za-l="editor_recommendations_more"><span>更多推荐 &raquo;</span></a>
+                </div>
+                <div id="zh-recommend-list">
+
+
+                    <div class="top-recommend-feed feed-item">
+                        <h2><a class="question_link" href="/question/19712947/answer/572509933" target="_blank"
+                               data-id="65249" data-za-element-name="Title">
+                            为什么有些人每天只睡三四个小时就可以保证正常的工作？
+                        </a></h2>
+                        <div class="avatar">
+                            <a title="Owl of Minerva"
+                               data-hovercard="p$t$wenmiau"
+                               class="zm-item-link-avatar"
+                               target="_blank"
+                               href="/people/wenmiau">
+                                <img src="https://pic4.zhimg.com/623cb8e61da80bbae706f30642b2a145_m.jpg"
+                                     class="zm-item-img-avatar">
+                            </a>
+                        </div>
+
+                        <div class="feed-main">
+                            <div class="zm-item-answer-author-info">
+
+<span class="summary-wrapper">
+<span class="author-link-line">
+
+<a class="author-link"
+   data-hovercard="p$t$wenmiau"
+   target="_blank" href="/people/wenmiau"
+>Owl of Minerva</a><span class="icon icon-badge-id-an icon-badge" data-tooltip="s$b$优秀回答者 · 已认证的个人"></span></span><span
+        class="badge-summary"><a href="/people/wenmiau#hilightbadge" target="_blank">神经科学、脑科学话题优秀回答者</a></span>
+
+
+
+<span title="DieEule" class="bio">
+DieEule
+</span>
+</span>
+                            </div>
+                            <div class="zm-item-rich-text" data-resourceid="65249" data-action="/answer/content">
+                                <div class="zh-summary summary clearfix">
+                                    <img src="https://pic3.zhimg.com/50/v2-28e703ac9d8cf35fdc27459736c705e2_200x112.jpg"
+                                         data-caption="食欲素（Orexin, ORX）对昼夜节律的调控机制" data-size="normal"
+                                         data-rawwidth="600" data-rawheight="676" data-watermark="watermark"
+                                         data-original-src="v2-28e703ac9d8cf35fdc27459736c705e2"
+                                         data-watermark-src="v2-1c2d57369571655c2425c4a8462d49fc"
+                                         data-private-watermark-src="v2-0b7db39ceb686ff323a868493ad6c113"
+                                         class="origin_image inline-img zh-lightbox-thumb"
+                                         data-original="https://pic3.zhimg.com/50/v2-28e703ac9d8cf35fdc27459736c705e2_r.jpg">
+                                    实际上，对于绝大部分人来说，“每天只睡3～4个小时”属于“<b>危险操作，请勿模仿</b>”的范畴。极少部分具有DEC2基因突变的人，每天所需睡眠时间少于5小时。而且这部分人在睡够时间之后会自然醒来，也就是说，这样少的睡眠时间并不是后天强制习得的[1].
+                                    DEC2突变…
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="recommend-feed feed-item">
+                        <span class="zg-right zg-gray-normal feed-meta">问答</span>
+                        <h2><a class="question_link" href="/question/308647171/answer/571881725" target="_blank"
+                               data-id="30865505" data-za-element-name="Title">
+                            如何评价腾竞体育的成立，会对电竞行业的未来产生哪些影响？
+                        </a></h2>
+                    </div>
+
+
+                    <div class="recommend-feed feed-item">
+                        <span class="zg-right zg-gray-normal feed-meta">问答</span>
+                        <h2><a class="question_link" href="/question/308640338/answer/570983564" target="_blank"
+                               data-id="30863948" data-za-element-name="Title">
+                            如何看待加拿大科学家发现 15 亿光年外的快速射电暴？
+                        </a></h2>
+                    </div>
+
+
+                    <div class="recommend-feed feed-item">
+                        <span class="zg-right zg-gray-normal feed-meta">问答</span>
+                        <h2><a class="question_link" href="/question/308821701/answer/572058733" target="_blank"
+                               data-id="30904297" data-za-element-name="Title">
+                            2019 亚洲杯 C 组武磊梅开二度于大宝替补建功，国足 3:0 菲律宾提前出线，如何评价国足表现？
+                        </a></h2>
+                    </div>
+
+
+                    <div class="recommend-feed feed-item">
+                        <span class="zg-right zg-gray-normal feed-meta">问答</span>
+                        <h2><a class="question_link" href="/question/308921981/answer/572544634" target="_blank"
+                               data-id="30926463" data-za-element-name="Title">
+                            2018 王者荣耀冬季冠军杯半决赛，Hero 久竞 4:2 EDG.M 晋级决赛，如何评价本场对决？
+                        </a></h2>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="explore-tab" id="js-explore-tab">
+                <a class="zg-anchor-hidden" name="daily-hot"></a>
+                <a class="zg-anchor-hidden" name="monthly-hot"></a>
+                <ul class="tab-navs clearfix">
+                    <li class="tab-nav"><a class="anchor" href="#daily-hot" data-za-c="explore"
+                                           data-za-a="visit_explore_daily_trendings"
+                                           data-za-l="explore_daily_trendings">今日最热</a></li>
+                    <li class="tab-nav"><a class="anchor" href="#monthly-hot" data-za-c="explore"
+                                           data-za-a="visit_explore_monthly_trendings"
+                                           data-za-l="explore_monthly_trendings">本月最热</a></li>
+                </ul>
+                <div class="tab-panel">
+                    <div data-type="daily" data-zop-feedlist>
+                        <div class="explore-feed feed-item" data-offset="1">
+                            <h2><a class="question_link" href="/question/266954241/answer/571114577" target="_blank"
+                                   data-id="21214108" data-za-element-name="Title">
+                                如果建州女真不兴起，入关灭明的会不会是俄罗斯？
+                            </a></h2>
+                            <div tabindex="-1" class="zm-item-answer "
+                                 itemscope itemtype="http://schema.org/Answer"
+                                 data-aid="133907920"
+                                 data-atoken="571114577"
+                                 data-collapsed="0"
+                                 data-created="1547135731"
+                                 data-deleted="0"
+                                 data-isowner="0"
+                                 data-helpful="True"
+                                 data-copyable="1"
+                                 data-zop
+                            >
+                                <link itemprop="url" href="/question/266954241/answer/571114577">
+                                <meta itemprop="answer-id" content="133907920">
+                                <meta itemprop="answer-url-token" content="571114577">
+                                <a class="zg-anchor-hidden" name="answer-133907920"></a>
+
+                                <div class="zm-item-vote">
+                                    <a class="zm-item-vote-count js-expand js-vote-count" href="javascript:;"
+                                       data-bind-votecount>92</a>
+                                </div>
+
+                                <div class="zm-votebar">
+                                    <button class="up ">
+                                        <i class="icon vote-arrow"></i>
+                                        <span class="count">92</span>
+                                        <span class="label sr-only">赞同</span>
+                                    </button>
+                                    <button class="down ">
+                                        <i class="icon vote-arrow"></i>
+                                        <span class="label sr-only">反对</span>
+                                    </button>
+                                </div>
+
+
+                                <div class="answer-head">
+
+                                    <div class="zm-item-answer-author-info">
+
+<span class="summary-wrapper">
+<span class="author-link-line">
+
+<a class="author-link"
+   data-hovercard="p$t$wang-ruo-bing-58"
+   target="_blank" href="/people/wang-ruo-bing-58"
+>寻找小贝壳</a></span><span title="一夫多妻的女权主义者，动物伙伴" class="bio">
+一夫多妻的女权主义者，动物伙伴
+</span>
+</span>
+                                    </div>
+
+                                    <div class="zm-item-vote-info" data-votecount="92">
+
+
+                                        <span class="voters text"><a href="#" class="more text"><span
+                                                class="js-voteCount">92</span>&nbsp;人赞同</a></span>
+
+
+                                    </div>
+                                </div>
+                                <div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="21214108"
+                                     data-action="/answer/content" data-author-name="寻找小贝壳"
+                                     data-entry-url="/question/266954241/answer/571114577">
+
+                                    <textarea hidden class="content">&lt;p&gt;不会，哥萨克过不了建州女真那一关。即使是没兴起的建州。别以为横穿了那么大的西伯利亚，就能紧接着扫过东北再征服中国。。那完全不是一个级别的难度。&lt;/p&gt;&lt;p&gt;征服西伯利亚在野外生存方面很了不起，但在战争能力方面并无什么奇迹。哥萨克殖民者能打穿西伯利亚那是因为西伯利亚土著太弱了，真正的原始民族往往不能直面文明民族的战士，因为原始民族太野性，太怕死，不敢死战是野性的基本特质之一。下图是哥萨克头子哈巴罗夫征服黑龙江流域的情况，一小帮文明世界来的流氓暴徒可以很轻易的对着缺乏武德的原始人群开无双：&lt;/p&gt;&lt;figure&gt;&lt;img src=&quot;https://pic3.zhimg.com/50/v2-eb3edd0a58b6f48444353ba260665298_b.jpg&quot; data-caption=&quot;&quot; data-size=&quot;normal&quot; data-rawwidth=&quot;620&quot; data-rawheight=&quot;428&quot; data-default-watermark-src=&quot;https://pic3.zhimg.com/50/v2-0123d2a50160813f252af1d1d3323e88_b.jpg&quot; class=&quot;origin_image zh-lightbox-thumb&quot; width=&quot;620&quot; data-original=&quot;https://pic3.zhimg.com/50/v2-eb3edd0a58b6f48444353ba260665298_r.jpg&quot;&gt;&lt;/figure&gt;&lt;p&gt;根据哥萨克在黑龙江上一书记载，哈巴罗夫的哥萨克军队在枪炮压制成功后，进入达斡尔主城与土著们&lt;b&gt;白刃战时&lt;/b&gt;，砍杀了600多土著，自身只有4人被矛刺伤。&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;早期的哥萨克确实相当彪悍能战，但这种战绩更多的源于土著的脆弱。但凡是有些文明度的民族，比如中亚草原诸汗国，或者蒙古人，或者建州女真，都不可能被哥萨克这区区几条火枪和不怕死的斧头冲锋吓倒。因为文明世界的战士都培养出了作战就要尽量勇敢作战的基本特性。你哥萨克就算各个都身负高绝武功，人海战术还是能轻松淹了你，只要别先被吓倒就行。&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;这是与征服西伯利亚同时期的哥萨克们试图南下进军中亚草原时的情形，遇到了相对“文明”一些的乌兹别克人。你可以看到与他们的西伯利亚无双差别有多大：&lt;/p&gt;&lt;figure&gt;&lt;img src=&quot;https://pic2.zhimg.com/50/v2-64841b98b4312ea454d6eeb4aa7e5590_b.jpg&quot; data-caption=&quot;&quot; data-size=&quot;normal&quot; data-rawwidth=&quot;603&quot; data-rawheight=&quot;493&quot; data-default-watermark-src=&quot;https://pic4.zhimg.com/50/v2-2f1a6f4d08ee4002d8983791fd9d17c9_b.jpg&quot; class=&quot;origin_image zh-lightbox-thumb&quot; width=&quot;603&quot; data-original=&quot;https://pic2.zhimg.com/50/v2-64841b98b4312ea454d6eeb4aa7e5590_r.jpg&quot;&gt;&lt;/figure&gt;&lt;p&gt;真的是好惨呀，典型的重复了千年的草原骑兵玩步兵的套路。这入境就被乌兹别克骑兵全歼的水平，想打穿17世纪比中亚草原军事力量更强大的东三省怕不是痴人说梦~&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;我没有瞧不起哥萨克的意思啊。18世纪以后的哥萨克骑兵大概是个被吹捧过分的笑话，但早期只有步兵的哥萨克们真的很屌，武德极其充沛，问题是他们能来到东方的人数太少了。这点西班牙征服者级别的数量级也就是去吞并土著吧，来到文明世界撒野的结果可参考16世纪葡萄牙殖民者在中国。&lt;/p&gt;</textarea>
+
+
+                                    <div class="zh-summary summary clearfix">
+                                        <img src="https://pic4.zhimg.com/50/v2-0c136eafd62d2db2fb733d1ee6d4c53d_200x112.jpg"
+                                             data-caption="" data-size="normal" data-rawwidth="620" data-rawheight="428"
+                                             data-watermark="watermark"
+                                             data-original-src="v2-0c136eafd62d2db2fb733d1ee6d4c53d"
+                                             data-watermark-src="v2-eb3edd0a58b6f48444353ba260665298"
+                                             data-private-watermark-src="v2-0123d2a50160813f252af1d1d3323e88"
+                                             class="origin_image inline-img zh-lightbox-thumb"
+                                             data-original="https://pic4.zhimg.com/50/v2-0c136eafd62d2db2fb733d1ee6d4c53d_r.jpg">
+                                        不会，哥萨克过不了建州女真那一关。即使是没兴起的建州。别以为横穿了那么大的西伯利亚，就能紧接着扫过东北再征服中国。。那完全不是一个级别的难度。征服西伯利亚在野外生存方面很了不起，但在战争能力方面并无什么奇迹。哥萨克殖民者能打穿西伯利亚那是…
+
+                                        <a href="/question/266954241/answer/571114577" class="toggle-expand">显示全部</a>
+
+                                    </div>
+
+
+                                    <p class="visible-expanded"><a itemprop="url" class="answer-date-link meta-item"
+                                                                   data-tooltip="s$t$发布于 2019-01-10" target="_blank"
+                                                                   href="/question/266954241/answer/571114577">编辑于
+                                        2019-01-11</a></p>
+
+                                </div>
+                                <div class="zm-item-meta answer-actions clearfix js-contentActions">
+                                    <div class="zm-meta-panel">
+
+                                        <a data-follow="q:link" class="follow-link zg-follow meta-item"
+                                           href="javascript:;" id="sfb-21214108"><i class="z-icon-follow"></i>关注问题</a>
+
+                                        <a href="#" name="addcomment"
+                                           class="meta-item toggle-comment js-toggleCommentBox">
+                                            <i class="z-icon-comment"></i>25 条评论</a>
+
+
+                                        <a href="#" class="meta-item zu-autohide js-thank" data-thanked="false"><i
+                                                class="z-icon-thank"></i>感谢</a>
+
+
+                                        <a href="#" class="meta-item zu-autohide js-share"><i class="z-icon-share"></i>分享</a>
+
+                                        <a href="#" class="meta-item zu-autohide js-collect"><i
+                                                class="z-icon-collect"></i>收藏</a>
+
+
+                                        <span class="zg-bull zu-autohide">&bull;</span>
+
+                                        <a href="#" class="meta-item zu-autohide js-noHelp">没有帮助</a>
+
+                                        <span class="zg-bull zu-autohide">&bull;</span>
+                                        <a href="#" class="meta-item zu-autohide js-report">举报</a>
+
+
+                                        <meta name="copyrightStatus" content="1">
+                                        <meta name="disableCopyAvatar" content="">
+
+                                        <span class="zg-bull">&bull;</span>
+
+                                        <a href="/terms#sec-licence-1" target="_blank" class="meta-item copyright">
+                                            作者保留权利
+                                        </a>
+
+
+                                        <button class="meta-item item-collapse js-collapse">
+                                            <i class="z-icon-fold"></i>收起
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="explore-feed feed-item" data-offset="2">
+                            <h2><a class="question_link" href="/question/305587407/answer/571319208" target="_blank"
+                                   data-id="30184575" data-za-element-name="Title">
+                                如何评价剧版《知否》中的齐衡一角？
+                            </a></h2>
+                            <div tabindex="-1" class="zm-item-answer "
+                                 itemscope itemtype="http://schema.org/Answer"
+                                 data-aid="133945198"
+                                 data-atoken="571319208"
+                                 data-collapsed="0"
+                                 data-created="1547174477"
+                                 data-deleted="0"
+                                 data-isowner="0"
+                                 data-helpful="True"
+                                 data-copyable="1"
+                                 data-zop
+                            >
+                                <link itemprop="url" href="/question/305587407/answer/571319208">
+                                <meta itemprop="answer-id" content="133945198">
+                                <meta itemprop="answer-url-token" content="571319208">
+                                <a class="zg-anchor-hidden" name="answer-133945198"></a>
+
+                                <div class="zm-item-vote">
+                                    <a class="zm-item-vote-count js-expand js-vote-count" href="javascript:;"
+                                       data-bind-votecount>761</a>
+                                </div>
+
+                                <div class="zm-votebar">
+                                    <button class="up ">
+                                        <i class="icon vote-arrow"></i>
+                                        <span class="count">761</span>
+                                        <span class="label sr-only">赞同</span>
+                                    </button>
+                                    <button class="down ">
+                                        <i class="icon vote-arrow"></i>
+                                        <span class="label sr-only">反对</span>
+                                    </button>
+                                </div>
+
+
+                                <div class="answer-head">
+
+                                    <div class="zm-item-answer-author-info">
+
+<span class="summary-wrapper">
+<span class="author-link-line">
+<span class="name">知乎用户</span></span><span title="学生" class="bio">
+学生
+</span>
+</span>
+                                    </div>
+
+                                    <div class="zm-item-vote-info" data-votecount="761">
+
+
+                                        <span class="voters text"><a href="#" class="more text"><span
+                                                class="js-voteCount">761</span>&nbsp;人赞同</a></span>
+
+
+                                    </div>
+                                </div>
+                                <div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="30184575"
+                                     data-action="/answer/content" data-author-name="阿颓33"
+                                     data-entry-url="/question/305587407/answer/571319208">
+
+                                    <textarea hidden class="content">&lt;p&gt; 大早上起来一看怎么这么多赞，吓我一跳~&lt;/p&gt;&lt;p&gt;--------------------------------------------------------------------------------------------&lt;/p&gt;&lt;p&gt;我在齐衡送娃娃之后明兰在船上哭的时候有站过cp，但是后来看明兰和丫鬟分千层糕吃，以及看了演员本人对人物的剖析之后就觉得导演想呈现出来的并不是他俩之间的爱情，而是齐衡人物本身的悲剧性。齐衡这个人物看似单纯，但实际上却是牵扯到朝堂政变的一个风眼，首先政变的起始是因为两个家族的女儿为了他争风吃醋，而从齐家势利更迭上更代表了朝代变更时勋贵家族的兴衰沉浮。&lt;/p&gt;&lt;p&gt;明兰和齐衡一开始就无法在一起的，他俩之间的问题根本不是郡主而是邕王一家要拿他们杀鸡儆猴，从齐衡母亲角度就是明兰齐衡在互相爱慕的时候齐衡已经被荣家和邕王两家看上并都上门讨要好几次了，甚至已经闹得荣飞燕丢了性命，哪怕她俩在一起了明兰也会成为第二个荣飞燕，甚至盛家满门都留不住，他俩根本不是过不过的下去的问题，而是根本没有在一起的机会。&lt;/p&gt;&lt;p&gt;顾廷烨看似无所仰仗，但也无所畏惧，敢拼敢闯豁的出去，颇有种光脚的不怕穿鞋的气势。&lt;/p&gt;&lt;p&gt;明兰从小寄人篱下谨小慎微，小心翼翼但嫁出去了就又是一方新的天地。&lt;/p&gt;&lt;p&gt;齐衡锦衣玉食看似显贵，却是最不得自由的一个人，处处受到牵制，笼中鸟一只，看着卖相好但是不过是官家的一个玩物，齐家只是需要依附皇权的空壳子，哪怕是个大活人，想要了就得给，寻死都没有自由，是真真正正的死局。&lt;/p&gt;&lt;p&gt;一旦县主成了公主他就连科考都不能参加，齐家仰仗郡主在皇后那里的天恩才保得十几年荣耀，一旦皇权变更他家必然失势，签了一纸婚书，就相当于是断送了他的大好前程，从此远离朝堂，也再没有和衡兰白首的可能，拿自己后半辈子去保全齐盛两家得以苟延残喘，从一个看似要风得风要雨得雨的天之骄子，变成一个玩物被人攥在手里。你永远都能锦衣玉食前呼后拥，但永远没有自己的内核，连自己都不过是掌权者手中可以拿出去炫耀的一个物件罢了，邕王一家想要，你就得高高兴兴漂漂亮亮的把自己送过去，可以说是真正的悲剧了。&lt;/p&gt;&lt;p&gt;----------------------------------------------------------------------------------------------齐衡和顾廷烨谈话的时候，当顾廷烨说道要帮齐衡绑架县主时窗户开了，我看网上有的说是齐衡被监视了，因为他关窗之后坐立不安表情慌张。&lt;/p&gt;&lt;p&gt;还有另一个说法说是风吹进来把他吹清醒了。我是比较倾向于齐衡发现自己被监视了，因为作为男二粉丝对于他害怕这种情绪的表达方式还是比较了解的，他的神态确实很害怕，但风在这里应该也是神来一笔。&lt;/p&gt;&lt;p&gt;这部剧中的风我觉得有着很深刻的含义，最开始投壶那里起风，代表一个朝代动荡的开始。不同人对待风的态度，也体现了新晋权贵，世家子弟，纯臣三方的立场。&lt;/p&gt;&lt;p&gt;当时大家都喊着起风了快回屋去避一避，这代表了大多数人对于动荡的态度就是纷纷回避，关门保命，只有年少的顾廷烨回头看着风中的壶和箭露出一个意味深长的眼神，我觉得这里说明顾廷烨即使是在动荡中也是有极大的底气能够抓住时机迎难而上的，不服输，不害怕，敢闯敢拼，所以他在后来的朝堂争斗中能够一路勇进。&lt;/p&gt;&lt;p&gt;而与之不同的是齐衡，齐衡本就是温养在屋里的人，他生来就比别人高贵三分，本应接触不到大风大浪，但身不由己横风袭来，他能做的只有关窗待在屋里等着被安排，等风过了打开窗这个天下早已易主，而齐家接下来的命运并不是他们能够左右的了的，幸运了他还能稳坐家中继续当他的勋贵，不幸被波及了就荣耀尽失。&lt;/p&gt;&lt;p&gt;齐衡这个人物是很善良单纯的，他有种超脱年代的天真烂漫感。从他对待不为和明兰的态度上，以及在课堂上与顾廷烨辩论那里就能看出来，这个人被保护的太好，思想里甚至没有太深的主仆、嫡庶观念，他的小厮可以和他因为吃不吃酒而争执，他认为庶女和自己也没有身份上的差距，他甚至认为这个世界上大家都以礼相待就能和睦共处。他被娇养太过，眼中看到的世界花团锦簇无限美好，但是下面的暗流涌动他根本不晓得，所以考试的时候老师说他文章失了风骨，这样的人放在盛世可能是最美好的良配，但是放在动荡年代里就是一个很悲剧的人了，匹夫无罪怀璧其罪，他连自己都保护不了就更不用说和明兰厮守了，这应该是特定年代下很有代表性的一个悲剧人物了。&lt;/p&gt;&lt;p&gt;----------------------------------------------------------------------------------------------其实这个剧里头还有一个看点，郡主和齐衡两个人体现了旧勋贵和新勋贵截然不同的态度。&lt;/p&gt;&lt;p&gt;郡主认为保住齐家需要靠齐衡和邕王联姻，等新王继位他们家又会有了新的附庸，如果齐衡抗婚他们家就得罪了新皇，将面临灭顶之灾。这是守旧的很自私的想法，说难听些就是独善其身，吃皇粮却不为官家着想的贵族蛀虫，齐家一直以来的安身立命的方式。&lt;/p&gt;&lt;p&gt;而从齐衡的角度来说，齐衡这个人物天真但是并不是说他什么都不懂，他对于朝堂斗争的残酷还是有概念的。齐衡在思想上是比郡主要更加先进一些的，他从骨子里是一个保皇派，他在邕王妃逼婚的时候说上天要残害官家，大好江山竟然要落到你们这样人的手里，他除了是一个享受皇恩的勋贵，内心对于国家有自己的期许和报复，这个人物在一众腐朽的贵族子弟中能够通过科举脱颖而出，本就说明了这个问题。走廊里齐衡说官家心中有苦，洛河映出天上三千繁星，又不是只有月亮才会发光。官家也好，他也好，看着高官厚禄地位斐然，也不过是凡尘里的俗人，各有各的苦楚，身不由己，无力自保。齐衡他盼着国家好，但现在官家被邕王架空，而他自己成了第一个拿出来为邕王立威的棋子。&lt;/p&gt;&lt;p&gt;当郡主给他讲了自己家里现在的处境，齐衡想到的解决办法是自尽，他的原话是只要我死了，邕王就能放过齐家了，现在只有我死了才能救齐家。站在齐衡的立场来说，这是一场政治斗争，表面上是抢人，实际上是在拿毫无实权的软柿子齐家做法，强迫齐家站队。齐衡认为自己只不过是个幌子，他死了没有了抢人的借口，才能在保得官家体面的同时给齐家留下一份生机。但可惜偏偏他还得顾着家里的双亲和盛家满门的性命，死也死不得，生生被断送大好前程，被逼着拿来当让官家威严扫地的枪杆子。从爱情事业国家上面三重给予打击。&lt;/p&gt;&lt;p&gt;齐衡在邕王府开头说的那句原话是，几百年人家无非积善，天下第一等好事只是读书。这个人物担得起一个君子端方，崇尚行善积德勤勉好学。这个人物思想纯良但过于天真软弱，或者说过于理想主义。他的美好想法只在太平盛世有效，一旦碰上乱世，什么规律都被打乱，他就担不太起了。他盼着什么都好，谁都不辜负，但人生本来就是残酷的，哪里会有那么美好的事情。当你什么都想做好的时候偏偏就什么都做不成了，谁都不想辜负的时候往往就谁都感觉被辜负了。&lt;/p&gt;</textarea>
+
+
+                                    <div class="zh-summary summary clearfix">
+
+                                        大早上起来一看怎么这么多赞，吓我一跳~--------------------------------------------------------------------------------------------我在齐衡送娃娃之后明兰在船上哭的时候有站过cp，但是后来看明兰和丫鬟分千层糕吃，以及看了演员本人对人物的剖析之…
+
+                                        <a href="/question/305587407/answer/571319208" class="toggle-expand">显示全部</a>
+
+                                    </div>
+
+
+                                    <p class="visible-expanded"><a itemprop="url" class="answer-date-link meta-item"
+                                                                   data-tooltip="s$t$发布于 2019-01-11" target="_blank"
+                                                                   href="/question/305587407/answer/571319208">编辑于
+                                        16:43</a></p>
+
+                                </div>
+                                <div class="zm-item-meta answer-actions clearfix js-contentActions">
+                                    <div class="zm-meta-panel">
+
+                                        <a data-follow="q:link" class="follow-link zg-follow meta-item"
+                                           href="javascript:;" id="sfb-30184575"><i class="z-icon-follow"></i>关注问题</a>
+
+                                        <a href="#" name="addcomment"
+                                           class="meta-item toggle-comment js-toggleCommentBox">
+                                            <i class="z-icon-comment"></i>106 条评论</a>
+
+
+                                        <a href="#" class="meta-item zu-autohide js-thank" data-thanked="false"><i
+                                                class="z-icon-thank"></i>感谢</a>
+
+
+                                        <a href="#" class="meta-item zu-autohide js-share"><i class="z-icon-share"></i>分享</a>
+
+                                        <a href="#" class="meta-item zu-autohide js-collect"><i
+                                                class="z-icon-collect"></i>收藏</a>
+
+
+                                        <span class="zg-bull zu-autohide">&bull;</span>
+
+                                        <a href="#" class="meta-item zu-autohide js-noHelp">没有帮助</a>
+
+                                        <span class="zg-bull zu-autohide">&bull;</span>
+                                        <a href="#" class="meta-item zu-autohide js-report">举报</a>
+
+
+                                        <meta name="copyrightStatus" content="1">
+                                        <meta name="disableCopyAvatar" content="">
+
+                                        <span class="zg-bull">&bull;</span>
+
+                                        <a href="/terms#sec-licence-1" target="_blank" class="meta-item copyright">
+                                            作者保留权利
+                                        </a>
+
+
+                                        <button class="meta-item item-collapse js-collapse">
+                                            <i class="z-icon-fold"></i>收起
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="explore-feed feed-item" data-offset="3">
+                            <h2><a class="question_link" href="/question/286240007/answer/571180816" target="_blank"
+                                   data-id="25886022" data-za-element-name="Title">
+                                如何评价朱一龙的演技！？
+                            </a></h2>
+                            <div tabindex="-1" class="zm-item-answer "
+                                 itemscope itemtype="http://schema.org/Answer"
+                                 data-aid="133920100"
+                                 data-atoken="571180816"
+                                 data-collapsed="0"
+                                 data-created="1547145399"
+                                 data-deleted="0"
+                                 data-isowner="0"
+                                 data-helpful="True"
+                                 data-copyable="1"
+                                 data-zop
+                            >
+                                <link itemprop="url" href="/question/286240007/answer/571180816">
+                                <meta itemprop="answer-id" content="133920100">
+                                <meta itemprop="answer-url-token" content="571180816">
+                                <a class="zg-anchor-hidden" name="answer-133920100"></a>
+
+                                <div class="zm-item-vote">
+                                    <a class="zm-item-vote-count js-expand js-vote-count" href="javascript:;"
+                                       data-bind-votecount>218</a>
+                                </div>
+
+                                <div class="zm-votebar">
+                                    <button class="up ">
+                                        <i class="icon vote-arrow"></i>
+                                        <span class="count">218</span>
+                                        <span class="label sr-only">赞同</span>
+                                    </button>
+                                    <button class="down ">
+                                        <i class="icon vote-arrow"></i>
+                                        <span class="label sr-only">反对</span>
+                                    </button>
+                                </div>
+
+
+                                <div class="answer-head">
+
+                                    <div class="zm-item-answer-author-info">
+
+<span class="summary-wrapper">
+<span class="author-link-line">
+
+<a class="author-link"
+   data-hovercard="p$t$chuln35"
+   target="_blank" href="/people/chuln35"
+>NIka</a></span>
+</span>
+                                    </div>
+
+                                    <div class="zm-item-vote-info" data-votecount="218">
+
+
+                                        <span class="voters text"><a href="#" class="more text"><span
+                                                class="js-voteCount">218</span>&nbsp;人赞同</a></span>
+
+
+                                    </div>
+                                </div>
+                                <div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="25886022"
+                                     data-action="/answer/content" data-author-name="NIka"
+                                     data-entry-url="/question/286240007/answer/571180816">
+
+                                    <textarea hidden class="content">&lt;p&gt;年中热搜常窜的时候下意识是比较反感，以为又哪个17、8岁资本模式小鲜肉买的热搜。&lt;/p&gt;&lt;p&gt;陪我娘瞄了两集知否，作为濒临三十的理智人也对早先的自己倒戈了，悄悄在心里收回当初不成熟的傻话哈哈哈哈……   &lt;/p&gt;&lt;p&gt;小公爷元若宝包儿，让人在眼看现实周遭相对失望的当下，哪怕虚构，也会欣慰原来&lt;b&gt;&lt;i&gt;还有这样明月般的少年郎儿鹅&lt;/i&gt;&lt;/b&gt;……嗑瓜子看剧从专业角度不好装腔评论，但个人而言起码感官上不尴尬，情绪上能被带着走，戏份不多不连贯的情况下人物展现比较立体了。&lt;/p&gt;&lt;p&gt;希望十来年真正一步一脚印走出来的演员，线下依旧温润如玉，线上继续走得更远更开阔！&lt;/p&gt;&lt;hr&gt;&lt;p&gt;update一下:  承蒙大家点赞&amp;amp; 身边直男好友也对朱演员呱呱相看， 我还够不上粉丝，巴特本着知其然也得知其所以然的研究精神，又悄咪咪做功课看了一些日常采访。&lt;/p&gt;&lt;p&gt;我觉着吧，抛开角色滤镜/业务能力，他的吸引力很大程度还在于整体的言行举止。从学生到职场几年，我们多多少少见过了不同年龄层/社会角色的男性在对待异性上的诸多不妥与不适，才更怀念初高中时候那个最可贵但又没那么打眼的男孩：&lt;b&gt;&lt;i&gt;独善其身不混在招摇的兄弟队伍里，不嘲笑女孩儿，不给人瞎取绰号，不论谁让他帮点什么或男生笑他不够爷们儿，都只是傻傻一笑……&lt;/i&gt;&lt;/b&gt;眼下正好有个演员，想也知道中间肯定受到过委屈、漠视、争而未得，而十多年了，至少看起来都还未背离这个形象太远，那可不就成为大家视若珍宝的宠鹅了么!&lt;/p&gt;&lt;p&gt;没有任何喜爱是平白无故的，愿我们在现实生活中都能成为并且遇到善良温暖的人，追星还是适度，光追剧追快乐也挺好，距离产生美是铁律啊哈哈~~~///(^v^)\\\~~~&lt;/p&gt;</textarea>
+
+
+                                    <div class="zh-summary summary clearfix">
+
+                                        年中热搜常窜的时候下意识是比较反感，以为又哪个17、8岁资本模式小鲜肉买的热搜。陪我娘瞄了两集知否，作为濒临三十的理智人也对早先的自己倒戈了，悄悄在心里收回当初不成熟的傻话哈哈哈哈……
+                                        小公爷元若宝包儿，让人在眼看现实周遭相对失望的当下，哪怕…
+
+                                        <a href="/question/286240007/answer/571180816" class="toggle-expand">显示全部</a>
+
+                                    </div>
+
+
+                                    <p class="visible-expanded"><a itemprop="url" class="answer-date-link meta-item"
+                                                                   data-tooltip="s$t$发布于 2019-01-11" target="_blank"
+                                                                   href="/question/286240007/answer/571180816">编辑于
+                                        15:40</a></p>
+
+                                </div>
+                                <div class="zm-item-meta answer-actions clearfix js-contentActions">
+                                    <div class="zm-meta-panel">
+
+                                        <a data-follow="q:link" class="follow-link zg-follow meta-item"
+                                           href="javascript:;" id="sfb-25886022"><i class="z-icon-follow"></i>关注问题</a>
+
+                                        <a href="#" name="addcomment"
+                                           class="meta-item toggle-comment js-toggleCommentBox">
+                                            <i class="z-icon-comment"></i>12 条评论</a>
+
+
+                                        <a href="#" class="meta-item zu-autohide js-thank" data-thanked="false"><i
+                                                class="z-icon-thank"></i>感谢</a>
+
+
+                                        <a href="#" class="meta-item zu-autohide js-share"><i class="z-icon-share"></i>分享</a>
+
+                                        <a href="#" class="meta-item zu-autohide js-collect"><i
+                                                class="z-icon-collect"></i>收藏</a>
+
+
+                                        <span class="zg-bull zu-autohide">&bull;</span>
+
+                                        <a href="#" class="meta-item zu-autohide js-noHelp">没有帮助</a>
+
+                                        <span class="zg-bull zu-autohide">&bull;</span>
+                                        <a href="#" class="meta-item zu-autohide js-report">举报</a>
+
+
+                                        <meta name="copyrightStatus" content="1">
+                                        <meta name="disableCopyAvatar" content="">
+
+                                        <span class="zg-bull">&bull;</span>
+
+                                        <a href="/terms#sec-licence-1" target="_blank" class="meta-item copyright">
+                                            作者保留权利
+                                        </a>
+
+
+                                        <button class="meta-item item-collapse js-collapse">
+                                            <i class="z-icon-fold"></i>收起
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="explore-feed feed-item" data-offset="4">
+                            <h2><a class="question_link" href="/question/303776563/answer/571164085" target="_blank"
+                                   data-id="29782381" data-za-element-name="Title">
+                                怎样看待Bighit于2019年推出新男团？
+                            </a></h2>
+                            <div tabindex="-1" class="zm-item-answer "
+                                 itemscope itemtype="http://schema.org/Answer"
+                                 data-aid="133917000"
+                                 data-atoken="571164085"
+                                 data-collapsed="0"
+                                 data-created="1547141555"
+                                 data-deleted="0"
+                                 data-isowner="0"
+                                 data-helpful="True"
+                                 data-copyable="1"
+                                 data-zop
+                            >
+                                <link itemprop="url" href="/question/303776563/answer/571164085">
+                                <meta itemprop="answer-id" content="133917000">
+                                <meta itemprop="answer-url-token" content="571164085">
+                                <a class="zg-anchor-hidden" name="answer-133917000"></a>
+
+                                <div class="zm-item-vote">
+                                    <a class="zm-item-vote-count js-expand js-vote-count" href="javascript:;"
+                                       data-bind-votecount>43</a>
+                                </div>
+
+                                <div class="zm-votebar">
+                                    <button class="up ">
+                                        <i class="icon vote-arrow"></i>
+                                        <span class="count">43</span>
+                                        <span class="label sr-only">赞同</span>
+                                    </button>
+                                    <button class="down ">
+                                        <i class="icon vote-arrow"></i>
+                                        <span class="label sr-only">反对</span>
+                                    </button>
+                                </div>
+
+
+                                <div class="answer-head">
+
+                                    <div class="zm-item-answer-author-info">
+
+<span class="summary-wrapper">
+<span class="author-link-line">
+
+<a class="author-link"
+   data-hovercard="p$t$xing-xing-27-23"
+   target="_blank" href="/people/xing-xing-27-23"
+>猩猩</a></span><span title="不那么菜的大二" class="bio">
+不那么菜的大二
+</span>
+</span>
+                                    </div>
+
+                                    <div class="zm-item-vote-info" data-votecount="43">
+
+
+                                        <span class="voters text"><a href="#" class="more text"><span
+                                                class="js-voteCount">43</span>&nbsp;人赞同</a></span>
+
+
+                                    </div>
+                                </div>
+                                <div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="29782381"
+                                     data-action="/answer/content" data-author-name="猩猩"
+                                     data-entry-url="/question/303776563/answer/571164085">
+
+                                    <textarea hidden class="content">&lt;p&gt;其实我不太懂某些阿米的心态是什么？&lt;/p&gt;&lt;p&gt;想要的究竟是什么？&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;一边想弹们别太累一边不让出师弟团&lt;/p&gt;&lt;p&gt;一个团撑整间公司，怎么可能不累？&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;一边要师弟快些火一边说着不要把资源给他们&lt;/p&gt;&lt;p&gt;虽然大黑有啥资源可以给我也不知道&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;还有蹭防弹热度什么的&lt;/p&gt;&lt;p&gt;防弹师弟这个称呼短期内都会跟在他们身后&lt;/p&gt;&lt;p&gt;就算他们不提、大黑不提，难道媒体不会提吗？&lt;/p&gt;&lt;p&gt;他们得到关注的同时，压力也很大，也一定会被拿来和师兄比较&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;说真的，他们真的什么都没做，预告也才出了一人&lt;/p&gt;&lt;p&gt;对他们宽容点吧&lt;/p&gt;&lt;p&gt;如果不能宽容，就把他们当作一个普通的新团吧&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;我不是公司騎不是bp不是家族飯更沒有要爬牆&lt;/p&gt;&lt;p&gt;我只是覺得&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;心疼自己愛豆並不是不尊重其他團的理由&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;不管是微博还是推特&lt;/p&gt;&lt;p&gt;底下都充满了各种唏嘘感叹&lt;/p&gt;&lt;p&gt;也许成了弹们的师弟就是原罪吧？&lt;/p&gt;&lt;p&gt;但我还是希望可以对这些努力出道的孩子们有基本的尊重&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;啊对了&lt;/p&gt;&lt;p&gt;说师弟在花防弹的钱的&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;拜托，用下脑&lt;/p&gt;&lt;p&gt;那些钱是大黑的&lt;/p&gt;&lt;p&gt;哥哥们该拿到的收入都拿到了&lt;/p&gt;&lt;p&gt;剩余的部分是公司的收入，懂？&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;⋯⋯分割线是我⋯⋯&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;朋友传了预告给我&lt;/p&gt;&lt;p&gt;看到的第一时间我想的是：&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;TXT？团名？认真！？&lt;/p&gt;&lt;p&gt;那中文要叫什么？文本少年团？&lt;/p&gt;&lt;p&gt;粉丝名呢？WORD？&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;真．取名天才方时赫&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;快被行销报告逼疯的朋友表示：&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;TXT都出了，出PDF的日子指日可待&lt;/p&gt;&lt;figure&gt;&lt;img src=&quot;https://pic3.zhimg.com/50/v2-521b70dc9f75a9c382eeb3510f20cb30_b.jpg&quot; data-rawwidth=&quot;559&quot; data-rawheight=&quot;605&quot; data-size=&quot;normal&quot; data-default-watermark-src=&quot;https://pic3.zhimg.com/50/v2-4e623fc88ebf8cb433b3052dd9be148c_b.jpg&quot; class=&quot;origin_image zh-lightbox-thumb&quot; width=&quot;559&quot; data-original=&quot;https://pic3.zhimg.com/50/v2-521b70dc9f75a9c382eeb3510f20cb30_r.jpg&quot;&gt;&lt;/figure&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;&lt;/p&gt;</textarea>
+
+
+                                    <div class="zh-summary summary clearfix">
+                                        <img src="https://pic2.zhimg.com/50/v2-2d3a2bd70c07fe6a936575b3b83bbeb2_200x112.jpg"
+                                             data-rawwidth="559" data-rawheight="605" data-size="normal"
+                                             data-watermark="watermark"
+                                             data-original-src="v2-2d3a2bd70c07fe6a936575b3b83bbeb2"
+                                             data-watermark-src="v2-521b70dc9f75a9c382eeb3510f20cb30"
+                                             data-private-watermark-src="v2-4e623fc88ebf8cb433b3052dd9be148c"
+                                             data-tags="politic" class="origin_image inline-img zh-lightbox-thumb"
+                                             data-original="https://pic2.zhimg.com/50/v2-2d3a2bd70c07fe6a936575b3b83bbeb2_r.jpg">
+                                        其实我不太懂某些阿米的心态是什么？想要的究竟是什么？ 一边想弹们别太累一边不让出师弟团一个团撑整间公司，怎么可能不累？
+                                        一边要师弟快些火一边说着不要把资源给他们虽然大黑有啥资源可以给我也不知道 还有蹭防弹热度什么的防弹师弟这个称呼短期内都会…
+
+                                        <a href="/question/303776563/answer/571164085" class="toggle-expand">显示全部</a>
+
+                                    </div>
+
+
+                                    <p class="visible-expanded"><a itemprop="url" class="answer-date-link meta-item"
+                                                                   data-tooltip="s$t$发布于 2019-01-11" target="_blank"
+                                                                   href="/question/303776563/answer/571164085">编辑于
+                                        2019-01-11</a></p>
+
+                                </div>
+                                <div class="zm-item-meta answer-actions clearfix js-contentActions">
+                                    <div class="zm-meta-panel">
+
+                                        <a data-follow="q:link" class="follow-link zg-follow meta-item"
+                                           href="javascript:;" id="sfb-29782381"><i class="z-icon-follow"></i>关注问题</a>
+
+                                        <a href="#" name="addcomment"
+                                           class="meta-item toggle-comment js-toggleCommentBox">
+                                            <i class="z-icon-comment"></i>15 条评论</a>
+
+
+                                        <a href="#" class="meta-item zu-autohide js-thank" data-thanked="false"><i
+                                                class="z-icon-thank"></i>感谢</a>
+
+
+                                        <a href="#" class="meta-item zu-autohide js-share"><i class="z-icon-share"></i>分享</a>
+
+                                        <a href="#" class="meta-item zu-autohide js-collect"><i
+                                                class="z-icon-collect"></i>收藏</a>
+
+
+                                        <span class="zg-bull zu-autohide">&bull;</span>
+
+                                        <a href="#" class="meta-item zu-autohide js-noHelp">没有帮助</a>
+
+                                        <span class="zg-bull zu-autohide">&bull;</span>
+                                        <a href="#" class="meta-item zu-autohide js-report">举报</a>
+
+
+                                        <meta name="copyrightStatus" content="1">
+                                        <meta name="disableCopyAvatar" content="">
+
+                                        <span class="zg-bull">&bull;</span>
+
+                                        <a href="/terms#sec-licence-1" target="_blank" class="meta-item copyright">
+                                            作者保留权利
+                                        </a>
+
+
+                                        <button class="meta-item item-collapse js-collapse">
+                                            <i class="z-icon-fold"></i>收起
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="explore-feed feed-item" data-offset="5">
+                            <h2><a class="question_link" href="/question/25084350/answer/571315682" target="_blank"
+                                   data-id="2215793" data-za-element-name="Title">
+                                你为什么支持死刑？
+                            </a></h2>
+                            <div tabindex="-1" class="zm-item-answer "
+                                 itemscope itemtype="http://schema.org/Answer"
+                                 data-aid="133944549"
+                                 data-atoken="571315682"
+                                 data-collapsed="0"
+                                 data-created="1547174226"
+                                 data-deleted="0"
+                                 data-isowner="0"
+                                 data-helpful="True"
+                                 data-copyable="1"
+                                 data-zop
+                            >
+                                <link itemprop="url" href="/question/25084350/answer/571315682">
+                                <meta itemprop="answer-id" content="133944549">
+                                <meta itemprop="answer-url-token" content="571315682">
+                                <a class="zg-anchor-hidden" name="answer-133944549"></a>
+
+                                <div class="zm-item-vote">
+                                    <a class="zm-item-vote-count js-expand js-vote-count" href="javascript:;"
+                                       data-bind-votecount>1236</a>
+                                </div>
+
+                                <div class="zm-votebar">
+                                    <button class="up ">
+                                        <i class="icon vote-arrow"></i>
+                                        <span class="count">1236</span>
+                                        <span class="label sr-only">赞同</span>
+                                    </button>
+                                    <button class="down ">
+                                        <i class="icon vote-arrow"></i>
+                                        <span class="label sr-only">反对</span>
+                                    </button>
+                                </div>
+
+
+                                <div class="answer-head">
+
+                                    <div class="zm-item-answer-author-info">
+
+<span class="summary-wrapper">
+<span class="author-link-line">
+<span class="name">知乎用户</span></span><span title="会计师" class="bio">
+会计师
+</span>
+</span>
+                                    </div>
+
+                                    <div class="zm-item-vote-info" data-votecount="1236">
+
+
+                                        <span class="voters text"><a href="#" class="more text"><span
+                                                class="js-voteCount">1236</span>&nbsp;人赞同</a></span>
+
+
+                                    </div>
+                                </div>
+                                <div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="2215793"
+                                     data-action="/answer/content" data-author-name="唯爱永生"
+                                     data-entry-url="/question/25084350/answer/571315682">
+
+                                    <textarea hidden class="content">&lt;p&gt;我有一个儿时伙伴，美丽的像天使一样，十六岁左右被邻家七十多的老头堵在厕所里给强了。&lt;/p&gt;&lt;p&gt;那个老头还强过别的女孩，也强过他自己的儿媳。因为这些事，被人打被人揍还要赔偿，他的一个女儿被婆家人看不起，也上吊了。&lt;/p&gt;&lt;p&gt;这个千刀万剐的老头还是活得好好的，也没有被抓起来。农村不想张扬，赔点钱就算了。可是，我这个伙伴没有熬过这件事，最后心理阴影太重，大年夜喝药了。&lt;/p&gt;&lt;p&gt;几十年过去了，我依旧不能忘记那个皮肤白皙，眼睛似水，高挑美丽善良的女孩。可怜她就这么没了&lt;/p&gt;&lt;p&gt;为什么支持死刑？我不仅支持死刑，我还支持千刀万剐呢。一枪没了太幸运，还什么注射，切。&lt;/p&gt;&lt;p&gt;===============&lt;/p&gt;&lt;p&gt;因为我的儿时伙伴给我的印象太深，几十年过去我一直对她的离世耿耿于怀，所以，有时候也会问父亲当时的情况，父亲总是不耐烦的回避这个问题。今天在知乎又提起这件事，我还是跟父亲多了一些交谈。结果大吵了一架&lt;/p&gt;&lt;p&gt;总体的过程是；这个老头害人不是害了一个，从我的伙伴之前的十多年间，害了很多个。第一个竟然是我大姑奶奶家的十几岁小女儿，在果园里看园的时候被这个老头给强了。当时他六十四五岁。有很多留言的说不相信这么大年纪的能有这么大的力气，那是因为你没有在农村待过，壮得跟头牛一样的老头，你以为随便就能一脚撂倒了？&lt;/p&gt;&lt;p&gt;那个女孩后来生了个孩子，又过了几年就嫁到了别的地方。我生气的是，如果第一个被害人就去报警就制裁，还会有后面那么多的被害人么？我可怜的小伙伴也不会经受这样的痛苦后离开。而我父亲的回答则是事不关己，完全就是与自己无关啊，多丢人的事啊，农村这种事能宣扬吗？从那个老头六十多岁开始犯事，到现在已经快三十多年了。三十多年前我无法去指责那些人的法律意识能强到什么地步了&lt;/p&gt;&lt;p&gt;更让我气愤的是，人生的不公平。此老头活了八十四五岁才死。明明都知道他不是好人，可是，唯一会做的只是躲着他，不跟他接触而己。我跟父亲对话的时候产生了极度愤慨难过悲愤的心理，无法抑制自己的情绪。&lt;/p&gt;&lt;p&gt;我执着的询问当时到底对那个老头怎么处理的，父亲说第一次的时候，他跪下来道歉，也被打的够呛，发誓不会再这样了。结果以后还这样，但都是一个村的，怕说出去女儿不好嫁人，也就私下里打一顿，赔点钱了事 ；最后他自己的女儿也不堪忍受父亲这样的丑事，一直被婆家挤兑，加上赔钱的时候他要求自己的几个女儿帮他出钱，人家婆家自然不答应，他自己的女儿自杀了。&lt;/p&gt;&lt;p&gt;不公平啊，为什么这个老头祸害了这么多女孩，妇女，他竟然能活到八十多岁，哪来的公平？&lt;/p&gt;&lt;p&gt;听父亲说这老头的儿子，也是到了六十多岁开始有这样的迹象了，六十岁之前父子俩都是好人的。好在现在不比以前，村里人的思想不比过去了&lt;/p&gt;&lt;p&gt;我还是无法释怀，因为那个儿时伙伴的灿烂笑容一直在我脑海里，几十年都没有抹去，所以那些劝人宽心原谅的，我只能说，那不是你亲身遇到，你无法体会当事人的心理感受，请不要随便开口劝解什么&lt;/p&gt;&lt;p&gt;所以那些犯了大罪在监狱里改造然后开始什么心理辅导，治疗，什么悔过啊，什么挖掘犯罪分子的内心啊，什么为他们开启新的人生啊，什么让他们从头再来啊。。。拜托，他们这些圣人难道没看到有很多出了监狱就接着犯罪的吗？管个球用啊？气死了。还联系受害人达成谅解啊，还要去想办法关注关心劝解罪犯啊。。。你妹啊，死的人呢？受过伤害的人呢？人家的家属呢？人家的人生呢？我去。。。气死了。&lt;/p&gt;</textarea>
+
+
+                                    <div class="zh-summary summary clearfix">
+
+                                        我有一个儿时伙伴，美丽的像天使一样，十六岁左右被邻家七十多的老头堵在厕所里给强了。那个老头还强过别的女孩，也强过他自己的儿媳。因为这些事，被人打被人揍还要赔偿，他的一个女儿被婆家人看不起，也上吊了。这个千刀万剐的老头还是活得好好的，也没有…
+
+                                        <a href="/question/25084350/answer/571315682" class="toggle-expand">显示全部</a>
+
+                                    </div>
+
+
+                                    <p class="visible-expanded"><a itemprop="url" class="answer-date-link meta-item"
+                                                                   data-tooltip="s$t$发布于 2019-01-11" target="_blank"
+                                                                   href="/question/25084350/answer/571315682">编辑于
+                                        17:23</a></p>
+
+                                </div>
+                                <div class="zm-item-meta answer-actions clearfix js-contentActions">
+                                    <div class="zm-meta-panel">
+
+                                        <a data-follow="q:link" class="follow-link zg-follow meta-item"
+                                           href="javascript:;" id="sfb-2215793"><i class="z-icon-follow"></i>关注问题</a>
+
+                                        <a href="#" name="addcomment"
+                                           class="meta-item toggle-comment js-toggleCommentBox">
+                                            <i class="z-icon-comment"></i>212 条评论</a>
+
+
+                                        <a href="#" class="meta-item zu-autohide js-thank" data-thanked="false"><i
+                                                class="z-icon-thank"></i>感谢</a>
+
+
+                                        <a href="#" class="meta-item zu-autohide js-share"><i class="z-icon-share"></i>分享</a>
+
+                                        <a href="#" class="meta-item zu-autohide js-collect"><i
+                                                class="z-icon-collect"></i>收藏</a>
+
+
+                                        <span class="zg-bull zu-autohide">&bull;</span>
+
+                                        <a href="#" class="meta-item zu-autohide js-noHelp">没有帮助</a>
+
+                                        <span class="zg-bull zu-autohide">&bull;</span>
+                                        <a href="#" class="meta-item zu-autohide js-report">举报</a>
+
+
+                                        <meta name="copyrightStatus" content="1">
+                                        <meta name="disableCopyAvatar" content="">
+
+                                        <span class="zg-bull">&bull;</span>
+
+                                        <a href="/terms#sec-licence-1" target="_blank" class="meta-item copyright">
+                                            作者保留权利
+                                        </a>
+
+
+                                        <button class="meta-item item-collapse js-collapse">
+                                            <i class="z-icon-fold"></i>收起
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-panel">
+                    <div data-type="monthly" data-zop-feedlist>
+                        <div class="explore-feed feed-item" data-offset="1">
+                            <h2><a class="question_link" href="/question/305765089/answer/552266771" target="_blank"
+                                   data-id="30223981" data-za-element-name="Title">
+                                各位是否想过防弹曾经可能要解散？
+                            </a></h2>
+                            <div tabindex="-1" class="zm-item-answer "
+                                 itemscope itemtype="http://schema.org/Answer"
+                                 data-aid="130480983"
+                                 data-atoken="552266771"
+                                 data-collapsed="0"
+                                 data-created="1544808551"
+                                 data-deleted="0"
+                                 data-isowner="0"
+                                 data-helpful="True"
+                                 data-copyable="1"
+                                 data-zop
+                            >
+                                <link itemprop="url" href="/question/305765089/answer/552266771">
+                                <meta itemprop="answer-id" content="130480983">
+                                <meta itemprop="answer-url-token" content="552266771">
+                                <a class="zg-anchor-hidden" name="answer-130480983"></a>
+
+                                <div class="zm-item-vote">
+                                    <a class="zm-item-vote-count js-expand js-vote-count" href="javascript:;"
+                                       data-bind-votecount>270</a>
+                                </div>
+
+                                <div class="zm-votebar">
+                                    <button class="up ">
+                                        <i class="icon vote-arrow"></i>
+                                        <span class="count">270</span>
+                                        <span class="label sr-only">赞同</span>
+                                    </button>
+                                    <button class="down ">
+                                        <i class="icon vote-arrow"></i>
+                                        <span class="label sr-only">反对</span>
+                                    </button>
+                                </div>
+
+
+                                <div class="answer-head">
+
+                                    <div class="zm-item-answer-author-info">
+
+<span class="summary-wrapper">
+<span class="author-link-line">
+
+<a class="author-link"
+   data-hovercard="p$t$bu-er-die-59"
+   target="_blank" href="/people/bu-er-die-59"
+>Tonebling</a></span><span title="自由意志" class="bio">
+自由意志
+</span>
+</span>
+                                    </div>
+
+                                    <div class="zm-item-vote-info" data-votecount="270">
+
+
+                                        <span class="voters text"><a href="#" class="more text"><span
+                                                class="js-voteCount">270</span>&nbsp;人赞同</a></span>
+
+
+                                    </div>
+                                </div>
+                                <div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="30223981"
+                                     data-action="/answer/content" data-author-name="Tonebling"
+                                     data-entry-url="/question/305765089/answer/552266771">
+
+                                    <textarea hidden class="content">&lt;p&gt;没想过，感到了后怕。&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;大家还记得老闵一年前说的话吗？&lt;/p&gt;&lt;p&gt;他说&lt;b&gt;各位没有梦想也好，希望2018也要快乐&lt;/b&gt;。&lt;/p&gt;&lt;p&gt;我觉得更像是他当时在对自己说的话。&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;群里有位姐妹截了个图，如下：&lt;/p&gt;&lt;figure&gt;&lt;img src=&quot;https://pic3.zhimg.com/50/v2-7e637f3c281e551af94ce2db19a06b26_b.jpg&quot; data-caption=&quot;&quot; data-size=&quot;normal&quot; data-rawwidth=&quot;720&quot; data-rawheight=&quot;978&quot; data-default-watermark-src=&quot;https://pic2.zhimg.com/50/v2-a6870c253155bd31a27d794907615f9f_b.jpg&quot; class=&quot;origin_image zh-lightbox-thumb&quot; width=&quot;720&quot; data-original=&quot;https://pic3.zhimg.com/50/v2-7e637f3c281e551af94ce2db19a06b26_r.jpg&quot;&gt;&lt;/figure&gt;&lt;p&gt;那位姐妹说，这些事我们好像应该去知道。&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;2018年是内忧外患的一年。&lt;/p&gt;&lt;p&gt;除了图上的内部原因，防弹少年团还承担着外界竞争与资本的不公，社会与粉丝对他们期望值过高，同时创作又达到瓶颈，未来不久要面临的入伍和合约到期问题，甚至下半年的种种政治纷争，都让他们卷入了本不该承受的困境里。&lt;/p&gt;&lt;p&gt;这些事件个个直击要害，随便哪个都有足够的理由，让他们选择不再走下去。&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;但是他们最后决定续约了，他们放弃了解散后更加自由的生活，那种生活里不会有沉痛、不公、歧视和各种所谓的舆论压制，他们放弃团队会拥有更多的个人价值，但他们续约了，对续约了，一续还是七年。&lt;/p&gt;&lt;p&gt;当时成员们度过了艰难时期，他们最后的决定不仅是一句承诺，更是在发血誓。&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;今天听到大哥颤抖着声音叫阿米，告诉我们曾经发生过这样的事，说明他们已经做好了继续作为阿米的防弹少年团的准备，从此以后，一切的变数都不会撕扯防弹少年团这个名字。&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;今天我好像也变了一点点，好像知道了真正应该珍惜的是什么。&lt;/p&gt;&lt;p&gt;是声名吗？是成绩吗？还是刻意掩饰苦痛，只展现无忧无虑的他们呢？？&lt;/p&gt;&lt;p&gt;如果有一天，他们真正摘下了假面，这样的防弹少年团我们值得拥有吗？&lt;/p&gt;&lt;p&gt;想给他们自由，给他们做自己的人生。&lt;/p&gt;</textarea>
+
+
+                                    <div class="zh-summary summary clearfix">
+                                        <img src="https://pic3.zhimg.com/50/v2-8f94a9561d43def57fe2aae59f78243a_200x112.jpg"
+                                             data-caption="" data-size="normal" data-rawwidth="720" data-rawheight="978"
+                                             data-watermark="watermark"
+                                             data-original-src="v2-8f94a9561d43def57fe2aae59f78243a"
+                                             data-watermark-src="v2-7e637f3c281e551af94ce2db19a06b26"
+                                             data-private-watermark-src="v2-a6870c253155bd31a27d794907615f9f"
+                                             class="origin_image inline-img zh-lightbox-thumb"
+                                             data-original="https://pic3.zhimg.com/50/v2-8f94a9561d43def57fe2aae59f78243a_r.jpg">
+                                        没想过，感到了后怕。 大家还记得老闵一年前说的话吗？他说<b>各位没有梦想也好，希望2018也要快乐</b>。我觉得更像是他当时在对自己说的话。
+                                        群里有位姐妹截了个图，如下：那位姐妹说，这些事我们好像应该去知道。 2018年是内忧外患的一年。除了图上的内部原因，…
+
+                                        <a href="/question/305765089/answer/552266771" class="toggle-expand">显示全部</a>
+
+                                    </div>
+
+
+                                    <p class="visible-expanded"><a itemprop="url" class="answer-date-link meta-item"
+                                                                   target="_blank"
+                                                                   href="/question/305765089/answer/552266771">发布于
+                                        2018-12-15</a></p>
+
+                                </div>
+                                <div class="zm-item-meta answer-actions clearfix js-contentActions">
+                                    <div class="zm-meta-panel">
+
+                                        <a data-follow="q:link" class="follow-link zg-follow meta-item"
+                                           href="javascript:;" id="sfb-30223981"><i class="z-icon-follow"></i>关注问题</a>
+
+                                        <a href="#" name="addcomment"
+                                           class="meta-item toggle-comment js-toggleCommentBox">
+                                            <i class="z-icon-comment"></i>14 条评论</a>
+
+
+                                        <a href="#" class="meta-item zu-autohide js-thank" data-thanked="false"><i
+                                                class="z-icon-thank"></i>感谢</a>
+
+
+                                        <a href="#" class="meta-item zu-autohide js-share"><i class="z-icon-share"></i>分享</a>
+
+                                        <a href="#" class="meta-item zu-autohide js-collect"><i
+                                                class="z-icon-collect"></i>收藏</a>
+
+
+                                        <span class="zg-bull zu-autohide">&bull;</span>
+
+                                        <a href="#" class="meta-item zu-autohide js-noHelp">没有帮助</a>
+
+                                        <span class="zg-bull zu-autohide">&bull;</span>
+                                        <a href="#" class="meta-item zu-autohide js-report">举报</a>
+
+
+                                        <meta name="copyrightStatus" content="1">
+                                        <meta name="disableCopyAvatar" content="">
+
+                                        <span class="zg-bull">&bull;</span>
+
+                                        <a href="/terms#sec-licence-1" target="_blank" class="meta-item copyright">
+                                            作者保留权利
+                                        </a>
+
+
+                                        <button class="meta-item item-collapse js-collapse">
+                                            <i class="z-icon-fold"></i>收起
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="explore-feed feed-item" data-offset="2">
+                            <h2><a class="question_link" href="/question/305765089/answer/552250879" target="_blank"
+                                   data-id="30223981" data-za-element-name="Title">
+                                各位是否想过防弹曾经可能要解散？
+                            </a></h2>
+                            <div tabindex="-1" class="zm-item-answer "
+                                 itemscope itemtype="http://schema.org/Answer"
+                                 data-aid="130478055"
+                                 data-atoken="552250879"
+                                 data-collapsed="0"
+                                 data-created="1544805883"
+                                 data-deleted="0"
+                                 data-isowner="0"
+                                 data-helpful="True"
+                                 data-copyable="1"
+                                 data-zop
+                            >
+                                <link itemprop="url" href="/question/305765089/answer/552250879">
+                                <meta itemprop="answer-id" content="130478055">
+                                <meta itemprop="answer-url-token" content="552250879">
+                                <a class="zg-anchor-hidden" name="answer-130478055"></a>
+
+                                <div class="zm-item-vote">
+                                    <a class="zm-item-vote-count js-expand js-vote-count" href="javascript:;"
+                                       data-bind-votecount>229</a>
+                                </div>
+
+                                <div class="zm-votebar">
+                                    <button class="up ">
+                                        <i class="icon vote-arrow"></i>
+                                        <span class="count">229</span>
+                                        <span class="label sr-only">赞同</span>
+                                    </button>
+                                    <button class="down ">
+                                        <i class="icon vote-arrow"></i>
+                                        <span class="label sr-only">反对</span>
+                                    </button>
+                                </div>
+
+
+                                <div class="answer-head">
+
+                                    <div class="zm-item-answer-author-info">
+
+<span class="summary-wrapper">
+<span class="author-link-line">
+
+<a class="author-link"
+   data-hovercard="p$t$chen-xin-yi-41-35"
+   target="_blank" href="/people/chen-xin-yi-41-35"
+>十月</a></span>
+</span>
+                                    </div>
+
+                                    <div class="zm-item-vote-info" data-votecount="229">
+
+
+                                        <span class="voters text"><a href="#" class="more text"><span
+                                                class="js-voteCount">229</span>&nbsp;人赞同</a></span>
+
+
+                                    </div>
+                                </div>
+                                <div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="30223981"
+                                     data-action="/answer/content" data-author-name="十月"
+                                     data-entry-url="/question/305765089/answer/552250879">
+
+                                    <textarea hidden class="content">&lt;p&gt;谢邀&lt;/p&gt;&lt;p&gt;没想过&lt;/p&gt;&lt;p&gt;他们是防弹啊&lt;/p&gt;&lt;p&gt;是同喝一瓶水 同吃一碗饭的防弹啊&lt;/p&gt;&lt;p&gt;我想过他们会娶妻生子 会隐退 会转幕后&lt;/p&gt;&lt;p&gt;但都没关系 &lt;/p&gt;&lt;p&gt;他们是防弹少年团啊&lt;/p&gt;&lt;p&gt;是我用我的青春去爱的爱豆&lt;/p&gt;&lt;p&gt;是立志我要饭一辈子的爱豆&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;我没想过他们会解散&lt;/p&gt;&lt;p&gt;就像我从没想过&lt;/p&gt;&lt;p&gt;“原来他们也会这么累啊 累到想过要解散 累到想过要放弃防弹 放弃他们如此深爱着的防弹 放弃那个已镌刻在他们青春里的防弹 放弃早已成为他们人生的一部分的防弹”&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;我们真的很自私&lt;/p&gt;&lt;p&gt;我们想要舞台 想要综艺 想要成绩&lt;/p&gt;&lt;p&gt;在得到这一切后&lt;/p&gt;&lt;p&gt;只有轻描淡写的一句&lt;/p&gt;&lt;p&gt;“辛苦了！”&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;可我们真的知道他们有多辛苦吗？&lt;/p&gt;&lt;p&gt;创作遇到瓶颈期的时候 他们是怎么过来的？&lt;/p&gt;&lt;p&gt;旧伤复发的时候 他们是怎么过来的？&lt;/p&gt;&lt;p&gt;被嘲讽 被黑 被污蔑时 他们又是怎么过来的？&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;阿米也是罪魁祸首之一啊&lt;/p&gt;&lt;p&gt;我们给了他们爱 &lt;/p&gt;&lt;p&gt;同时也给他们带去了太多的痛苦与压力&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;因为不想让阿米失望&lt;/p&gt;&lt;p&gt;所以舞台要最好的 腰伤复发了也要忍着&lt;/p&gt;&lt;p&gt;歌曲要是最好的 再困也要通宵写歌&lt;/p&gt;&lt;p&gt;综艺要是最好的 心情再差也要忍着&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;真的&lt;/p&gt;&lt;p&gt;谢谢你们坚持了下来&lt;/p&gt;&lt;p&gt;谢谢你们选择续约七年&lt;/p&gt;&lt;p&gt;谢谢你们成为防弹少年团&lt;/p&gt;&lt;p&gt;也谢谢你们让我成为阿米&lt;/p&gt;&lt;p&gt;让我知道原来这世间还有这么美好的七个大男孩&lt;/p&gt;&lt;p&gt;真的 &lt;/p&gt;&lt;p&gt;真的不想再给你们任何压力&lt;/p&gt;&lt;p&gt;真的好想抱抱你们&lt;/p&gt;&lt;p&gt;真的想帮你们抵挡住一切诋毁&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;我爱的人们&lt;/p&gt;&lt;p&gt;要幸福啊&lt;/p&gt;&lt;p&gt;不会再强求什么了&lt;/p&gt;&lt;p&gt;只想告诉你们&lt;/p&gt;&lt;p&gt;阿米一直都在&lt;/p&gt;&lt;p&gt;&lt;/p&gt;</textarea>
+
+
+                                    <div class="zh-summary summary clearfix">
+
+                                        谢邀没想过他们是防弹啊是同喝一瓶水 同吃一碗饭的防弹啊我想过他们会娶妻生子 会隐退 会转幕后但都没关系
+                                        他们是防弹少年团啊是我用我的青春去爱的爱豆是立志我要饭一辈子的爱豆 我没想过他们会解散就像我从没想过“原来他们也会这么累啊 累到想过要解散 …
+
+                                        <a href="/question/305765089/answer/552250879" class="toggle-expand">显示全部</a>
+
+                                    </div>
+
+
+                                    <p class="visible-expanded"><a itemprop="url" class="answer-date-link meta-item"
+                                                                   target="_blank"
+                                                                   href="/question/305765089/answer/552250879">发布于
+                                        2018-12-15</a></p>
+
+                                </div>
+                                <div class="zm-item-meta answer-actions clearfix js-contentActions">
+                                    <div class="zm-meta-panel">
+
+                                        <a data-follow="q:link" class="follow-link zg-follow meta-item"
+                                           href="javascript:;" id="sfb-30223981"><i class="z-icon-follow"></i>关注问题</a>
+
+                                        <a href="#" name="addcomment"
+                                           class="meta-item toggle-comment js-toggleCommentBox">
+                                            <i class="z-icon-comment"></i>4 条评论</a>
+
+
+                                        <a href="#" class="meta-item zu-autohide js-thank" data-thanked="false"><i
+                                                class="z-icon-thank"></i>感谢</a>
+
+
+                                        <a href="#" class="meta-item zu-autohide js-share"><i class="z-icon-share"></i>分享</a>
+
+                                        <a href="#" class="meta-item zu-autohide js-collect"><i
+                                                class="z-icon-collect"></i>收藏</a>
+
+
+                                        <span class="zg-bull zu-autohide">&bull;</span>
+
+                                        <a href="#" class="meta-item zu-autohide js-noHelp">没有帮助</a>
+
+                                        <span class="zg-bull zu-autohide">&bull;</span>
+                                        <a href="#" class="meta-item zu-autohide js-report">举报</a>
+
+
+                                        <meta name="copyrightStatus" content="1">
+                                        <meta name="disableCopyAvatar" content="">
+
+                                        <span class="zg-bull">&bull;</span>
+
+                                        <a href="/terms#sec-licence-1" target="_blank" class="meta-item copyright">
+                                            作者保留权利
+                                        </a>
+
+
+                                        <button class="meta-item item-collapse js-collapse">
+                                            <i class="z-icon-fold"></i>收起
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="explore-feed feed-item" data-offset="3">
+                            <h2><a class="question_link" href="/question/286019486/answer/552139990" target="_blank"
+                                   data-id="25837152" data-za-element-name="Title">
+                                你最讨厌抖音里哪个网红？
+                            </a></h2>
+                            <div tabindex="-1" class="zm-item-answer "
+                                 itemscope itemtype="http://schema.org/Answer"
+                                 data-aid="130457881"
+                                 data-atoken="552139990"
+                                 data-collapsed="0"
+                                 data-created="1544793804"
+                                 data-deleted="0"
+                                 data-isowner="0"
+                                 data-helpful="True"
+                                 data-copyable="0"
+                                 data-zop
+                            >
+                                <link itemprop="url" href="/question/286019486/answer/552139990">
+                                <meta itemprop="answer-id" content="130457881">
+                                <meta itemprop="answer-url-token" content="552139990">
+                                <a class="zg-anchor-hidden" name="answer-130457881"></a>
+
+                                <div class="zm-item-vote">
+                                    <a class="zm-item-vote-count js-expand js-vote-count" href="javascript:;"
+                                       data-bind-votecount>1601</a>
+                                </div>
+
+                                <div class="zm-votebar">
+                                    <button class="up ">
+                                        <i class="icon vote-arrow"></i>
+                                        <span class="count">1601</span>
+                                        <span class="label sr-only">赞同</span>
+                                    </button>
+                                    <button class="down ">
+                                        <i class="icon vote-arrow"></i>
+                                        <span class="label sr-only">反对</span>
+                                    </button>
+                                </div>
+
+
+                                <div class="answer-head">
+
+                                    <div class="zm-item-answer-author-info">
+
+<span class="summary-wrapper">
+<span class="author-link-line">
+
+<a class="author-link"
+   data-hovercard="p$t$tu-mei-jiang-84"
+   target="_blank" href="/people/tu-mei-jiang-84"
+>兔美酱</a></span><span title="红酒，猫。" class="bio">
+红酒，猫。
+</span>
+</span>
+                                    </div>
+
+                                    <div class="zm-item-vote-info" data-votecount="1601">
+
+
+                                        <span class="voters text"><a href="#" class="more text"><span
+                                                class="js-voteCount">1601</span>&nbsp;人赞同</a></span>
+
+
+                                    </div>
+                                </div>
+                                <div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="25837152"
+                                     data-action="/answer/content" data-author-name="兔美酱"
+                                     data-entry-url="/question/286019486/answer/552139990">
+
+                                    <textarea hidden class="content">&lt;p&gt;童模啊，就算是强答我也要说。&lt;/p&gt;&lt;p&gt;之前逛抖音的时候，刷出来一个童模的妈妈给她女儿拍的视频，孩子穿着很成熟的泳衣，搔首弄姿还抬腿，为什么我要用搔首弄姿来形容呢，她是在学玛莉莲梦露的姿势，评论区不堪入目，什么宝贝等我长大，三年不亏，腿再高点让叔叔看看，还有更污的我就不发了。&lt;/p&gt;&lt;p&gt;我就评论了一句，孩子妈妈你注意点影响吧，小心被拿去当ltp素材。&lt;/p&gt;&lt;p&gt;过了几天又去看看，她又发了母女一起游泳的视频，泳衣还是那一套，估计是同一天拍了很多慢慢放出来，这次评论区就更不堪入目了，牧女双F什么都出来了。&lt;/p&gt;&lt;p&gt;我不信她看不到这些，却依然不停的发着她女儿各种视频，有一脸浓妆大红唇对着镜头勾手的，摸胸的，反正就是各种X暗示姿势。&lt;/p&gt;&lt;p&gt;再看看投稿的一百多个视频，这位妈妈自己也占了三分之一，有点明白了，她可能自己也想火，但又没有火的资本，所以就拍女儿，我是不信一个爱女儿的妈妈会让自己的孩子故意做出这种姿势然后拍下发出来。&lt;/p&gt;&lt;p&gt;提醒了她好几次，都没有回应。&lt;/p&gt;&lt;p&gt;抖音童模还不少，随便刷刷都看到三四个。&lt;/p&gt;&lt;p&gt;已经出过很多次假冒摄影师招童模，拍下素材卖给LTP甚至性侵的新闻，希望各位家长警醒点吧，孩子还小，不懂得这些，你大人也不懂吗？如果孩子真的有表演欲望想当明星，何不报个艺术培训，等她能自己做选择的时候，再决定要不要进入娱乐圈呢？你替她选择，不过是为了满足自己的金钱欲望罢了。&lt;/p&gt;&lt;p&gt;～～～～～～～～～～～～～～～～～&lt;/p&gt;&lt;p&gt;更新一下，这是几个月前看到的了，当时就取关了，刚刚重新下载抖音去找了一下没找到她，不知道是改名了还是不玩抖音了。&lt;/p&gt;</textarea>
+
+
+                                    <div class="zh-summary summary clearfix">
+
+                                        童模啊，就算是强答我也要说。之前逛抖音的时候，刷出来一个童模的妈妈给她女儿拍的视频，孩子穿着很成熟的泳衣，搔首弄姿还抬腿，为什么我要用搔首弄姿来形容呢，她是在学玛莉莲梦露的姿势，评论区不堪入目，什么宝贝等我长大，三年不亏，腿再高点让叔叔看…
+
+                                        <a href="/question/286019486/answer/552139990" class="toggle-expand">显示全部</a>
+
+                                    </div>
+
+
+                                    <p class="visible-expanded"><a itemprop="url" class="answer-date-link meta-item"
+                                                                   data-tooltip="s$t$发布于 2018-12-14" target="_blank"
+                                                                   href="/question/286019486/answer/552139990">编辑于
+                                        2018-12-18</a></p>
+
+                                </div>
+                                <div class="zm-item-meta answer-actions clearfix js-contentActions">
+                                    <div class="zm-meta-panel">
+
+                                        <a data-follow="q:link" class="follow-link zg-follow meta-item"
+                                           href="javascript:;" id="sfb-25837152"><i class="z-icon-follow"></i>关注问题</a>
+
+                                        <a href="#" name="addcomment"
+                                           class="meta-item toggle-comment js-toggleCommentBox">
+                                            <i class="z-icon-comment"></i>104 条评论</a>
+
+
+                                        <a href="#" class="meta-item zu-autohide js-thank" data-thanked="false"><i
+                                                class="z-icon-thank"></i>感谢</a>
+
+
+                                        <a href="#" class="meta-item zu-autohide js-share"><i class="z-icon-share"></i>分享</a>
+
+                                        <a href="#" class="meta-item zu-autohide js-collect"><i
+                                                class="z-icon-collect"></i>收藏</a>
+
+
+                                        <span class="zg-bull zu-autohide">&bull;</span>
+
+                                        <a href="#" class="meta-item zu-autohide js-noHelp">没有帮助</a>
+
+                                        <span class="zg-bull zu-autohide">&bull;</span>
+                                        <a href="#" class="meta-item zu-autohide js-report">举报</a>
+
+
+                                        <meta name="copyrightStatus" content="0">
+                                        <meta name="disableCopyAvatar"
+                                              content="https://pic4.zhimg.com/v2-1b23ec6c0d4e10b5e1115d7ab957fee9_s.jpg">
+
+                                        <span class="zg-bull">&bull;</span>
+
+                                        <a href="/terms#sec-licence-6" target="_blank"
+                                           class="meta-item copyright">禁止转载</a>
+
+
+                                        <button class="meta-item item-collapse js-collapse">
+                                            <i class="z-icon-fold"></i>收起
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="explore-feed feed-item" data-offset="4">
+                            <h2><a class="question_link" href="/question/303488427/answer/552180903" target="_blank"
+                                   data-id="29718314" data-za-element-name="Title">
+                                2018 年你读了哪些历史著作？
+                            </a></h2>
+                            <div tabindex="-1" class="zm-item-answer "
+                                 itemscope itemtype="http://schema.org/Answer"
+                                 data-aid="130465287"
+                                 data-atoken="552180903"
+                                 data-collapsed="0"
+                                 data-created="1544797980"
+                                 data-deleted="0"
+                                 data-isowner="0"
+                                 data-helpful="True"
+                                 data-copyable="1"
+                                 data-zop
+                            >
+                                <link itemprop="url" href="/question/303488427/answer/552180903">
+                                <meta itemprop="answer-id" content="130465287">
+                                <meta itemprop="answer-url-token" content="552180903">
+                                <a class="zg-anchor-hidden" name="answer-130465287"></a>
+
+                                <div class="zm-item-vote">
+                                    <a class="zm-item-vote-count js-expand js-vote-count" href="javascript:;"
+                                       data-bind-votecount>1454</a>
+                                </div>
+
+                                <div class="zm-votebar">
+                                    <button class="up ">
+                                        <i class="icon vote-arrow"></i>
+                                        <span class="count">1454</span>
+                                        <span class="label sr-only">赞同</span>
+                                    </button>
+                                    <button class="down ">
+                                        <i class="icon vote-arrow"></i>
+                                        <span class="label sr-only">反对</span>
+                                    </button>
+                                </div>
+
+
+                                <div class="answer-head">
+
+                                    <div class="zm-item-answer-author-info">
+
+<span class="summary-wrapper">
+<span class="author-link-line">
+<span class="name">知乎用户</span></span><span title="知乎反阉总舵主" class="bio">
+知乎反阉总舵主
+</span>
+</span>
+                                    </div>
+
+                                    <div class="zm-item-vote-info" data-votecount="1454">
+
+
+                                        <span class="voters text"><a href="#" class="more text"><span
+                                                class="js-voteCount">1454</span>&nbsp;人赞同</a></span>
+
+
+                                    </div>
+                                </div>
+                                <div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="29718314"
+                                     data-action="/answer/content" data-author-name="临溪主人"
+                                     data-entry-url="/question/303488427/answer/552180903">
+
+                                    <textarea hidden class="content">&lt;p&gt;&lt;b&gt;1.仇鹿鸣&lt;/b&gt; 著&lt;b&gt;《魏晋之际的政治权力与家族网络》&lt;/b&gt;&lt;/p&gt;&lt;p&gt;在看完这本书之前，只听说仇神很牛逼，但一直不明白牛逼到什么境界，花了两天看完后，发现仇神是真的牛逼，要我说，他是百年难得一遇的史学天才。这书的好，我也实在是难以形容。我觉得只要是喜欢研究历史的，都得仔细看看这书。&lt;/p&gt;&lt;p&gt;&lt;b&gt;2.林美玲&lt;/b&gt; 著&lt;b&gt;《晚明辽饷研究》&lt;/b&gt;&lt;/p&gt;&lt;p&gt;为了怼精阉而看的书，网络上这群精阉整天瞎扯淡，一天到晚造谣。这书满满的干货，把精阉的脸都打肿了。该书对了解晚明财政经济状况有着很大作用，建议搭配曾梅芳的论文《晚明户部的战时财政运作：以己巳之变为中心》食用。&lt;/p&gt;&lt;p&gt;&lt;b&gt;3.[英]朱利安·S.科贝特&lt;/b&gt; 著&lt;b&gt;《日俄战争中的海上行动：第一卷》（Maritime Operations in the Russo-Japanese War, 1904-1905  Volume 1）&lt;/b&gt;&lt;/p&gt;&lt;p&gt;科贝特的这书写得也极其精彩。这本书的精彩之处在于科贝特对日俄战争中日俄双方的海上作战行动的详细探讨：为什么他们会这么做？是什么影响了他们的决策？他们这么做的后果是什么？&lt;/p&gt;&lt;p&gt;&lt;b&gt;4.[英]查尔斯·威廉· 欧曼&lt;/b&gt; 著&lt;b&gt;《中世纪战争艺术史（第一卷）》&lt;/b&gt;&lt;/p&gt;&lt;p&gt;这书也是外国经典著作，作者对中世纪时期西方世界的作战方式、理论以及武器等都有涉及，译者的文笔也极其流畅。强烈推荐。&lt;/p&gt;&lt;p&gt;&lt;b&gt;5.[拜占庭]利奥六世&lt;/b&gt; 著&lt;b&gt;《战术》&lt;/b&gt;&lt;/p&gt;&lt;p&gt;该书是成书之间就更久了，也是中世纪地中海世界的兵书。但这本书和《孙子兵法》这书不一样，后者注重理论，而这本书真的是手把手教你打仗作战。战争开始前应该准备些什么？战争开始后应该怎么做？怎样行军、作战、偷袭？骑兵、步兵又该怎么用？该书中均有涉及。对了解当时拜占庭帝国的军事制度及军事思想有着重要参考价值。&lt;/p&gt;&lt;p&gt;&lt;b&gt;6.王奇生&lt;/b&gt; 著&lt;b&gt;《党员、党权与党争：1924—1949年中国国民党的组织形态（修订本）》&lt;/b&gt;&lt;/p&gt;&lt;p&gt;这本书也是学习近代史不可不读的重要学术著作。作者从国民党的组织形态入手，考察了这个政党先天性不足，想仿效苏俄建立独裁式的政党，但却有心无力，从而注定了它最终的失败结局。&lt;/p&gt;&lt;p&gt;&lt;b&gt;7.“清光绪帝死因研究”课题组 《清光绪帝死因鉴证》&lt;/b&gt;&lt;/p&gt;&lt;p&gt;这本书也是我想强烈推荐的，因为它不但是一部严谨的史学著作，更是一份详细的刑侦报告，全书几百页全围绕着光绪帝死因来写。&lt;br&gt;上部讲光绪帝具体死因，主要分两部分，可以认为是光绪帝死亡的法医报告和现场调查报告。第一部分包括了微量元素检测、相似条件对比实验、假设类比实验，以及身上其他地方的微量元素检测，都有详细阐述，还有对毒物的判定、实验数据的可靠性分析，十分严谨。&lt;br&gt;上部的第二部分就是现场调查报告，包括光绪帝夫妇的葬衣、头发、遗骨等遗物的梳理，还有对参与发掘的考古人员的录音整理，十分有意思。&lt;br&gt;下部相当于刑侦人员对整个案件的归纳、侦破。首先确定好了是砒霜中毒还不够，还要进一步确定是哪种砒霜中毒，急性的还是慢性的，亚急性的还是急性胃肠型的。第二，对光绪帝去世之前的半个多月的生活作息进行仔细研究，就跟警察翻监控一样，有哪些疑点，都一五一十地扒了出来，最后推断出中毒具体时间。&lt;br&gt;下部的第二部分，即光绪帝去世当天前后紫禁城内发生的可疑事件，以及和光绪帝死亡一事相关的大小人员的“证言”。谁表现可疑，谁知情，都被研究人员扒了个干净。同时从光绪帝往日的身体健康入手，尤其是最近几年的，看看光绪帝到底有没有什么身体问题，有什么身体问题，以及发现问题后光绪帝是怎么就诊的。&lt;br&gt;下部第三部分，即关于光绪帝谋杀案第一犯罪嫌疑人慈禧太后的讨论。慈禧太后的病情，以及她病死之前的病情发作状况，都有涉及。而且用了整整一章讨论了慈禧太后杀人动机，以及具体可能的杀人细节。&lt;br&gt;下部第四部分，当时光绪帝谋杀案外围人士对此谋杀案的讨论与记载。&lt;br&gt;整部书看下来，简直就是看了一部刑侦大剧，酣畅淋漓，十分痛快。&lt;br&gt;&lt;br&gt;&lt;b&gt;8.阳正伟&lt;/b&gt; 著&lt;b&gt;《“小人”的轨迹：“阉党”与晚明政治》&lt;/b&gt;&lt;/p&gt;&lt;p&gt;还是涉及到晚明党争的内容，尽管作者的立场偏向于阉党，文中对东林有所批判，但作者对东林的批判都有所根据，注释很详尽。相反，网上那群给魏公公洗地的能有几个拿得出干货的？建议学习一下专业的学者是怎么做研究的。只是这书也有不少不足，已经有部分地方不够客观了，需要批判性地阅读。&lt;/p&gt;&lt;p&gt;&lt;b&gt;9.冷东《叶向高与明末政坛》&lt;/b&gt;&lt;/p&gt;&lt;p&gt;讲叶向高的，只是感觉篇幅略显不够，关于叶向高的很多内容其实还能继续挖掘。&lt;/p&gt;&lt;p&gt;&lt;b&gt;10.《日本陆军经理部（上）》&lt;/b&gt;&lt;/p&gt;&lt;p&gt;这本书是微博上的“战争史研究”给我安利的，共分上下两册。上册主要讲了日本陆军经理部是一些历史事件和部分人事回忆，挺有意思的。下册则主要介绍该部门的典章制度及运行机制，略显乏味。&lt;/p&gt;&lt;p&gt;&lt;b&gt;11.徐旺生 &lt;/b&gt;编著 &lt;b&gt;《中国养猪史》&lt;/b&gt;&lt;/p&gt;&lt;p&gt;就是讲中国源远流长的养猪史，嗯。&lt;/p&gt;&lt;p&gt;&lt;b&gt;12.俞为洁 &lt;/b&gt;著&lt;b&gt;《中国食料史》&lt;/b&gt;&lt;/p&gt;&lt;p&gt;讲中国从古至今都吃些啥，嗯。&lt;/p&gt;&lt;p&gt;&lt;/p&gt;</textarea>
+
+
+                                    <div class="zh-summary summary clearfix">
+
+                                        <b>1.仇鹿鸣</b> 著<b>《魏晋之际的政治权力与家族网络》</b>在看完这本书之前，只听说仇神很牛逼，但一直不明白牛逼到什么境界，花了两天看完后，发现仇神是真的牛逼，要我说，他是百年难得一遇的史学天才。这书的好，我也实在是难以形容。我觉得只要是喜欢研究历史的，…
+
+                                        <a href="/question/303488427/answer/552180903" class="toggle-expand">显示全部</a>
+
+                                    </div>
+
+
+                                    <p class="visible-expanded"><a itemprop="url" class="answer-date-link meta-item"
+                                                                   target="_blank"
+                                                                   href="/question/303488427/answer/552180903">发布于
+                                        2018-12-14</a></p>
+
+                                </div>
+                                <div class="zm-item-meta answer-actions clearfix js-contentActions">
+                                    <div class="zm-meta-panel">
+
+                                        <a data-follow="q:link" class="follow-link zg-follow meta-item"
+                                           href="javascript:;" id="sfb-29718314"><i class="z-icon-follow"></i>关注问题</a>
+
+                                        <a href="#" name="addcomment"
+                                           class="meta-item toggle-comment js-toggleCommentBox">
+                                            <i class="z-icon-comment"></i>91 条评论</a>
+
+
+                                        <a href="#" class="meta-item zu-autohide js-thank" data-thanked="false"><i
+                                                class="z-icon-thank"></i>感谢</a>
+
+
+                                        <a href="#" class="meta-item zu-autohide js-share"><i class="z-icon-share"></i>分享</a>
+
+                                        <a href="#" class="meta-item zu-autohide js-collect"><i
+                                                class="z-icon-collect"></i>收藏</a>
+
+
+                                        <span class="zg-bull zu-autohide">&bull;</span>
+
+                                        <a href="#" class="meta-item zu-autohide js-noHelp">没有帮助</a>
+
+                                        <span class="zg-bull zu-autohide">&bull;</span>
+                                        <a href="#" class="meta-item zu-autohide js-report">举报</a>
+
+
+                                        <meta name="copyrightStatus" content="1">
+                                        <meta name="disableCopyAvatar" content="">
+
+                                        <span class="zg-bull">&bull;</span>
+
+                                        <a href="/terms#sec-licence-1" target="_blank" class="meta-item copyright">
+                                            作者保留权利
+                                        </a>
+
+
+                                        <button class="meta-item item-collapse js-collapse">
+                                            <i class="z-icon-fold"></i>收起
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="explore-feed feed-item" data-offset="5">
+                            <h2><a class="question_link" href="/question/38203029/answer/552130911" target="_blank"
+                                   data-id="7488413" data-za-element-name="Title">
+                                如何用烤箱烤羊肉串？
+                            </a></h2>
+                            <div tabindex="-1" class="zm-item-answer "
+                                 itemscope itemtype="http://schema.org/Answer"
+                                 data-aid="130456224"
+                                 data-atoken="552130911"
+                                 data-collapsed="0"
+                                 data-created="1544792695"
+                                 data-deleted="0"
+                                 data-isowner="0"
+                                 data-helpful="True"
+                                 data-copyable="0"
+                                 data-zop
+                            >
+                                <link itemprop="url" href="/question/38203029/answer/552130911">
+                                <meta itemprop="answer-id" content="130456224">
+                                <meta itemprop="answer-url-token" content="552130911">
+                                <a class="zg-anchor-hidden" name="answer-130456224"></a>
+
+                                <div class="zm-item-vote">
+                                    <a class="zm-item-vote-count js-expand js-vote-count" href="javascript:;"
+                                       data-bind-votecount>2293</a>
+                                </div>
+
+                                <div class="zm-votebar">
+                                    <button class="up ">
+                                        <i class="icon vote-arrow"></i>
+                                        <span class="count">2293</span>
+                                        <span class="label sr-only">赞同</span>
+                                    </button>
+                                    <button class="down ">
+                                        <i class="icon vote-arrow"></i>
+                                        <span class="label sr-only">反对</span>
+                                    </button>
+                                </div>
+
+
+                                <div class="answer-head">
+
+                                    <div class="zm-item-answer-author-info">
+
+<span class="summary-wrapper">
+<span class="author-link-line">
+
+<a class="author-link"
+   data-hovercard="p$t$wormhole2"
+   target="_blank" href="/people/wormhole2"
+>识食务者</a></span><span title="讲科学的硬核吃货一枚 | 公众号“识食务者” | 吃货交流请到公众号回复“交流”" class="bio">
+讲科学的硬核吃货一枚 | 公众号“识食务…
+</span>
+</span>
+                                    </div>
+
+                                    <div class="zm-item-vote-info" data-votecount="2293">
+
+
+                                        <span class="voters text"><a href="#" class="more text"><span
+                                                class="js-voteCount">2293</span>&nbsp;人赞同</a></span>
+
+
+                                    </div>
+                                </div>
+                                <div class="zm-item-rich-text expandable js-collapse-body" data-resourceid="7488413"
+                                     data-action="/answer/content" data-author-name="识食务者"
+                                     data-entry-url="/question/38203029/answer/552130911">
+
+                                    <textarea hidden class="content">&lt;p&gt;题主用的词很准备哈，确实用烤箱只能做到&lt;b&gt;「近似」&lt;/b&gt;烧烤的味道，没办法模拟烧烤那种猛烈炙烤的烟火气。&lt;/p&gt;&lt;p&gt;今天就把自己研究了好一阵子的烤箱烤羊肉串方法贡献给大家，主要&lt;b&gt;以新疆烤羊肉做法为范本&lt;/b&gt;，从腌制与否，到具体烤制，聊聊怎么才能用烤箱做出比较接近烧烤摊的羊肉串。&lt;/p&gt;&lt;p&gt;当然，正如题主所说，&lt;b&gt;只能尽量接近&lt;/b&gt;，毕竟很多条件做不到当地那么好，而且烤箱烤的没有烟火气，所以这就&lt;b&gt;只是一盘没有灵魂的羊肉串，而已。&lt;/b&gt;&lt;/p&gt;&lt;hr&gt;&lt;h2&gt;新疆烤羊肉&lt;/h2&gt;&lt;p&gt;烤羊肉串，可以说是烧烤届的扛把子，从新疆到东北，从内蒙到广东，触角遍布全国，受众广泛，爱它的人只要听到这个菜名，估计就开始流口水了。&lt;/p&gt;&lt;p&gt;而说起烤羊肉串，&lt;b&gt;新疆是个绕不开的地方。&lt;/b&gt;在这个盛产优质羊肉的地方，羊肉料理之多令人咂舌。而烤羊肉串，就是新疆众多烤羊肉做法里的，其中一种。虽然在本地一般只称为烤肉，不称为烤肉串。&lt;/p&gt;&lt;figure&gt;&lt;img src=&quot;https://pic2.zhimg.com/50/v2-2442750ece4dd4447519afcb3565927c_b.jpg&quot; data-caption=&quot;&quot; data-size=&quot;normal&quot; data-rawwidth=&quot;356&quot; data-rawheight=&quot;200&quot; class=&quot;content_image&quot; width=&quot;356&quot;&gt;&lt;/figure&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;虽说今天只是聊新疆烤羊肉，但细分下来也有很多不同做法，至少我了解到的，就有两个流派——&lt;b&gt;哈萨克族烤法与维吾尔族烤法。&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;哈萨克族的烤肉方式，一般是强调羊必须现宰，不加调料腌制&lt;/b&gt;，直接穿串烤，而且用的是一年一胎的阿勒泰大尾羊。&lt;/p&gt;&lt;p&gt;而&lt;b&gt;维吾尔族的烤法，一般肉会经过一定的腌制&lt;/b&gt;，轻腌制的方式一般会有洋葱、蛋清，如果重一点腌制方式，可能还会有姜黄等香料，当然，腌制调料各家不尽相同，我们偶尔会看到烤羊肉串泡在一个桶里，里面是黄色的不明物体，那一桶腌制的调料里就有姜黄等香料，但问老板他也一般不会告诉你具体是什么配方。&lt;/p&gt;&lt;p&gt;再往细分，维吾尔族南疆北疆也有差异。此外，新疆的回族用的方式也是洋葱跟鸡蛋腌制，是在维吾尔族和哈萨克族烤肉的基础上结合餐饮的做法，因此呈现出来的味道，会更像大家熟悉的现代烤肉做法。&lt;/p&gt;&lt;p&gt;今天先不展开太多，单就对比哈萨克族与其他维族、回族的做法，虽然看起来只是腌制与否的区别，其实烹饪思路已经有很大的差异了。&lt;/p&gt;&lt;p&gt;对于强调现宰羊肉的烤法来说，确实不应该腌制，思路跟之前写的潮汕牛肉火锅是一样的，就是在&lt;b&gt;羊肉进入僵直期之前，趁新鲜期肉质柔嫩，直接切割烹饪，避免僵直期肌肉僵硬与酸化带来的口感变差及失水问题。&lt;/b&gt;&lt;/p&gt;&lt;p&gt;而羊肉比牛肉更加严苛，因为牛肉进入僵直期大概需要两个多小时，而&lt;b&gt;羊肉在屠宰后一个小时就会开始进入僵直期&lt;/b&gt;（如果算上僵直迟滞期，时间会略长一些），为什么强调现宰现烤，也是这个道理。&lt;/p&gt;&lt;p&gt;而由于腌制时间如果太短，嫩化效果不明显，甚至如果是加盐的话，时间不够反而容易脱水，因此这种做法，就是直接不腌制，然后烤的过程再逐步加料即可，加的料也非常简单，有时候甚至一把盐即可，这样烤出来的羊肉不仅非常嫩，还可以吃出羊肉的原汁原味。&lt;/p&gt;&lt;p&gt;如果是腌制呢，一般也强调是新鲜的羊，但烹饪思路就不是取屠宰后一小时的新鲜期了，而是&lt;b&gt;依靠稍微长一点时间的腌制，利用腌料来进一步嫩化羊肉&lt;/b&gt;，一般腌制时间需要几个小时以上。&lt;/p&gt;&lt;p&gt;当然，以上做法在一些餐厅或者其他地方烤法上，会有些混合演变，例如新鲜现宰羊肉，也有些用蛋清与洋葱来进行轻腌制。&lt;/p&gt;&lt;p&gt;那这么多腌料里面，为什么新疆那么强调使用洋葱呢？&lt;/p&gt;&lt;figure&gt;&lt;img src=&quot;https://pic4.zhimg.com/50/v2-73a3a34913cb4a03ff1134b46bc88523_b.jpg&quot; data-caption=&quot;&quot; data-size=&quot;normal&quot; data-rawwidth=&quot;640&quot; data-rawheight=&quot;423&quot; data-default-watermark-src=&quot;https://pic2.zhimg.com/50/v2-6d4992444414ce1a6a018353ed744810_b.jpg&quot; class=&quot;origin_image zh-lightbox-thumb&quot; width=&quot;640&quot; data-original=&quot;https://pic4.zhimg.com/50/v2-73a3a34913cb4a03ff1134b46bc88523_r.jpg&quot;&gt;&lt;/figure&gt;&lt;p&gt;除了考虑食材的易得之外，更是因为&lt;b&gt;洋葱是一种可以嫩化肉质与提升肉类风味的腌料。&lt;/b&gt;洋葱本身是一种含有蛋白酶的食材，&lt;b&gt;切碎的洋葱会使得洋葱细胞质与细胞液内的酶释放，并充分参与到后续的风味演变与食材嫩化中。&lt;/b&gt;&lt;/p&gt;&lt;p&gt;《洋葱的风味形成机理及其生理功效》一文中，详细描述了完整的洋葱里风味物质前体S-烷基-L-半胱氨酸亚砜，是如何在切碎后迅速反应分解，形成了催泪成分硫代丙醛-S-氧化物，以及含甲基、丙基和1-丙烯基的二硫醚、硫代磺酸酯、三硫醚等风味物质。而我们知道，风味更多是依赖鼻腔进行感受，这些&lt;b&gt;强烈的洋葱风味物质，会与羊肉本身的风味有所重叠，因此洋葱腌制后的烤羊肉，膻味会有所减轻。&lt;/b&gt;&lt;/p&gt;&lt;p&gt;除了风味外，洋葱里的活性成分——蛋白酶，会一定程度分解羊肉蛋白，使羊肉的嫩度有所提升。目前找到的相关文献只有一篇关于洋葱腌制牛排的实证研究，在《鲜洋葱汁对西餐牛扒嫩化工艺效果研究》一文中，参照对比了洋葱腌制牛排的剪切力，实验结果是&lt;b&gt;洋葱腌制过的牛排，嫩度有明显的提升。&lt;/b&gt;而同样的，羊肉作为类似的肌肉蛋白，洋葱同样可以在腌制过程中使其嫩化，在后面的我也做了两种方式的对比，会具体进行比较。&lt;/p&gt;&lt;p&gt;类似&lt;b&gt;含有蛋白酶的，常见的还有木瓜、凤梨、蜂蜜等&lt;/b&gt;，至于选用哪些来腌制，可以看具体的烹饪调味来选择，例如烤鸡翅，用蜂蜜来腌制就很搭配。&lt;/p&gt;&lt;p&gt;另外，腌料里&lt;b&gt;蛋清的作用主要就是锁水&lt;/b&gt;了，这与其他菜系里蛋清腌肉的原理是一样的，是为了给肉形成一层保护膜，受热均匀的同时减少水分的流失，使肉更加多汁。而其他香料，则主要提供香辛风味。&lt;/p&gt;&lt;p&gt;而除了腌制的材料外，&lt;b&gt;新疆烤羊肉还有一个特点，就是肉块较大&lt;/b&gt;。最典型的如新疆的红柳烤羊肉，一般用的是新疆盛产的红柳为枝，红柳枝可比一般的竹签粗得多，除了本身红柳带来的那丝或有或无的香味之外，更主要的还是在于，这样的红柳枝必须穿大块的肉啊！&lt;/p&gt;&lt;figure&gt;&lt;img src=&quot;https://pic4.zhimg.com/50/v2-7e8f0e71e9411e4e81a4326a5ed16f8b_b.jpg&quot; data-caption=&quot;&quot; data-size=&quot;normal&quot; data-rawwidth=&quot;686&quot; data-rawheight=&quot;428&quot; data-default-watermark-src=&quot;https://pic1.zhimg.com/50/v2-6aae899772d990e72fcc75fcf4ebce4c_b.jpg&quot; class=&quot;origin_image zh-lightbox-thumb&quot; width=&quot;686&quot; data-original=&quot;https://pic4.zhimg.com/50/v2-7e8f0e71e9411e4e81a4326a5ed16f8b_r.jpg&quot;&gt;&lt;/figure&gt;&lt;p&gt;因为肉大，才能做到肉块外表焦香，内里软嫩多汁，与厚切牛排的原理如出一辙。&lt;/p&gt;&lt;figure&gt;&lt;img src=&quot;https://pic3.zhimg.com/50/v2-450e4741c81490eb731f15266f9896bd_b.jpg&quot; data-caption=&quot;&quot; data-size=&quot;normal&quot; data-rawwidth=&quot;640&quot; data-rawheight=&quot;346&quot; class=&quot;origin_image zh-lightbox-thumb&quot; width=&quot;640&quot; data-original=&quot;https://pic3.zhimg.com/50/v2-450e4741c81490eb731f15266f9896bd_r.jpg&quot;&gt;&lt;/figure&gt;&lt;p&gt;而在上一篇我们还讲到了，肉类的风味物质主要来源于脂肪。所以烤羊肉串的部位选择上，也必须要肥瘦搭配，这样烤出来的羊肉串，才会有足够羊肉风味，而且口感搭配也会更有层次感，一口嫩肉，一口肥油。&lt;b&gt;一般烤羊肉串的瘦肉部分用的是腿肉，后腿肉居多。&lt;/b&gt;而&lt;b&gt;肥肉部分一般用的是羊尾油，油脂丰腴&lt;/b&gt;，口感上层，而且关键是新疆的大尾巴羊羊尾油特别多，所以羊尾油也比较便宜。&lt;/p&gt;&lt;p&gt;讲了这么多，那么今天就分别来试试不腌制，以及蛋清与洋葱轻腌制两种做法。&lt;/p&gt;&lt;hr&gt;&lt;h2&gt;具体做法&lt;/h2&gt;&lt;p&gt;前面讲到了，肥油部分一般是用羊尾油，瘦肉部分用腿肉。但因为几个平台自营生鲜没看到有羊尾油，所以这部分我只能找比较肥的羊排来替代了，如果能直接买到羊尾油还是尽量用羊尾油吧，便宜又好用。&lt;/p&gt;&lt;p&gt;如果是羊尾油这种纯脂肪，肥瘦比例控制在&lt;b&gt;1：3或者1：4左右&lt;/b&gt;，那么买的时候就是按这个比例直接买就可以了。&lt;/p&gt;&lt;p&gt;但如果是羊排，本身就是肥瘦相间的，那么&lt;b&gt;羊排与羊腿的比例就应该是在1：1左右&lt;/b&gt;，这样搭配出来的肥瘦比例也会控制在1：3或者1：4左右。&lt;/p&gt;&lt;p&gt;接着就是去骨然后分块，以拇指的第一指节大小为宜，这样烤出来羊肉不会夹生，也不会太老。&lt;/p&gt;&lt;figure&gt;&lt;img src=&quot;https://pic2.zhimg.com/50/v2-babcc496fce01e7a3801558bc763c47f_b.jpg&quot; data-caption=&quot;&quot; data-size=&quot;normal&quot; data-rawwidth=&quot;1080&quot; data-rawheight=&quot;720&quot; data-default-watermark-src=&quot;https://pic1.zhimg.com/50/v2-99466cb4cbb8ae027ce3af3d9698bd38_b.jpg&quot; class=&quot;origin_image zh-lightbox-thumb&quot; width=&quot;1080&quot; data-original=&quot;https://pic2.zhimg.com/50/v2-babcc496fce01e7a3801558bc763c47f_r.jpg&quot;&gt;&lt;/figure&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;figure&gt;&lt;img src=&quot;https://pic4.zhimg.com/50/v2-00736bb45257b7f6e5308449f55f2ed3_b.jpg&quot; data-caption=&quot;&quot; data-size=&quot;normal&quot; data-rawwidth=&quot;1080&quot; data-rawheight=&quot;720&quot; data-default-watermark-src=&quot;https://pic4.zhimg.com/50/v2-06271b1b1bd32c25712d6b8dd50e66d4_b.jpg&quot; class=&quot;origin_image zh-lightbox-thumb&quot; width=&quot;1080&quot; data-original=&quot;https://pic4.zhimg.com/50/v2-00736bb45257b7f6e5308449f55f2ed3_r.jpg&quot;&gt;&lt;/figure&gt;&lt;p&gt;这里我直接进行分割并且分两份，一份腌制，一份不腌制。腌制的材料，大概一斤肉搭配三分之一个洋葱即可，太多了洋葱味会太强烈，掩盖羊肉本身风味了。&lt;/p&gt;&lt;figure&gt;&lt;img src=&quot;https://pic2.zhimg.com/50/v2-08941014a3b789d0eadf0b1e6dada01d_b.jpg&quot; data-caption=&quot;&quot; data-size=&quot;normal&quot; data-rawwidth=&quot;1080&quot; data-rawheight=&quot;720&quot; data-default-watermark-src=&quot;https://pic4.zhimg.com/50/v2-3b15ab926453e37bed43626bd2aa510a_b.jpg&quot; class=&quot;origin_image zh-lightbox-thumb&quot; width=&quot;1080&quot; data-original=&quot;https://pic2.zhimg.com/50/v2-08941014a3b789d0eadf0b1e6dada01d_r.jpg&quot;&gt;&lt;/figure&gt;&lt;p&gt;最后再打2个鸡蛋清（大的鸡蛋用1个蛋清就够了）。&lt;/p&gt;&lt;figure&gt;&lt;img src=&quot;https://pic2.zhimg.com/50/v2-5c0f88b0d2a1c288c56d85d86844562c_b.jpg&quot; data-caption=&quot;&quot; data-size=&quot;normal&quot; data-rawwidth=&quot;1080&quot; data-rawheight=&quot;720&quot; data-default-watermark-src=&quot;https://pic1.zhimg.com/50/v2-092d4086bf1a87009c665ff32e362028_b.jpg&quot; class=&quot;origin_image zh-lightbox-thumb&quot; width=&quot;1080&quot; data-original=&quot;https://pic2.zhimg.com/50/v2-5c0f88b0d2a1c288c56d85d86844562c_r.jpg&quot;&gt;&lt;/figure&gt;&lt;p&gt;将羊肉、洋葱与蛋清充分混合，放冷藏腌制3-4小时。&lt;/p&gt;&lt;figure&gt;&lt;img src=&quot;https://pic1.zhimg.com/50/v2-af0798779433873efedd630bbad7c655_b.jpg&quot; data-caption=&quot;&quot; data-size=&quot;normal&quot; data-rawwidth=&quot;1080&quot; data-rawheight=&quot;720&quot; data-default-watermark-src=&quot;https://pic1.zhimg.com/50/v2-f2a96284d8aafccfe409b6d394369da5_b.jpg&quot; class=&quot;origin_image zh-lightbox-thumb&quot; width=&quot;1080&quot; data-original=&quot;https://pic1.zhimg.com/50/v2-af0798779433873efedd630bbad7c655_r.jpg&quot;&gt;&lt;/figure&gt;&lt;p&gt;腌制过的洋葱弃用。&lt;/p&gt;&lt;figure&gt;&lt;img src=&quot;https://pic2.zhimg.com/50/v2-46156fefc4b9de5efb80899aea3da1a3_b.jpg&quot; data-caption=&quot;&quot; data-size=&quot;normal&quot; data-rawwidth=&quot;1080&quot; data-rawheight=&quot;720&quot; data-default-watermark-src=&quot;https://pic2.zhimg.com/50/v2-5fb116718a97e876e3989b2eb4694a0c_b.jpg&quot; class=&quot;origin_image zh-lightbox-thumb&quot; width=&quot;1080&quot; data-original=&quot;https://pic2.zhimg.com/50/v2-46156fefc4b9de5efb80899aea3da1a3_r.jpg&quot;&gt;&lt;/figure&gt;&lt;p&gt;接着就是穿串了，新疆用的多的是大铁串或者红柳枝，在家弄的话就没那么讲究了，只要肉大块一点，用竹签或细铁串也无妨。肉因为蛋清的关系比较滑，所以穿串会有点难度，小心扎手。穿好串之后，就可以准备烤了。&lt;/p&gt;&lt;figure&gt;&lt;img src=&quot;https://pic3.zhimg.com/50/v2-455dfcf4dee5dba8a942f9ad65e0d2a3_b.jpg&quot; data-caption=&quot;&quot; data-size=&quot;normal&quot; data-rawwidth=&quot;1080&quot; data-rawheight=&quot;720&quot; data-default-watermark-src=&quot;https://pic3.zhimg.com/50/v2-fda991be43d2a0cded16fa995e3f9e38_b.jpg&quot; class=&quot;origin_image zh-lightbox-thumb&quot; width=&quot;1080&quot; data-original=&quot;https://pic3.zhimg.com/50/v2-455dfcf4dee5dba8a942f9ad65e0d2a3_r.jpg&quot;&gt;&lt;/figure&gt;&lt;p&gt;烤箱预热230°C，开最大火力。&lt;b&gt;这里一定要预热充分&lt;/b&gt;，因为烤箱对比炭烧来说，热力已经远远不足，如果还预热不充分，那么最后肉不仅烤得很老，外面还一点该有的焦香样子都没有，就会非常失败了。&lt;/p&gt;&lt;p&gt;&lt;b&gt;保险起见，烤箱上下火拧到230°C之后，预热15分钟以上再把羊肉串放到烤箱里&lt;/b&gt;。放进去的时候，放到烤箱最顶层，让羊肉串直接最靠近烤箱的发热管，模拟炭烤时接近炭火的烤法，这也是烤箱烤法里，让表面迅速发生美拉德反应，迅速表面焦香的方法之一。&lt;/p&gt;&lt;figure&gt;&lt;img src=&quot;https://pic3.zhimg.com/50/v2-2b812ae40c2c02250bad5be4333d7c43_b.jpg&quot; data-caption=&quot;&quot; data-size=&quot;normal&quot; data-rawwidth=&quot;1080&quot; data-rawheight=&quot;720&quot; data-default-watermark-src=&quot;https://pic4.zhimg.com/50/v2-4c80656ae38ee05c04d126a278197186_b.jpg&quot; class=&quot;origin_image zh-lightbox-thumb&quot; width=&quot;1080&quot; data-original=&quot;https://pic3.zhimg.com/50/v2-2b812ae40c2c02250bad5be4333d7c43_r.jpg&quot;&gt;&lt;/figure&gt;&lt;p&gt;大概10分钟左右，羊肉串朝上部分已经微焦，朝下部分也已经表面熟化。&lt;/p&gt;&lt;figure&gt;&lt;img src=&quot;https://pic4.zhimg.com/50/v2-8782fbca211ebd6152c2db82ec57489e_b.jpg&quot; data-caption=&quot;&quot; data-size=&quot;normal&quot; data-rawwidth=&quot;1080&quot; data-rawheight=&quot;720&quot; data-default-watermark-src=&quot;https://pic4.zhimg.com/50/v2-d78832765ec28b9029f7cdd4648b2374_b.jpg&quot; class=&quot;origin_image zh-lightbox-thumb&quot; width=&quot;1080&quot; data-original=&quot;https://pic4.zhimg.com/50/v2-8782fbca211ebd6152c2db82ec57489e_r.jpg&quot;&gt;&lt;/figure&gt;&lt;p&gt;反过来一面的已经表面熟了。&lt;/p&gt;&lt;figure&gt;&lt;img src=&quot;https://pic4.zhimg.com/50/v2-4a0cc73f0d501944fb0dbbd74136f3ce_b.jpg&quot; data-caption=&quot;&quot; data-size=&quot;normal&quot; data-rawwidth=&quot;1080&quot; data-rawheight=&quot;720&quot; data-default-watermark-src=&quot;https://pic3.zhimg.com/50/v2-ecd075e3d8f7c7fcdbf6a44f4be9d6b3_b.jpg&quot; class=&quot;origin_image zh-lightbox-thumb&quot; width=&quot;1080&quot; data-original=&quot;https://pic4.zhimg.com/50/v2-4a0cc73f0d501944fb0dbbd74136f3ce_r.jpg&quot;&gt;&lt;/figure&gt;&lt;p&gt;此时的羊肉串已经有接近五成熟了，拿出来，刷一层油（可以直接蘸烤盘里的羊油），然后上下左右均匀地撒一层盐。撒完之后，将原来朝下一面转而朝上，继续放到烤箱最上层烤5分钟。&lt;/p&gt;&lt;figure&gt;&lt;img src=&quot;https://pic2.zhimg.com/50/v2-1f9d4742486fd7562e2fec108889afa3_b.jpg&quot; data-caption=&quot;&quot; data-size=&quot;normal&quot; data-rawwidth=&quot;1080&quot; data-rawheight=&quot;720&quot; data-default-watermark-src=&quot;https://pic3.zhimg.com/50/v2-cc4b0c78e9982093f80d293bea118a4b_b.jpg&quot; class=&quot;origin_image zh-lightbox-thumb&quot; width=&quot;1080&quot; data-original=&quot;https://pic2.zhimg.com/50/v2-1f9d4742486fd7562e2fec108889afa3_r.jpg&quot;&gt;&lt;/figure&gt;&lt;p&gt;此时羊肉串已经基本都外层焦香了，整体有8-9层熟。&lt;/p&gt;&lt;figure&gt;&lt;img src=&quot;https://pic3.zhimg.com/50/v2-f00bd0453e2d1ab2f3060fad0aa96b4c_b.jpg&quot; data-caption=&quot;&quot; data-size=&quot;normal&quot; data-rawwidth=&quot;1080&quot; data-rawheight=&quot;720&quot; data-default-watermark-src=&quot;https://pic4.zhimg.com/50/v2-31d2f1da7f1d21eeb9b57f3f6f306245_b.jpg&quot; class=&quot;origin_image zh-lightbox-thumb&quot; width=&quot;1080&quot; data-original=&quot;https://pic3.zhimg.com/50/v2-f00bd0453e2d1ab2f3060fad0aa96b4c_r.jpg&quot;&gt;&lt;/figure&gt;&lt;p&gt;这个时候才是下香料的时候，可下香料之前再刷一层油，这样有利于香料的附着。&lt;/p&gt;&lt;figure&gt;&lt;img src=&quot;https://pic1.zhimg.com/50/v2-a59a1eb30aa55c15803427f900e6c38c_b.jpg&quot; data-caption=&quot;&quot; data-size=&quot;normal&quot; data-rawwidth=&quot;1080&quot; data-rawheight=&quot;720&quot; data-default-watermark-src=&quot;https://pic3.zhimg.com/50/v2-7cb0faca33d4875940eb83ccdf9becad_b.jpg&quot; class=&quot;origin_image zh-lightbox-thumb&quot; width=&quot;1080&quot; data-original=&quot;https://pic1.zhimg.com/50/v2-a59a1eb30aa55c15803427f900e6c38c_r.jpg&quot;&gt;&lt;/figure&gt;&lt;p&gt;可选的香料包括了孜然、辣椒粉等等，我一直觉得风味的东西，自己喜欢就行，哪种喜欢就下多点就是了，例如一般别人不下胡椒，但我比较爱，我也会下一点。&lt;/p&gt;&lt;p&gt;不过有一点要注意的是，因为&lt;b&gt;香料的风味主要是气味，提前研磨好的孜然粉、胡椒粉，其实风味是会大打折扣的&lt;/b&gt;，因此要烤出好的香料风味，香料建议现炒现磨，孜然可以炒香后放到研磨器里，烤的时候再进行研磨；黑胡椒则直接研磨器研磨即可。辣椒粉或辣椒面就不用了，因为它不是一种气体带来的风味，而是辣椒带来的舌头的疼痛刺激，因此与提前研磨与否，关系不大。&lt;/p&gt;&lt;p&gt;最后阶段，送入烤箱中层烤2-3分钟就可以了，可以看到烤箱里烤串滋滋冒油。&lt;/p&gt;&lt;a class=&quot;video-box&quot; href=&quot;//link.zhihu.com/?target=https%3A//www.zhihu.com/video/1056974147405660160&quot; target=&quot;_blank&quot; data-video-id=&quot;&quot; data-video-playable=&quot;true&quot; data-name=&quot;滋滋冒油的羊肉串&quot; data-poster=&quot;https://pic2.zhimg.com/v2-b2be8364c0d8bf76f352e86ce350369b.png&quot; data-lens-id=&quot;1056974147405660160&quot;&gt;              &lt;img class=&quot;thumbnail&quot; src=&quot;https://pic2.zhimg.com/v2-b2be8364c0d8bf76f352e86ce350369b.png&quot;&gt;&lt;span class=&quot;content&quot;&gt;                &lt;span class=&quot;title&quot;&gt;滋滋冒油的羊肉串&lt;span class=&quot;z-ico-extern-gray&quot;&gt;&lt;/span&gt;&lt;span class=&quot;z-ico-extern-blue&quot;&gt;&lt;/span&gt;&lt;/span&gt;                &lt;span class=&quot;url&quot;&gt;&lt;span class=&quot;z-ico-video&quot;&gt;&lt;/span&gt;https://www.zhihu.com/video/1056974147405660160&lt;/span&gt;              &lt;/span&gt;            &lt;/a&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;figure&gt;&lt;img src=&quot;https://pic3.zhimg.com/50/v2-84d35a9cc64b2540058c9fe51be05861_b.jpg&quot; data-caption=&quot;&quot; data-size=&quot;normal&quot; data-rawwidth=&quot;1080&quot; data-rawheight=&quot;720&quot; data-default-watermark-src=&quot;https://pic4.zhimg.com/50/v2-77326aaaf3e477db550ab98d062172ed_b.jpg&quot; class=&quot;origin_image zh-lightbox-thumb&quot; width=&quot;1080&quot; data-original=&quot;https://pic3.zhimg.com/50/v2-84d35a9cc64b2540058c9fe51be05861_r.jpg&quot;&gt;&lt;/figure&gt;&lt;p&gt;这是没腌制直接烤的：&lt;/p&gt;&lt;figure&gt;&lt;img src=&quot;https://pic2.zhimg.com/50/v2-ecdbf9471160b95959c8c8a4bb8647e7_b.jpg&quot; data-caption=&quot;&quot; data-size=&quot;normal&quot; data-rawwidth=&quot;1080&quot; data-rawheight=&quot;720&quot; data-default-watermark-src=&quot;https://pic4.zhimg.com/50/v2-c1e5d5291ac41f3256d3152514efcebd_b.jpg&quot; class=&quot;origin_image zh-lightbox-thumb&quot; width=&quot;1080&quot; data-original=&quot;https://pic2.zhimg.com/50/v2-ecdbf9471160b95959c8c8a4bb8647e7_r.jpg&quot;&gt;&lt;/figure&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;figure&gt;&lt;img src=&quot;https://pic2.zhimg.com/50/v2-0726fdac1c2963e221159f4107929e50_b.jpg&quot; data-caption=&quot;&quot; data-size=&quot;normal&quot; data-rawwidth=&quot;1080&quot; data-rawheight=&quot;720&quot; data-default-watermark-src=&quot;https://pic4.zhimg.com/50/v2-d0bd03bb2d88ddf01269cc9e0443c81d_b.jpg&quot; class=&quot;origin_image zh-lightbox-thumb&quot; width=&quot;1080&quot; data-original=&quot;https://pic2.zhimg.com/50/v2-0726fdac1c2963e221159f4107929e50_r.jpg&quot;&gt;&lt;/figure&gt;&lt;p&gt;这个是腌制后烤的：&lt;/p&gt;&lt;figure&gt;&lt;img src=&quot;https://pic2.zhimg.com/50/v2-02f7087d2f211aa46fb50fdf033dcd40_b.jpg&quot; data-caption=&quot;&quot; data-size=&quot;normal&quot; data-rawwidth=&quot;1080&quot; data-rawheight=&quot;720&quot; data-default-watermark-src=&quot;https://pic1.zhimg.com/50/v2-e02371d9a283d555e18192c9cd5a8de9_b.jpg&quot; class=&quot;origin_image zh-lightbox-thumb&quot; width=&quot;1080&quot; data-original=&quot;https://pic2.zhimg.com/50/v2-02f7087d2f211aa46fb50fdf033dcd40_r.jpg&quot;&gt;&lt;/figure&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;figure&gt;&lt;img src=&quot;https://pic2.zhimg.com/50/v2-a6ac44aa2fdf2fdd64c618b56229023f_b.jpg&quot; data-caption=&quot;&quot; data-size=&quot;normal&quot; data-rawwidth=&quot;1080&quot; data-rawheight=&quot;720&quot; data-default-watermark-src=&quot;https://pic4.zhimg.com/50/v2-9b54a6a16da1b189ae663adb2f942b87_b.jpg&quot; class=&quot;origin_image zh-lightbox-thumb&quot; width=&quot;1080&quot; data-original=&quot;https://pic2.zhimg.com/50/v2-a6ac44aa2fdf2fdd64c618b56229023f_r.jpg&quot;&gt;&lt;/figure&gt;&lt;p&gt;从外观上来说，基本没太大区别，但是&lt;b&gt;风味与口感上，就可以感受到明显的差异了。&lt;/b&gt;&lt;/p&gt;&lt;p&gt;没腌制过的羊肉串，&lt;b&gt;风味上羊肉味足&lt;/b&gt;，简单的一点香料和盐，就足以衬托出羊肉串的焦香与鲜味，但在&lt;b&gt;肉质细腻程度上略逊&lt;/b&gt;，主要还是因为羊肉不是现宰，而是用冷冻品导致。如果有条件买新鲜羊肉，那么这种做法无疑会非常好吃。&lt;/p&gt;&lt;p&gt;而腌制过的羊肉串，在羊肉的嫩度上要明显优于前面没有腌制过的，说&lt;b&gt;外焦里嫩&lt;/b&gt;一点都不为过，但&lt;b&gt;羊肉串里会有明显的洋葱甜味&lt;/b&gt;，如果喜欢洋葱味的，那么这个风味层次感会更丰富。但如果本身偏好羊肉原来风味，可能就会觉得洋葱味有点多余了。&lt;/p&gt;&lt;p&gt;关于以上的两种烤法，其实并&lt;b&gt;没有谁优谁劣的问题，烹饪思路就不太一样。&lt;/b&gt;而且因为我用的是网购生鲜，所以是没法还原出真正的哈萨克烤法的。&lt;/p&gt;&lt;p&gt;如果自己在家烤，&lt;b&gt;有条件可以买到现宰羊肉，可以尝试用不腌制的方式&lt;/b&gt;；而如果买不到现宰的新鲜羊肉，&lt;b&gt;生鲜冻品的话我建议还是腌制一下&lt;/b&gt;，当然，如果你&lt;b&gt;不是很喜欢洋葱味，洋葱可以稍微少下一些。&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;以上烤制的时间，各位也要以自己的烤箱脾气为准&lt;/b&gt;，一般准则是微焦时开始撒盐，表面均匀焦香时撒调料，最后再烤2分钟左右即可。&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;最后，非常感谢&lt;b&gt;新疆老饕&lt;/b&gt; &lt;a class=&quot;member_mention&quot; href=&quot;//www.zhihu.com/people/332368405aa2fa3a8e47024991f7a855&quot; data-hash=&quot;332368405aa2fa3a8e47024991f7a855&quot; data-hovercard=&quot;p$b$332368405aa2fa3a8e47024991f7a855&quot;&gt;@天山牧羊man&lt;/a&gt;，对本文内容考证过程所提供的鼎力支持！&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;blockquote&gt;参考文献&lt;br&gt;1.丁辉, 魏跃胜. 鲜洋葱汁对西餐牛扒嫩化工艺效果研究[J]. 中国调味品, 2013, 38(7):117-120.&lt;br&gt;2.倪元颖, 李丽梅, 李景明, et al. 洋葱的风味形成机理及其生理功效[J]. 食品工业科技, 2004, 25(10):136-139.&lt;br&gt;3.王依春, 王锡昌. 洋葱风味物质的分析[J].江苏调味副食品, 2006, 23(6):16-17.&lt;/blockquote&gt;&lt;hr&gt;&lt;p&gt;&lt;b&gt;欢迎关注：识食务者&lt;/b&gt;（什么值得买首席生活家、签约作者）&lt;/p&gt;&lt;h2&gt;有兴趣加入吃货讨论群的，可以公众号回复“交流”！这里有一群有趣的美食爱好者等着你哦！&lt;/h2&gt;&lt;hr&gt;&lt;h2&gt;&lt;b&gt;往期高赞回答：&lt;/b&gt;&lt;/h2&gt;&lt;p&gt;&lt;b&gt;10K赞以上：&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;https://www.zhihu.com/question/23409413/answer/420969604&quot; class=&quot;internal&quot;&gt;为什么淘宝网上的这些牛排很便宜？另外可以去哪里买靠谱的牛排？&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://www.zhihu.com/question/281187751/answer/435058654&quot; class=&quot;internal&quot;&gt;两个人在家做饭，100元能享受到多丰盛的一顿饭？&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://www.zhihu.com/question/274396370/answer/444225439&quot; class=&quot;internal&quot;&gt;有哪些会动的食物让你感到好奇？&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;5K赞以上：&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;https://www.zhihu.com/question/45890852/answer/494425976&quot; class=&quot;internal&quot;&gt;潮汕牛肉火锅为什么火起来了，什么才是好的潮汕牛肉火锅？&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://www.zhihu.com/question/22548945/answer/482040592&quot; class=&quot;internal&quot;&gt;怎么评价潮汕菜（潮菜系）？有哪些值得打卡的潮汕美食？&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://www.zhihu.com/question/35056624/answer/512003460&quot; class=&quot;internal&quot;&gt;炭烧生蚝的蒜蓉非常好吃，如何才能做出这么好吃的蒜蓉？&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;b&gt;1K赞以上：&lt;/b&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;https://www.zhihu.com/question/22190037/answer/542933911&quot; class=&quot;internal&quot;&gt;为什么羊肉有羊膻味？甘肃 宁夏那边的就没有？&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://www.zhihu.com/question/30668331/answer/532846673&quot; class=&quot;internal&quot;&gt;怎么做出西餐厅感觉的番茄意面？&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://www.zhihu.com/question/21696230/answer/448572761&quot; class=&quot;internal&quot;&gt;你是明白了哪几个基本原理之后而厨艺大增的？&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://www.zhihu.com/question/38203029/answer/552130911&quot; class=&quot;internal&quot;&gt;如何用烤箱烤羊肉串？&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://www.zhihu.com/question/22337783/answer/557053225&quot; class=&quot;internal&quot;&gt;怎么做出美味可口的炒青菜？&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;br&gt;&lt;b&gt;微信公众号文章更全一些，可以直接回复“牛排”“鱼”“鸡”等食材直接搜到菜谱。公众号同名，欢迎关注：&lt;/b&gt;&lt;a href=&quot;//link.zhihu.com/?target=http%3A//weixin.qq.com/r/BEylvWPE8T6OrSfe9xkW&quot; class=&quot; wrap external&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;识食务者&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;//link.zhihu.com/?target=http%3A//weixin.qq.com/r/BEylvWPE8T6OrSfe9xkW&quot; class=&quot; external&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;&lt;span class=&quot;invisible&quot;&gt;http://&lt;/span&gt;&lt;span class=&quot;visible&quot;&gt;weixin.qq.com/r/BEylvWP&lt;/span&gt;&lt;span class=&quot;invisible&quot;&gt;E8T6OrSfe9xkW&lt;/span&gt;&lt;span class=&quot;ellipsis&quot;&gt;&lt;/span&gt;&lt;/a&gt; (二维码自动识别)&lt;/p&gt;</textarea>
+
+
+                                    <div class="zh-summary summary clearfix">
+                                        <img src="https://pic2.zhimg.com/50/v2-2442750ece4dd4447519afcb3565927c_200x112.jpg"
+                                             data-caption="" data-size="normal" data-rawwidth="356" data-rawheight="200"
+                                             data-watermark="" data-original-src="" data-watermark-src=""
+                                             data-private-watermark-src=""
+                                             class="origin_image inline-img zh-lightbox-thumb"
+                                             data-original="https://pic2.zhimg.com/50/v2-2442750ece4dd4447519afcb3565927c_r.jpg">
+                                        题主用的词很准备哈，确实用烤箱只能做到<b>「近似」</b>烧烤的味道，没办法模拟烧烤那种猛烈炙烤的烟火气。今天就把自己研究了好一阵子的烤箱烤羊肉串方法贡献给大家，主要<b>以新疆烤羊肉做法为范本</b>，从腌制与否，到具体烤制，聊聊怎么才能用烤箱做出比较接近烧烤摊…
+
+                                        <a href="/question/38203029/answer/552130911" class="toggle-expand">显示全部</a>
+
+                                    </div>
+
+
+                                    <p class="visible-expanded"><a itemprop="url" class="answer-date-link meta-item"
+                                                                   data-tooltip="s$t$发布于 2018-12-14" target="_blank"
+                                                                   href="/question/38203029/answer/552130911">编辑于
+                                        2019-01-02</a></p>
+
+                                </div>
+                                <div class="zm-item-meta answer-actions clearfix js-contentActions">
+                                    <div class="zm-meta-panel">
+
+                                        <a data-follow="q:link" class="follow-link zg-follow meta-item"
+                                           href="javascript:;" id="sfb-7488413"><i class="z-icon-follow"></i>关注问题</a>
+
+                                        <a href="#" name="addcomment"
+                                           class="meta-item toggle-comment js-toggleCommentBox">
+                                            <i class="z-icon-comment"></i>140 条评论</a>
+
+
+                                        <a href="#" class="meta-item zu-autohide js-thank" data-thanked="false"><i
+                                                class="z-icon-thank"></i>感谢</a>
+
+
+                                        <a href="#" class="meta-item zu-autohide js-share"><i class="z-icon-share"></i>分享</a>
+
+                                        <a href="#" class="meta-item zu-autohide js-collect"><i
+                                                class="z-icon-collect"></i>收藏</a>
+
+
+                                        <span class="zg-bull zu-autohide">&bull;</span>
+
+                                        <a href="#" class="meta-item zu-autohide js-noHelp">没有帮助</a>
+
+                                        <span class="zg-bull zu-autohide">&bull;</span>
+                                        <a href="#" class="meta-item zu-autohide js-report">举报</a>
+
+
+                                        <meta name="copyrightStatus" content="0">
+                                        <meta name="disableCopyAvatar"
+                                              content="https://pic3.zhimg.com/v2-ebfb32ef38a8dd9d08d84d92b1bc2b15_s.jpg">
+
+                                        <span class="zg-bull">&bull;</span>
+
+                                        <a href="/terms#sec-licence-6" target="_blank"
+                                           class="meta-item copyright">禁止转载</a>
+
+
+                                        <button class="meta-item item-collapse js-collapse">
+                                            <i class="z-icon-fold"></i>收起
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <div class="zu-main-sidebar" data-za-module="RightSideBar">
+
+        <!-- <div class="zm-side-section">
+        <div class="zm-side-section-inner">
+        <div class="SignFlow SignFlow--bordered" id="SidebarSignFlow">
+        <div class="SignFlow-panel">
+        <div class="title register">
+        <h1>加入知乎</h1>
+        <h2>与世界分享你的知识、经验和见解</h2>
+        </div>
+        <div class="view register SignupForm" data-za-module="SignUpForm">
+        <form action="/register/email" method="POST">
+        <div class="input-wrapper">
+        <input type="text" name="fullname" aria-label="姓名" data-placeholder="姓名" required>
+        </div>
+        <div class="input-wrapper">
+
+        <input type="text" name="phone_num" class="account" aria-label="手机号" data-placeholder="手机号" required>
+
+        </div>
+        <div class="input-wrapper toggle-password">
+        <input type="password" hidden>
+        <input type="password" name="password" aria-label="密码" data-placeholder="密码（不少于 8 位）" required>
+        <span class="z-ico-show-password"></span>
+        </div>
+        <div class="input-wrapper captcha-module" data-type="en" >
+        <input id="captcha" name="captcha" placeholder="验证码" required data-rule-required="true" data-msg-required="请填写验证码">
+        <div class="captcha-container">
+
+        <img class="js-refreshCaptcha captcha" width="120" height="30" data-tooltip="s$t$看不清楚？换一张"  alt="验证码">
+        </div>
+        </div>
+        <div class="actions">
+
+        <input type="submit" value="注册" class="submit zg-btn-blue">
+
+        </div>
+        <div class="sns clearfix">
+        <span>已有帐号？<a href="#" class="switch-to-login">登录</a></span>
+        </div>
+        </form>
+        </div>
+        </div>
+        <div class="SignFlow-panel" hidden>
+        <div class="LoginForm">
+        <div class="title login">
+        <h1>登录知乎</h1>
+        <h2>与世界分享你的知识、经验和见解</h2>
+        </div>
+        <div class="view login" data-za-module="SignInForm">
+        <form method="POST">
+        <div class="input-wrapper">
+        <input type="text" name="account" class="account" aria-label="手机号或邮箱" placeholder="手机号或邮箱" required>
+        </div>
+        <div class="input-wrapper toggle-password">
+        <input type="password" name="password" aria-label="密码" placeholder="密码" required>
+        <span class="z-ico-show-password"></span>
+        </div>
+        <div class="input-wrapper captcha-module" data-type="en" >
+        <input id="captcha" name="captcha" placeholder="验证码" required data-rule-required="true" data-msg-required="请填写验证码">
+        <div class="captcha-container">
+
+        <img class="js-refreshCaptcha captcha" width="120" height="30" data-tooltip="s$t$看不清楚？换一张"  alt="验证码">
+        </div>
+        </div>
+        <div class="actions">
+
+        <input type="submit" value="登录" class="submit zg-btn-blue">
+
+        </div>
+        <div class="sns clearfix">
+        <label class="remember-me"><input type="checkbox" name="remember_me" checked value="true">记住我</label>
+        <span class="middot">·</span>
+        <button class="unable-login" type="button">无法登录？</button>
+        <button type="button" class="js-show-sns-buttons is-visible">社交帐号登录</button>
+        <div class="sns-buttons">
+        <button type="button" class="wechat"><span class="ico sprite-global-icon-wechat-gray"></span>微信</button>
+        <button type="button" class="weibo"><span class="ico sprite-global-icon-weibo-gray"></span>微博</button>
+        <button type="button" class="qq"><span class="ico sprite-global-icon-qq-gray"></span>QQ</button>
+        </div>
+        </div>
+        </form>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div> -->
+        <div class="zm-side-section">
+            <div class="DownloadApp">
+                <button class="DownloadApp-button">
+                    <span class="sprite-global-icon-qrcode"></span>
+                    下载知乎 App
+                </button>
+            </div>
+        </div>
+
+
+        <div class="shameimaru-placeholder" data-loc="explore_up" data-params='{}'></div>
+
+        <div class="zm-side-section explore-side-section explore-side-section-roundtable">
+            <div class="zm-side-section-inner">
+                <div class="section-title">
+                    <a href="/roundtable" class="zg-link-gray zg-right" data-za-c="view_roundtable"
+                       data-za-a="visit_roundtable_home" data-za-l="explore_sidebar_trending_roundtable_more">更多圆桌
+                        &raquo;</a>
+                    <h3>热门圆桌</h3>
+                </div>
+                <ul class="list hot-roundtables">
+
+                    <li class="clearfix">
+                        <a target="_blank" class="avatar-link" href="/roundtable/officehealth"><img
+                                src="https://pic3.zhimg.com/v2-59eee854a743c0f73784ae2363045a38_m.jpg" alt="Path"
+                                class="avatar 40"/></a>
+                        <div class="content">
+
+<span class="status zg-right zg-gray-normal">
+还有 1 天开始
+</span>
+
+                            <a href="/roundtable/officehealth" target="_blank"
+                               data-hovercard="r$t$officehealth">拯救上班「卒」</a>
+                            <div class="meta">
+                                <span>456 人关注</span>
+                                <span class="zg-bull">&bull;</span>
+                                <span>4 个问题</span>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="clearfix">
+                        <a target="_blank" class="avatar-link" href="/roundtable/kejichuangxin"><img
+                                src="https://pic3.zhimg.com/v2-491549df629a0597feaf7b8638ec5cfd_m.jpg" alt="Path"
+                                class="avatar 40"/></a>
+                        <div class="content">
+
+<span class="status zg-right zg-gray-normal">
+还有 6 天开始
+</span>
+
+                            <a href="/roundtable/kejichuangxin" target="_blank" data-hovercard="r$t$kejichuangxin">2019
+                                科技将改变什么</a>
+                            <div class="meta">
+                                <span>780 人关注</span>
+                                <span class="zg-bull">&bull;</span>
+                                <span>5 个问题</span>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="zm-side-section explore-side-section">
+            <div class="zm-side-section-inner">
+                <div class="section-title">
+
+                    <a href="/topics" class="zg-link-gray zg-right">更多话题 &raquo;</a>
+
+                    <h3>热门话题</h3>
+                </div>
+                <ul class="list hot-topics">
+
+                    <li class="clearfix">
+                        <a target="_blank" class="avatar-link" href="/topic/19588303" data-hovercard="t$b$19588303"><img
+                                src="https://pic4.zhimg.com/ebec2d3ac_m.jpg" alt="节气" class="avatar 40"/></a>
+                        <div class="content">
+                            <a href="/topic/19588303" target="_blank" data-hovercard="t$b$19588303">节气</a>
+                            <div class="meta">
+                                <span>4943 人关注</span>
+
+                            </div>
+                        </div>
+                        <div class="bottom">
+
+                        </div>
+                    </li>
+
+                    <li class="clearfix">
+                        <a target="_blank" class="avatar-link" href="/topic/19865724" data-hovercard="t$b$19865724"><img
+                                src="https://pic3.zhimg.com/v2-296f1ee32553f13bb898880477871660_m.jpg" alt="神器"
+                                class="avatar 40"/></a>
+                        <div class="content">
+                            <a href="/topic/19865724" target="_blank" data-hovercard="t$b$19865724">神器</a>
+                            <div class="meta">
+                                <span>23172 人关注</span>
+
+                            </div>
+                        </div>
+                        <div class="bottom">
+
+                            <a class="question_link" href="/question/52060765" target="_blank" data-id="13042379"
+                               data-za-element-name="Title">
+                                你手机里有哪些堪称神器的 App？
+                            </a>
+
+                        </div>
+                    </li>
+
+                    <li class="clearfix">
+                        <a target="_blank" class="avatar-link" href="/topic/19559450" data-hovercard="t$b$19559450"><img
+                                src="https://pic2.zhimg.com/d3dd87a0feae0a3db82973157eee89c0_m.jpg" alt="机器学习"
+                                class="avatar 40"/></a>
+                        <div class="content">
+                            <a href="/topic/19559450" target="_blank" data-hovercard="t$b$19559450">机器学习</a>
+                            <div class="meta">
+                                <span>986847 人关注</span>
+
+                            </div>
+                        </div>
+                        <div class="bottom">
+
+                            <a class="question_link" href="/question/266368852" target="_blank" data-id="20979608"
+                               data-za-element-name="Title">
+                                在实际业务里，在工作中有什么用得到深度学习的例子么？用到 GPU 了么？
+                            </a>
+
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="zm-side-section explore-side-section">
+            <div class="zm-side-section-inner">
+                <div class="section-title">
+                    <a href="javascript:;" id="js-hot-fav-switch" class="zg-link-gray zg-right" data-za-c="collection"
+                       data-za-a="click_trending_collections_change"
+                       data-za-l="explore_sidebar_trending_collections_collection_name">换一换</a>
+                    <h3>热门收藏</h3>
+                </div>
+                <ul class="list hot-favlists">
+                    <li>
+                        <div class="content">
+                            <a href="/collection/27534525" target="_blank">哈哈哈哈哈哈哈哈哈哈哈哈哈！！！！！</a>
+                            <div class="meta">
+                                <span>21992 人关注</span>
+                                <span class="zg-bull">&bull;</span>
+                                <span>627 条内容</span>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="content">
+                            <a href="/collection/191765305" target="_blank">凝聚态物理101问与答</a>
+                            <div class="meta">
+                                <span>357 人关注</span>
+                                <span class="zg-bull">&bull;</span>
+                                <span>33 条内容</span>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="content">
+                            <a href="/collection/133027089" target="_blank">马前卒分类-历史</a>
+                            <div class="meta">
+                                <span>715 人关注</span>
+                                <span class="zg-bull">&bull;</span>
+                                <span>542 条内容</span>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="content">
+                            <a href="/collection/133027123" target="_blank">马前卒分类-地理</a>
+                            <div class="meta">
+                                <span>444 人关注</span>
+                                <span class="zg-bull">&bull;</span>
+                                <span>170 条内容</span>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="content">
+                            <a href="/collection/37149645" target="_blank">金钱是所有梦想的阶梯</a>
+                            <div class="meta">
+                                <span>5571 人关注</span>
+                                <span class="zg-bull">&bull;</span>
+                                <span>275 条内容</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="shameimaru-placeholder" data-loc="explore_down" data-params='{}'></div>
+        <div id="zh-footer" class="zh-footer">
+            <div class="content zg-wrap clearfix">
+                <ul>
+
+                    <li><a href="https://liukanshan.zhihu.com" target="_blank">刘看山</a></li>
+
+                    <li><a href="/app" target="_blank">移动应用</a></li>
+                    <li><a href="/careers">加入知乎</a></li>
+                    <li><a href="/terms" target="_blank">知乎协议</a></li>
+                    <li><a href="/jubao" target="_blank">举报投诉</a></li>
+                    <li><a href="/term/privacy" target="_blank">隐私政策</a></li>
+                    <li><a href="/contact">联系我们</a></li>
+
+                </ul>
+
+                <span class="copy">&copy; 2019 知乎</span>
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+<script type="text/json" class="json-inline" data-name="guiders2">{}</script>
+<script type="text/template" class="unblock-dialog-template">
+    <div>
+        你的帐号由于存在异常⾏为暂时被限制使⽤。如需恢复，请
+        <a target="_blank" href="/account/unblock">解封帐号</a>
+    </div>
+</script>
+<script type="text/json" class="json-inline" data-name="current_user">["","","","-1","",0,0]</script>
+<script type="text/json" class="json-inline" data-name="front_web_config">
+    {"realname_win_config":{"timestamp":1501344000,"tip":"\u5e94\u56fd\u5bb6\u6cd5\u89c4\u5bf9\u4e8e\u5e10\u53f7\u5b9e\u540d\u7684\u8981\u6c42\uff0c\u8fdb\u884c\u4e0b\u4e00\u6b65\u64cd\u4f5c\u524d\uff0c\u9700\u8981\u5148\u5b8c\u6210\u624b\u673a\u7ed1\u5b9a\u3002","continue":0,"continue_time":3600,"skip_ut_verification":0}}
+</script>
+<script type="text/json" class="json-inline" data-name="user_status">
+    [null,{"message":"\u60a8\u7684\u5e10\u53f7\u7531\u4e8e\u5b58\u5728\u5f02\u5e38\u884c\u4e3a\u6682\u65f6\u88ab\u77e5\u4e4e\u53cd\u4f5c\u5f0a\u7cfb\u7edf\u9650\u5236\u4f7f\u7528","by_antispam":true},false]
+</script>
+<script type="text/json" class="json-inline" data-name="env">["zhihu.com","comet.zhihu.com",false,null,false,false]
+</script>
+<script type="text/json" class="json-inline" data-name="permissions">[]</script>
+
+
+<script type="text/json" class="json-inline" data-name="ga_vars">
+    {"user_created":0,"now":1547393842000,"abtest_mask":"------------------------------","user_attr":[0,0,0,"-","-"],"user_hash":0}
+</script>
+
+<script type="text/json" class="json-inline" data-name="ra-urls">
+    {"Copyright":"https:\/\/static.zhihu.com\/static\/revved\/-\/apps\/Copyright.773358e5.js","PayUIApp":"https:\/\/static.zhihu.com\/static\/revved\/-\/apps\/PayUIApp.36707672.js","CouponApp":"https:\/\/static.zhihu.com\/static\/revved\/-\/apps\/CouponApp.1f64e458.js","PaymentApp":"https:\/\/static.zhihu.com\/static\/revved\/-\/apps\/PaymentApp.a5a8951a.js","Community":"https:\/\/static.zhihu.com\/static\/revved\/-\/apps\/Community.5a5b078a.js","Report":"https:\/\/static.zhihu.com\/static\/revved\/-\/apps\/Report.b0136566.js","OrgOpHelp":"https:\/\/static.zhihu.com\/static\/revved\/-\/apps\/OrgOpHelp.9e284cd9.js","common":"https:\/\/static.zhihu.com\/static\/revved\/-\/apps\/common.8eaa69f7.js","BalanceApp":"https:\/\/static.zhihu.com\/static\/revved\/-\/apps\/BalanceApp.1e4cdac8.js","AnswerWarrant":"https:\/\/static.zhihu.com\/static\/revved\/-\/apps\/AnswerWarrant.a94bf518.js","CommentApp":"https:\/\/static.zhihu.com\/static\/revved\/-\/apps\/CommentApp.275ffa2a.js"}
+</script>
+
+<script src="https://static.zhihu.com/static/revved/-/js/vendor.cb14a042.js"></script>
+<script src="https://static.zhihu.com/static/revved/-/js/closure/base.5330209e.js"></script>
+
+<script src="https://static.zhihu.com/static/revved/-/js/closure/common.fde4efd7.js"></script>
+
+
+<script src="https://static.zhihu.com/static/revved/-/js/closure/richtexteditor.6bd142d3.js" async></script>
+<script src="https://static.zhihu.com/static/revved/-/js/closure/page-main.758ac409.js"></script>
+<meta name="entry" content="ZH.entryExplore" data-module-id="page-main">
+
+<script type="text/zscript" znonce="17ce5a5914754e059371ee06c2234d78"></script>
+
+<input type="hidden" name="_xsrf" value="caba8bf0d939eaff8de216a029b9bbbd"/>
+</body>
+</html>
+
+Process finished with exit code 0
