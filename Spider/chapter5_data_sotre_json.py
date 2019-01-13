@@ -49,13 +49,13 @@ with open('data.json', 'r') as file:
 
 data = [{
     "name": "Bob",
-    "gender": "male",
+    "gender": "男",
     "birthday": "1992-10-18"
 }]
 # indent代表缩进字符个数，可以保存JSON的格式
 # 中文字符会变成Unicode字符，需要制定参数ensure_ascii为False，并规定文件输出的编码
-with open('data.json', 'w') as file:
-    file.write(json.dumps(data, indent=2))
+with open('data.json', 'w', encoding='utf-8') as file:
+    file.write(json.dumps(data, indent=2, ensure_ascii=False))
 
 
 
