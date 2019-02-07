@@ -40,3 +40,10 @@ redis = StrictRedis(connection_pool=pool)
 # 9、散列操作
 
 # 10、RedisDump
+
+#   1）redis-dump用于导出数据
+#   终端导出命令：redis_dump -u :123456@localhost:6379
+#   其他的看书P231吧
+
+#   2）redis-load用于导入数据
+
