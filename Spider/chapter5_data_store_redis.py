@@ -27,3 +27,16 @@ url = 'redis://:123456@localhost:6379/0'
 pool = ConnectionPool.from_url(url)
 redis = StrictRedis(connection_pool=pool)
 
+# 4、键操作
+
+# 5、字符串操作
+
+# 6、列表操作
+
+# 7、集合操作
+
+# 8、有序集合操作
+
+# 9、散列操作
+
+# 10、RedisDump
