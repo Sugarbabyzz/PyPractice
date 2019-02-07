@@ -23,3 +23,7 @@ from redis import ConnectionPool
 pool = ConnectionPool(host='localhost', port=6379, db=0, password='123456')
 redis = StrictRedis(connection_pool=pool)
 #   3）使用URL连接
+url = 'redis://:123456@localhost:6379/0'
+pool = ConnectionPool.from_url(url)
+redis = StrictRedis(connection_pool=pool)
+
