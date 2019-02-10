@@ -71,7 +71,27 @@ def save_image(item):
     except requests.ConnectionError as e:
         print('Failed to Save Image')
 
-#   主程序
+#   主函数
+from multiprocessing.pool import Pool
+
+def main(offset):
+    json = get_page(offset)
+    for item in get_images(json):
+        print(item)
+        save_image(item)
+
+#   定义分页的起始和终止页数
+GROUP_START = 1
+GROUP_END = 5
+
+if __name__ == '__main__':
+    pool = Pool()
+    groups = ([x * 20 for x in range(GROUP_START, GROUP_END + 1)])
+    pool.map(main, groups)
+    pool.close()
+    pool.join()
+
+
 
 
 
