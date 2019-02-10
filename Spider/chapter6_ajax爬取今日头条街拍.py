@@ -32,7 +32,7 @@ def get_page(offset):
         'pd': 'synthesis',
     }
 
-    url = basic_url + urlencode(params)
+    url = basic_url + urlencode(params)  # urlencode构造GET参数
     try:
         response = requests.get(url, headers=headers)
         if response.status_code == 200:
@@ -40,6 +40,40 @@ def get_page(offset):
     except requests.ConnectionError as e:
         return None
 
-    
+#   解析方法：提取image_list字段中的每一张图片链接，将图片链接和图片所属标题一并返回
+def get_images(json):
+    if json.get('data'):
+        for item in json.get('data'):
+            title = item.get('title')
+            images = item.get('image_list')
+            for image in images:
+                yield {
+                    'image': image.get('url'),
+                    'title': title
+                }
+
+#   实现保存图片的方法，其中item是get_images方法返回的一个字典
+import os
+from hashlib import md5
+
+def save_image(item):
+    if not os.path.exists(item.get('title')):
+        os.mkdir(item.get('title'))
+    try:
+        response = requests.get(item.get('image'))
+        if response.status_code == 200:
+            file_path = '{0}/{1}.{2}'.format(item.get('title'), md5(response.content).hexdigest(), 'jpg')
+            if not os.path.exists(file_path):
+                with open(file_path, 'wb') as f:
+                    f.write(response.content)
+            else:
+                print('Already Downloaded', file_path)
+    except requests.ConnectionError as e:
+        print('Failed to Save Image')
+
+#   主程序
+
+
+
 
 
