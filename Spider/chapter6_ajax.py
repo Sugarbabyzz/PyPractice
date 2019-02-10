@@ -34,7 +34,7 @@ headers = {
     'Host': 'm.weibo.cn',
     'Referer': 'https://m.weibo.cn/u/2830678474',
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36',
-    'X-Requested-With': 'XMLHttpRequest'
+    'X-Requested-With': 'XMLHttpRequest',
 }
 
 #   获取每次请求的结果
@@ -70,7 +70,12 @@ def parse_page(json):
             yield weibo
 
 #   主程序
-
+if __name__ == '__main__':
+    for page in range(1, 11):
+        json = get_page(page)
+        results = parse_page(json)
+        for result in results:
+            print(result)
 
 
 
