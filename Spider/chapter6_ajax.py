@@ -37,6 +37,7 @@ headers = {
     'X-Requested-With': 'XMLHttpRequest'
 }
 
+#   获取每次请求的结果
 def get_page(page):
     params = {
         'type': 'uid',
@@ -51,6 +52,25 @@ def get_page(page):
             return response.json()
     except requests.ConnectionError as e:
         print('Error', e.args)
+
+#   从结果中提取信息
+from pyquery import PyQuery as pq
+
+def parse_page(json):
+    if json:
+        items = json.get('data').get('cards')
+        for item in items:
+            item = item.get('mblog')
+            weibo = {}
+            weibo['id'] = item.get('id')
+            weibo['text'] = pq(item.get('text')).text()
+            weibo['attitudes'] = item.get('attitudes_count')
+            weibo['comments'] = item.get('comments_count')
+            weibo['reposts'] = item.get('reposts_count')
+            yield weibo
+
+#   主程序
+
 
 
 
