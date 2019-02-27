@@ -37,15 +37,60 @@ finally:
 #   支持多浏览器
 
 # 4、访问页面
+
+'''
 from selenium import webdriver
 
 browser = webdriver.Chrome()
 browser.get('https://www.baidu.com')
 print(browser.page_source)
 browser.close()
-
+'''
 
 # 5、查找节点
+
+# *单个节点
+#   淘宝搜索框
+#   所有单节点获取方法，见书P252
+
+'''
+from selenium import webdriver
+
+browser = webdriver.Chrome()
+browser.get('https://www.taobao.com')
+input_first = browser.find_element_by_id('q')
+#通用函数
+input_first = browser.find_element(By.ID, 'q')
+input_second = browser.find_element_by_css_selector('#q')
+input_third = browser.find_element_by_xpath('//*[@id="q"]')
+print(input_first, input_second, input_third)
+browser.close()
+'''
+
+# *多个节点
+# find_elements，多个s，结果是列表类型
+
+'''
+from selenium import webdriver
+
+browser = webdriver.Chrome()
+browser.get('https://www.taobao.com')
+lis = browser.find_element(By.CSS_SELECTOR, '.service-bd li')
+print(lis)
+browser.close()
+'''
+
+# 6、节点交互
+#   输入文字：send_keys()
+#   清空文字：clear()
+#   点击按钮：click()
+
+
+
+
+
+
+
 
 
 
