@@ -17,6 +17,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
+'''
 browser = webdriver.Chrome()
 try:
     browser.get('https://www.baidu.com')
@@ -27,7 +28,25 @@ try:
     wait.until(EC.presence_of_element_located((By.ID, 'content_left')))
     print(browser.current_url)
     print(browser.get_cookie())
-    print(browser.page_source)
 finally:
     browser.close()
+'''
+
+
+# 3、声明浏览器对象
+#   支持多浏览器
+
+# 4、访问页面
+from selenium import webdriver
+
+browser = webdriver.Chrome()
+browser.get('https://www.baidu.com')
+print(browser.page_source)
+browser.close()
+
+
+# 5、查找节点
+
+
+
 
