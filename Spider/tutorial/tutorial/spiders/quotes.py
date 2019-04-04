@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 import scrapy
 # 这里导入对应的Item，Item相当于一个字典
-from Spider.tutorial.tutorial.items import QuoteItem
+from tutorial.items import QuoteItem
 
 
 class QuotesSpider(scrapy.Spider):
-    name = 'quotes'
-    allowed_domains = ['quotes.toscrape.com']
+    name = "quotes"
+    allowed_domains = ["quotes.toscrape.com"]
     start_urls = ['http://quotes.toscrape.com/']
 
     def parse(self, response):
@@ -18,6 +18,6 @@ class QuotesSpider(scrapy.Spider):
             item['tags'] = quote.css('.tags .tag::text').extract()  # 要获取所有标签，直接用extract即可
             yield item
 
-        next = response.css('.pager .next a::attr("href)').extract_first()
+        next = response.css('.pager .next a::attr("href")').extract_first()
         url = response.urljoin(next)  # urljoin将相对url构成一个绝对url
         yield scrapy.Request(url=url, callback=self.parse)
