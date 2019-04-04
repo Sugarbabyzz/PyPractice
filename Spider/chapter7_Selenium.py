@@ -217,6 +217,13 @@ print(input)
 '''
 
 # * 显式等待
+#   指定一个最长等待时间，加载出来则返回节点，超时则抛出异常
+#   ***** 更多等待条件见书 P259 *****
+
+from selenium import webdriver
+from 
+
+
 
 
 
