@@ -85,6 +85,8 @@ browser.close()
 #   清空文字：clear()
 #   点击按钮：click()
 
+
+'''
 from selenium import webdriver
 import time
 
@@ -97,6 +99,106 @@ input.clear()
 input.send_keys('iPad')
 button = browser.find_element_by_class_name('btn-search')
 button.click()
+'''
+
+
+# 7、动作链
+#   对于没有特定执行对象，如拖拽动作
+
+'''
+from selenium import webdriver
+from selenium.webdriver import ActionChains
+
+browser = webdriver.Chrome()
+url = 'http://www.runoob.com/try/try.php?filename=jqueryui-api-droppable'
+browser.get(url)
+browser.switch_to.frame('iframeResult')
+source = browser.find_element_by_css_selector('#draggable')
+target = browser.find_element_by_css_selector('#droppable')
+actions = ActionChains(browser)
+actions.drag_and_drop(source, target)
+actions.perform()
+'''
+
+# 8、执行JavaScript
+#   执行某些操作，如下拉进度条
+#   基本上API没有提供的功能，都可以执行JavaScript来实现
+
+'''
+from selenium import webdriver
+
+browser = webdriver.Chrome()
+url = 'http://www.zhihu.com/explore'
+browser.get(url)
+browser.execute_script('window.scrollTo(0, document.body.scrollHeight)')
+browser.execute_script('alert("To Bottom")')
+'''
+
+# 9、获取节点信息
+
+# * 获取属性
+# 使用get_attribute()方法获得节点的属性
+'''
+from selenium import webdriver
+
+browser = webdriver.Chrome()
+url = 'http://www.zhihu.com/explore'
+browser.get(url)
+logo = browser.find_element_by_id('zh-top-link-logo')
+print(logo)
+print(logo.get_attribute('class'))
+print(logo.get_attribute('href'))
+'''
+
+# * 获取文本值
+
+'''
+
+'''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
