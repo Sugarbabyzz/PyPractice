@@ -283,8 +283,22 @@ browser.get('https://www.zhihu.com')
 '''
 
 # 15、异常处理
+#   更多异常类，查看官方文档
 
+from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
 
+browser = webdriver.Chrome()
+try:
+    browser.get('https://www.baodu.com')
+except TimeoutException:
+    print('Time out')
+try:
+    browser.find_element_by_id('hello')
+except NoSuchElementException:
+    print('No Element')
+finally:
+    browser.close()
 
 
 
