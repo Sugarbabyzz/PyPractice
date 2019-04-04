@@ -162,7 +162,32 @@ input = browser.find_element_by_class_name('zu-top-add-question')
 print(input.text)
 '''
 
-# * 
+# * 获取id、位置、标签名和大小
+
+'''
+from selenium import webdriver
+
+browser = webdriver.Chrome()
+url = 'https://www.zhihu.com/explore'
+browser.get(url)
+input = browser.find_element_by_class_name('zu-top-add-question')
+print(input.id)
+print(input.location)
+print(input.tag_name)
+print(input.size)
+'''
+
+# 10、切换Frame
+#   打开页面后，默认是在父级Frame里面操作，此时如果页面中还有子Frame，是不能获取到里面的节点的
+#   需要用switch_to.frame()方法来切换
+
+import time
+from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException
+
+
+
+
 
 
 
