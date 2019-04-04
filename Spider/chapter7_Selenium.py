@@ -250,10 +250,10 @@ browser.forward()
 browser.close()
 '''
 
-
 # 13、Cookies
 #   可以对Cookies进行获取、添加、删除等操作
 
+'''
 from selenium import webdriver
 
 browser = webdriver.Chrome()
@@ -263,6 +263,24 @@ browser.add_cookie({'name': 'name', 'domain': 'www.zhihu.com', 'value': 'germey'
 print(browser.get_cookies())
 browser.delete_all_cookies()
 print(browser.get_cookies())
+'''
+
+# 14、选项卡管理
+
+import time
+from selenium import webdriver
+
+browser = webdriver.Chrome()
+browser.get('https://www.baidu.com')
+browser.execute_script('window.open()')
+print(browser.window_handles)
+browser.switch_to.window(browser.window_handles[1])
+browser.get('https://www.taobao.com')
+time.sleep(1)
+browser.switch_to.window(browser.window_handles[0])
+browser.get('https://www.zhihu.com')
+
+
 
 
 
