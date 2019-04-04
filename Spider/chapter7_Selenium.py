@@ -235,9 +235,7 @@ print(input, button)
 '''
 
 # 12、前进和后退
-
-'''
-
+#   back() and forward()
 '''
 import time
 from selenium import webdriver
@@ -250,9 +248,22 @@ browser.back()
 time.sleep(1)
 browser.forward()
 browser.close()
+'''
 
 
 # 13、Cookies
+#   可以对Cookies进行获取、添加、删除等操作
+
+from selenium import webdriver
+
+browser = webdriver.Chrome()
+browser.get('https://www.zhihu.com/explore')
+print(browser.get_cookies())
+browser.add_cookie({'name': 'name', 'domain': 'www.zhihu.com', 'value': 'germey'})
+print(browser.get_cookies())
+browser.delete_all_cookies()
+print(browser.get_cookies())
+
 
 
 
