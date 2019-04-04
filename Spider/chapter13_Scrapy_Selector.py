@@ -49,5 +49,18 @@ print(title)
 
 # 5、正则匹配
 
+#   response.xpath('//a/text()').re('Name:\s(.*)')
+#   输出括号内的，列表形式
+
+#   response.xpath('//a/text()').re_first('Name:\s(.*)')
+#   输出第一个
+
+#   注意：response不能直接调用re，可以先用xpath再正则
+
+
+
+
+#****** 13.4 Spider的用法 ******
+
 
 
