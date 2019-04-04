@@ -220,8 +220,41 @@ print(input)
 #   指定一个最长等待时间，加载出来则返回节点，超时则抛出异常
 #   ***** 更多等待条件见书 P259 *****
 
+'''
 from selenium import webdriver
-from 
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+browser = webdriver.Chrome()
+browser.get('https://www.taobao.com')
+wait = WebDriverWait(browser, 10)
+input = wait.until(EC.presence_of_element_located((By.ID, 'q')))   # 节点加载出来
+button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, '.btn-search')))   # 节点可点击
+print(input, button)
+'''
+
+# 12、前进和后退
+
+'''
+
+'''
+import time
+from selenium import webdriver
+
+browser = webdriver.Chrome()
+browser.get('https://www.baidu.com')
+browser.get('https://www.taobao.com')
+browser.get('https://www.zhihu.com')
+browser.back()
+time.sleep(1)
+browser.forward()
+browser.close()
+
+
+# 13、Cookies
+
+
 
 
 
