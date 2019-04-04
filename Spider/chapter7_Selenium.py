@@ -178,12 +178,46 @@ print(input.size)
 '''
 
 # 10、切换Frame
-#   打开页面后，默认是在父级Frame里面操作，此时如果页面中还有子Frame，是不能获取到里面的节点的
+#   打开页面后，有一种节点叫iframe，相当于子页面。Selenium默认是在父级Frame里面操作，此时如果页面中还有子Frame，是不能获取到里面的节点的
 #   需要用switch_to.frame()方法来切换
 
+'''
 import time
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
+
+browser = webdriver.Chrome()
+url = 'http://www.runoob.com/try/try.php?filename=jqueryui-api-droppable'
+browser.get(url)
+browser.switch_to.frame('iframeResult')
+try:
+    logo = browser.find_element_by_class_name('logo')
+except NoSuchElementException:
+    print('NO LOGO')
+browser.switch_to.parent_frame()
+logo = browser.find_element_by_class_name('logo')
+print(logo)
+print(logo.text)
+'''
+
+# 11、延时等待
+#   刚打开页面获得的源码并不是完全的，还有额外的Ajax请求，所以需要延时等待
+
+# * 隐式等待
+#   当查找的节点没有立即出现时，将等待一段时间再查找，超出设定时间找不到，则抛出异常
+
+'''
+from selenium import webdriver
+
+browser = webdriver.Chrome()
+browser.implicitly_wait(10)
+browser.get('https://www.zhihu.com/explore')
+input = browser.find_element_by_class_name('zu-top-add-question')
+print(input)
+'''
+
+# * 显式等待
+
 
 
 
