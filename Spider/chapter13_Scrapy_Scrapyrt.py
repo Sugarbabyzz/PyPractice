@@ -12,6 +12,17 @@
 #   curl http://localhost:9080/crawl.json?spider_name=quotes&url=http://quotes.toscrape.com/
 
 #   2、POST请求
+#   需要用JSON格式
 #   curl http://localhost:9080/crawl.json -d '{"request":{"url": "http://quotes.toscrape.com/", "dont_filter": "True", "callback": "parse", "cookies": {"foo": "bar"}}, "max_requests": 2, "spider_name": "quotes"}'
+
+
+
+
+#****** 13.12 Scrapy对接Docker ******
+
+
+#   Docker为了解决环境的安装配置、环境的版本冲突解决等问题
+
+
 
 
