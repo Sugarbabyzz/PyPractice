@@ -8,5 +8,6 @@
 # 对接项目-scrapyuniversal
 #   以中华科技类新闻为例，了解CrawlSpider和Item Loader的用法，提取其可配置信息实现可配置化。
 #   抓取新闻类表中的所有分页的新闻详情，包括标题、正文、时间、来源等。
-
+#   以往创建的Spder模板是Basic，这次需要选择crawlspider
+#       scrapy genspider -t crawl xx xx.xx.com
 
