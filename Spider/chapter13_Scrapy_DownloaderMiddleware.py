@@ -22,3 +22,25 @@
 #   1、修改settings里面的USER_AGENT变量
 #   2、通过Downloader Middleware的process_request()方法修改
 
+
+#****** 13.6 Spider Middleware的用法 ******
+
+#   用法同上
+
+# 至少实现以下其中一个方法，即可定义一个Downloader Middleware
+#   1、process_spider_input(response, spider)
+#   2、process_spider_output(response, result, spider)
+#   3、process_spider_exception(response, exception, spider)
+#   4、process_start_request(start_requests, spider)
+
+
+
+#****** 13.7  Middleware的用法 ******
+
+
+
+
+
+
+
+
