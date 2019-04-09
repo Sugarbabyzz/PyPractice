@@ -2,6 +2,9 @@
 
 #****** 13.5 Downloader Middleware的用法 ******
 
+# 对接项目-scrapydownloadertest
+
+
 #   修改User-Agent、处理重定向、设置代理、失败重试、设置Cookies等功能都要借助它实现
 
 # 作用：
@@ -36,6 +39,8 @@
 
 
 #****** 13.7 Item Pipeline 的用法 ******
+
+# 对接项目-images360
 
 # 必须实现的一个方法是 process_item(item, spider)
 #   1、open_spider(spider)
