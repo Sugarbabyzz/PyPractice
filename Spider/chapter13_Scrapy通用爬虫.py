@@ -11,3 +11,5 @@
 #   以往创建的Spder模板是Basic，这次需要选择crawlspider
 #       scrapy genspider -t crawl xx xx.xx.com
 
+#   这个比较难学，但是关键，将所有配置抽离出来，每增加一个爬虫，就只需要增加一个JSON文件配置
+
