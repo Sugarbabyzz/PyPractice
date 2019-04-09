@@ -103,7 +103,7 @@ MYSQL_HOST = 'localhost'
 MYSQL_DATABASE = 'images360'
 MYSQL_PORT = 3306
 MYSQL_USER = 'root'
-MYSQL_PASSWORD = '981710Tzc'
+MYSQL_PASSWORD = '123456'
 
 # 定义存储文件路径
 IMAGES_STORE = './images'
