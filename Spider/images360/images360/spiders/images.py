@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 from urllib.parse import urlencode
 from scrapy import Spider, Request
+import json
 
+from images360.items import ImageItem
 import scrapy
 
 
@@ -21,4 +23,12 @@ class ImagesSpider(scrapy.Spider):
 
 
     def parse(self, response):
-        pass
+        result = json.loads(response.text)
+        for image in result.get('list'):
+            item = ImageItem()
+            item['id'] = image.get('imageid')
+            item['url'] = image.get('qhimg_url')
+            item['title'] = image.get('group_title')
+            item['thumb'] = image.get('qhimg_thumb_url')
+            yield item
+
