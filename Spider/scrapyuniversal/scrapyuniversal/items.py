@@ -6,9 +6,16 @@
 # https://doc.scrapy.org/en/latest/topics/items.html
 
 import scrapy
+from scrapy import Field, Item
 
 
-class ScrapyuniversalItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+class NewsItem(Item):
+    title = Field()  # 标题
+    url = Field()  # 链接
+    text = Field()  # 正文
+    datetime = Field()  # 发布时间
+    source = Field()  # 来源
+    website = Field()  # 站点名称
+
+
+
