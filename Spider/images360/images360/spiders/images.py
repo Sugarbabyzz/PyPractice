@@ -21,7 +21,6 @@ class ImagesSpider(scrapy.Spider):
             url = base_url + params
             yield Request(url, self.parse)
 
-
     def parse(self, response):
         result = json.loads(response.text)
         for image in result.get('list'):
