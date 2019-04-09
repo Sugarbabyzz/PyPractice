@@ -35,7 +35,16 @@
 
 
 
-#****** 13.7  Middleware的用法 ******
+#****** 13.7 Item Pipeline 的用法 ******
+
+# 必须实现的一个方法是 process_item(item, spider)
+#   1、open_spider(spider)
+#   2、close_spider(spider)
+#   3、from_crawler(cls, crawler)
+#       通过crawler对象，可以拿到Scrapy的核心组件，如全局配置等
+
+
+
 
 
 
