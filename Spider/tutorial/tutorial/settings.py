@@ -93,7 +93,7 @@ ITEM_PIPELINES = {
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
 
-MONGO_URI = 'localhost'
+MONGO_URI = 'mongodb://admin:admin123@120.27.34.25:27017'
 MONGO_DB = 'tutorial'
 
 
