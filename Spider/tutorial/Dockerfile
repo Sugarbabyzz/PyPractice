@@ -1,4 +1,4 @@
-FROM python:3.6
+FROM python:3.7
 ENV PATH /usr/local/bin:$PATH
 ADD tutorial /code
 WORKDIR /code
