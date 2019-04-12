@@ -11,7 +11,9 @@ REDIS_PORT = 6379
 REDIS_PASSWORD = None
 REDIS_KEY = 'proxies'
 
-
+"""
+存储模块
+"""
 class RedisClient(object):
     def __init__(self, host=REDIS_HOST, port=REDIS_PORT, password=REDIS_PASSWORD):
         """
