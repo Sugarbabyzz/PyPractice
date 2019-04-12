@@ -1,6 +1,8 @@
 from .db import RedisClient
 from .crawler import Crawler
 from .settings import *
+from .tester import Tester
+import sys
 
 
 """
@@ -29,6 +31,7 @@ class Getter():
                 callback = self.crawler.__CrawlFunc__[callback_label]
                 # 获取代理
                 proxies = self.crawler.get_proxies(callback)
+                sys.stdout.flush()
                 for proxy in proxies:
                     self.redis.add(proxy)
 

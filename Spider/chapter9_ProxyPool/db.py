@@ -1,8 +1,7 @@
-
-
 import redis
 from random import choice
-
+from .settings import *
+from .error import PoolEmptyError
 
 """
 存储模块
@@ -89,4 +88,17 @@ class RedisClient(object):
         """
         return self.db.zrangebyscore(REDIS_KEY, MIN_SCORE, MAX_SCORE)
 
+    def batch(self, start, stop):
+        """
+        批量获取
+        :param start: 开始索引
+        :param stop: 结束索引
+        :return: 代理列表
+        """
+        return self.db.zrevrange(REDIS_KEY, start, stop - 1)
 
+
+if __name__ == '__main__':
+    conn = RedisClient()
+    result = conn.batch(680, 688)
+    print(result)
