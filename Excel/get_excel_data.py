@@ -31,9 +31,8 @@ wb = openpyxl.load_workbook(filename)
 
 ws = wb.active
 
-# 逐行读取并存入list
-cell_list = []
-row_list = []
+cell_list = []  # 每行的内容
+row_list = []  # 每行的集合
 
 if filename == '线上推送数据.xlsx':
     for row in list(ws.rows)[2:]:
