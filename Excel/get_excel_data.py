@@ -43,6 +43,7 @@ if filename == '线上推送数据.xlsx':
                 cell_list.append(cell.value)
         row_list.append(cell_list)
         cell_list = []
+
 elif filename == '要目选题文本20181120.xlsx' :
     for row in list(ws.rows)[2:]:
         for cell in row[3::-2]:  # 列表切片，步长2取值，反向取
