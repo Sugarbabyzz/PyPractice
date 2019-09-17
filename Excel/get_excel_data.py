@@ -25,7 +25,7 @@ hot_column_dict = {
 线上推送数据.xlsx ； 要目选题文本20181120.xlsx
 '''
 
-filename = '要目选题文本20181120.xlsx'
+filename = '线上推送数据.xlsx'
 
 wb = openpyxl.load_workbook(filename)
 
@@ -36,18 +36,22 @@ row_list = []  # 每行的集合
 
 if filename == '线上推送数据.xlsx':
     for row in list(ws.rows)[2:]:
-        for cell in row[::-2]:   # 列表切片，步长2取值，反向取
-            if cell.value in hot_column_dict.keys():   # 将id换成对应类别
-                cell_list.append(hot_column_dict[cell.value])
-            else:
-                cell_list.append(cell.value)
+        # for cell in row[::-2]:   # 列表切片，步长2取值，反向取
+        #     if cell.value in hot_column_dict.keys():   # 将id换成对应类别
+        #         cell_list.append(hot_column_dict[cell.value])
+        #     else:
+        #         cell_list.append(cell.value)
+
+        cell_list = [hot_column_dict[x.value] if x.value in hot_column_dict.keys() else x.value for x in row[::-2]]
         row_list.append(cell_list)
         cell_list = []
 
-elif filename == '要目选题文本20181120.xlsx' :
+elif filename == '要目选题文本20181120.xlsx':
     for row in list(ws.rows)[2:]:
-        for cell in row[3::-2]:  # 列表切片，步长2取值，反向取
-            cell_list.append(cell.value)
+        # for cell in row[3::-2]:  # 列表切片，步长2取值，反向取
+        #     cell_list.append(cell.value)
+
+        cell_list = [x.value for x in row[3::-2]]  # 列表推导式
         row_list.append(cell_list)
         cell_list = []
 
