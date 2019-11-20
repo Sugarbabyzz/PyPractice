@@ -69,3 +69,5 @@ for i in range(3000):
         batch_Y = test_Y[selected_index]
         loss_value, accuracy_value = session.run([loss, accuracy], {X_holder:batch_X, Y_holder:batch_Y})
         print('step:%d loss:%.4f accuracy:%.4f' %(step, loss_value, accuracy_value))
+
+        
