@@ -81,7 +81,7 @@ def get_max_of_domino(L, R, W, left, right):
 # main
 if __name__ == '__main__':
     L, R, W = [], [], []
-    n = 2  # 设置序列长度
+    n = 6  # 设置序列长度
     initial_domino(L, R, W, n)  # 初始化多米诺骨牌序列
     max_number = get_max_of_domino(L, R, W, 0, n+1)  # 得到最大值
     print(max_number)
