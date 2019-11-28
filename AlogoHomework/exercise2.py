@@ -14,9 +14,9 @@ def aa(bb):
     count_file += 1
 def unpack_path_file(filepath, despath):
     print(filepath + '>>>' + despath)
-    archive = tarfile.open(filepath, 'r:gz')
+    archive = tarfile.open(filepath, 'r:gz')  # 获取压缩包
     for tarinfo in archive:
-        archive.extract(tarinfo, despath)   # 三种文件类型：目录、tar和文本
+        archive.extract(tarinfo, despath)   # 三种文件类型：目录、tar和文本   第一个参数为要解压的tarinfo，第二个参数为解压的目标路径
         if str(tarinfo.isdir()) == "False":
             if tarinfo.name.endswith('.tar.gz'):
                 unpack_path_file(despath + '/' + tarinfo.name, despath + '/' + tarinfo.name.split('/')[0])
