@@ -32,52 +32,40 @@ def initial_domino(L, R, W, n):
 
 def get_max_value(L, R, W, left, right):
 
-    if right-left == 0:
-        return 0
-    elif right-left == 1:
+    # if right-left == 0:
+    #     return 0
+    if right-left == 1:
         return R[left]*L[right]
     else:
-        mid = int((left+right+1)/2)
-        if L[mid] > R[mid]: #1
-            maxl1 = get_max_value(L, R, W, left, mid)
-            maxr1 = get_max_value(L, R, W, mid, right)
-            max1 = maxl1 + maxr1
-            tmp = R[mid]
-            R[mid] = L[mid]
-            L[mid] = tmp
-            maxl0 = get_max_value(L, R, W, left, mid)
-            maxr0 = get_max_value(L, R, W, mid, right)
-            max0 = maxl0 + maxr0
-            if max1 > max0:
-                W[mid] = 1
-                return max1
-            else:
-                W[mid] = 0
-                return max0
-        else:  # 0
-            maxl0 = get_max_value(L, R, W, left, mid)
-            maxr0 = get_max_value(L, R, W, mid, right)
-            max0 = maxl0 + maxr0
-            tmp = R[mid]
-            R[mid] = L[mid]
-            L[mid] = tmp
-            maxl1 = get_max_value(L, R, W, left, mid)
-            maxr1 = get_max_value(L, R, W, mid, right)
-            max1 = maxl1 + maxr1
-            if max1 > max0:
-                W[mid] = 1
-                return max1
-            else:
-                W[mid] = 0
-                return max0
-
-    return 0
+        mid = int((left+right+1) >> 1)
+        # 这种写法也可以得到正确结果，但是无法得到W的值了
+        maxl = get_max_value(L, R, W, left, mid)
+        maxr = get_max_value(L, R, W, mid, right)
+        max_before = maxl + maxr
+        tmp = R[mid]
+        R[mid] = L[mid]
+        L[mid] = tmp
+        maxl = get_max_value(L, R, W, left, mid)
+        maxr = get_max_value(L, R, W, mid, right)
+        max_after = maxl + maxr
+        if max_before > max_after:
+            return max_before
+        else:
+            return max_after
 
 
 if __name__ == '__main__':
-    L, R, W = [], [], []
-    n = 2
-    initial_domino(L, R, W, n)
+    # L, R, W = [], [], []
+    # n = 2
+    # initial_domino(L, R, W, n)
+    # L = [0, 5, 4, 9, 7, 3, 11, 0]
+    # R = [0, 8, 2, 6, 7, 9, 10, 0]
+    # W = [0, 0, 1, 1, 1, 0, 1, 0]
+    # n = 6
+    L = [0, 1, 5, 3, 0]
+    R = [0, 2, 4, 1, 0]
+    W = [0, 0, 0, 0, 0]
+    n = 3
     print(L)
     print(R)
     print(W)

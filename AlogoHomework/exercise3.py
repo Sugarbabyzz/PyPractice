@@ -41,7 +41,8 @@ def get_max_of_domino(L, R, W, left, right):
     elif right-left == 1:
         return R[left] * L[right]
     else:
-        mid = int((left + right + 1) / 2)  # +1为了向上取整
+        mid = int((left + right
+                   + 1) / 2)  # +1为了向上取整
         # print(mid)
 
         if L[mid] > R[mid]:  # W[mid] == 1 的情况
@@ -81,10 +82,15 @@ def get_max_of_domino(L, R, W, left, right):
 # main
 if __name__ == '__main__':
     L, R, W = [], [], []
-    n = 6  # 设置序列长度
-    initial_domino(L, R, W, n)  # 初始化多米诺骨牌序列
+    # n = 6  # 设置序列长度
+    # initial_domino(L, R, W, n)  # 初始化多米诺骨牌序列
+    R = [0, 8, 2, 6, 7, 9, 10, 0]
+    L = [0, 5, 4, 9, 7, 3, 11, 0]
+    W = [0, 0, 1, 1, 0, 0, 1, 0]
+    n = 6
     max_number = get_max_of_domino(L, R, W, 0, n+1)  # 得到最大值
     print(max_number)
+    print(W)
 
 
 
