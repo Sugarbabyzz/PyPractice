@@ -41,8 +41,8 @@ def get_max_of_domino(L, R, W, left, right):
     elif right-left == 1:
         return R[left] * L[right]
     else:
-        mid = int((left + right
-                   + 1) / 2)  # +1为了向上取整
+        mid = int((left + right + 1) / 2)  # +1为了向上取整
+        # mid = int((right - left) / 2) + left
         # print(mid)
 
         if L[mid] > R[mid]:  # W[mid] == 1 的情况
