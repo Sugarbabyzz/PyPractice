@@ -7,7 +7,7 @@ import pymysql
 import subprocess
 from ProcessDataToMySQL.fields import match_list
 from ProcessDataToMySQL.fields import fields_map
-from ProcessDataToMySQL.fields import host, database, user, password, port
+from ProcessDataToMySQL.fields import host, database, user, password, port, years, provinces
 
 
 # 初始化数据库连接
@@ -34,7 +34,7 @@ def process_excel_cq(filepath):
     data.to_sql('pgbgdjb_cq', con=engine, if_exists='append', index=False)
 
 
-#  处理 江西评估报告
+#  处理 评估报告
 def process_word_report(filepath, filename, dirname):
     # 读取文档
     try:
@@ -52,17 +52,23 @@ def process_word_report(filepath, filename, dirname):
     #   提取文档中子标题下的内容
     result_dict = {}
     result_dict['report_name'] = filename
-    result_dict['belong_folder'] = dirname
     for item in match_list:
         # 暂不处理 附件
         if item[0] == '(报告编号：|报告编号:)':
             match = re.match('(.*)' + item[0] + '(.*?)' + item[1] + '(.*)', content, re.S)
-        elif item[0] == '(6安全评估结论意见|6 安全评估结论意见)':
+        elif item[0] == '(6\s?安全评估结论意见)':
             match = re.match('(.*)' + item[0] + '\s(.*?)(\s)', content, re.S)
         else:
             match = re.match('(.*)' + item[0] + '(.*)' + item[1] + '(.*)', content, re.S)
         # 解析的内容存入到对应字段中
-        result_dict[fields_map.get(item[0])] = match.group(3).strip()
+        if match is None:
+            result_dict[fields_map.get(item[0])] = ''
+        else:
+            result_dict[fields_map.get(item[0])] = match.group(3).strip()
+    result_dict['report_year'] = result_dict.get('report_number')[0:4]
+    for province in provinces:
+        if province in filename:
+            result_dict['report_province'] = province
 
     # 查看存储结果 （调试）
     for k, v in result_dict.items():
@@ -96,6 +102,9 @@ def process_word_report(filepath, filename, dirname):
         risk_result_dict['risk_number'] = row.cells[1].text
         risk_result_dict['risk_assess_points'] = row.cells[2].text
         risk_result_dict['assessment'] = row.cells[3].text
+        if len(row.cells) == 5:  # 2018多一个 评估记录 的情况
+            risk_result_dict['assess_record'] = row.cells[4].text
+
         for k, v in risk_result_dict.items():
             print(k + ':  ' + v)
         # 将结果存入数据库
@@ -115,6 +124,9 @@ def process_word_report(filepath, filename, dirname):
         ensure_result_dict['ensure_number'] = row.cells[1].text
         ensure_result_dict['ensure_assess_points'] = row.cells[2].text
         ensure_result_dict['assessment'] = row.cells[3].text
+        if len(row.cells) == 5:  # 2018多一个 评估记录 的情况
+            ensure_result_dict['assess_record'] = row.cells[4].text
+
         for k, v in ensure_result_dict.items():
             print(k + ':  ' + v)
         print()
