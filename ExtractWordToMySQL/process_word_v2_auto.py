@@ -22,29 +22,32 @@ def store_to_db(table_name, dic):
 #  提取表格内容，并存入数据库  in （docx中的表，报告编号，报告名称，flag=表类型）
 def extra_from_table(table, doc_number, filename, flag):
     for row in table.rows[1:]:
-        extra_result_dict = {}
-        extra_result_dict['doc_name'] = filename
-        extra_result_dict['doc_number'] = doc_number
-        extra_result_dict['type'] = row.cells[0].text.replace('\n', '')
-        extra_result_dict['number'] = row.cells[1].text
-        extra_result_dict['assess_points'] = row.cells[2].text
-        extra_result_dict['assessment'] = row.cells[3].text
-        if len(row.cells) == 5:  # 表格多一个 评估记录 的情况
-            extra_result_dict['assess_record'] = row.cells[4].text
+        try:
+            extra_result_dict = {}
+            extra_result_dict['doc_name'] = filename
+            extra_result_dict['doc_number'] = doc_number
+            extra_result_dict['type'] = row.cells[0].text.replace('\n', '')
+            extra_result_dict['number'] = row.cells[1].text
+            extra_result_dict['assess_points'] = row.cells[2].text
+            extra_result_dict['assessment'] = row.cells[3].text
+            if len(row.cells) == 5:  # 表格多一个 评估记录 的情况
+                extra_result_dict['assess_record'] = row.cells[4].text
 
-        # for k, v in extra_result_dict.items():
-        #     print(k + ':  ' + v)
-        # print()
+            # for k, v in extra_result_dict.items():
+            #     print(k + ':  ' + v)
+            # print()
 
-        # 将结果存入数据库
-        if flag == 'risk':
-            store_to_db('risk_analysis_table', extra_result_dict)
-        elif flag == 'ensure':
-            store_to_db('ensure_analysis_table', extra_result_dict)
+            # 将结果存入数据库
+            if flag == 'risk':
+                store_to_db('risk_analysis_table', extra_result_dict)
+            elif flag == 'ensure':
+                store_to_db('ensure_analysis_table', extra_result_dict)
+        except:
+            print('表格处理有错了：' + filename + ' ' + doc_number + ' ' + table)
 
 
 #  解析 评估报告
-def process_word_report(filepath, filename):
+def process_word_report(filepath, filename, province):
     # 读取文档
     try:
         docx_file = docx.Document(filepath)
@@ -53,21 +56,18 @@ def process_word_report(filepath, filename):
 
     # 处理文档内容
     # 1、解析并存储 报告基本信息 （报告编号、省份、年份）
-    content, province = '', ''
+    content = ''
     for para in docx_file.paragraphs[:20]:  # 读前20行即可获取基本信息
         content = content + '\n' + para.text
 
     # doc_number
-    match = re.match('(.*)(报告编号：|报告编号:)(.*?)(\s)(.*)', content, re.S)
+    match = re.match('(.*)(报告编号：|报告编号:)\s?(.*?)(\s)(.*)', content, re.S)
     doc_number = match.group(3).strip() if match is not None else ''
     # year
     match = re.match('(.*)(\d{4})(\s*)年', content, re.S)
     year = match.group(2).strip() if match is not None else ''
     year = doc_number[:4] if doc_number != '' else year
     # province
-    for prov in provinces:
-        if prov in content or prov in filename:
-            province = prov
 
     info_dict = {}
     info_dict['report_number'] = doc_number
@@ -88,7 +88,10 @@ def process_word_report(filepath, filename):
     flag = 0
     content = ''
     content_dict = {}
+    chapter = '0'
     for p in docx_file.paragraphs:
+        if p.style.name is None:
+            continue
         if p.style.name == 'Heading 1' or p.style.name == 'Heading 2' or '标题' in p.style.name:
             if flag == 0:
                 flag = 1
@@ -97,24 +100,29 @@ def process_word_report(filepath, filename):
                 content = ''
             chapter = p.text
         else:
-            # if p.style.name == 'Normal' and flag == 1:
             if p.style.name != 'Heading 1' and p.style.name != 'Heading 2' and '标题' not in p.style.name and flag == 1:
                 content = content + '\n' + p.text
-    content_dict[chapter] = content
+    # 处理一下全篇没有标题的情况
+    if chapter == '0':
+        for p in docx_file.paragraphs[16:]:
+            content = content + '\n' + p.text
+        content_dict[chapter] = content
+    else:
+        content_dict[chapter] = content
 
-    # 存入数据库
+    # 处理章节和内容字段，存入数据库
     for k, v in content_dict.items():
         # print('--------------------------------------------')
         result_dict = {}
         result_dict['report_number'] = doc_number
         result_dict['report_name'] = filename
-        result_dict['chapter'] = ''.join(re.findall('[^\d\.?\d*\s]', k)).strip() if re.findall('[^\d\.?\d*\s]', k) else ''
-        result_dict['chapter_number'] = re.findall('\d\.?\d*', k)[0].strip() if re.findall('\d\.?\d*', k) else ''
+        result_dict['chapter'] = ''.join(re.findall('[^\d?\.?\d?\.?\d?\d*]', k)).strip() if re.findall('[^\d?\.?\d?\.?\d?\d*]', k) else ''
+        result_dict['chapter_number'] = re.findall('\d?\.?\d?\.?\d?\d*', k)[0].strip() if re.findall('\d?\.?\d?\.?\d?\d*', k) else ''
         for key, value in chapter_number_map.items():
             if key in k:
                 result_dict['chapter_number'] = chapter_number_map.get(key)
         result_dict['content'] = v.strip()
-
+        print('-----' + result_dict['chapter_number'] + ' - ' + result_dict['chapter'])
         # for key, value in result_dict.items():
         #     print(key + ': ' + value)
 
@@ -140,13 +148,29 @@ def process_word_report(filepath, filename):
 if __name__ == '__main__':
 
     # 处理  评估报告
-    rootpath = 'data/评估报告/待处理'
+    rootpath = 'data/评估报告处理中/待处理'
+    error_files = []
     for dirname in os.listdir(rootpath):
+        if dirname == '.DS_Store':
+            continue
         dirpath = rootpath + '/' + dirname
         for filename in os.listdir(dirpath):
+            if filename == '.DS_Store':
+                continue
             filepath = dirpath + '/' + filename
             # 默认是docx文件，如果是doc需要先转成docx
-            process_word_report(filepath, filename[:-5])
+            # 调用word解析程序，参数：（路径，文件名，省份）
+            try:
+                process_word_report(filepath, filename[:-5], dirname.replace('评估报告', ''))
+            except Exception as err:
+                print('处理错误！ ： ' + filepath)
+                error_files.append(filepath + '\n错误日志：' + str(err))
+
+    print('----------------------------------------')
+    print(error_files)
+    with open('error_files.txt', 'a') as file_object:
+        for file in error_files:
+            file_object.write(file + '\n\n')
 
 
 
