@@ -24,5 +24,10 @@ gen/
 out
 
 .DS_Store
-.DS_Store
 *.jpg
+
+# office
+.xlsx
+.xls
+.docx
+.doc
