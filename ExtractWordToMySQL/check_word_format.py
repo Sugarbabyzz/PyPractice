@@ -24,9 +24,9 @@ for dirname in os.listdir(rootpath):
         try:
             docx_file = docx.Document(filepath)
             for p in docx_file.paragraphs:
-                # if p.style.name == 'Heading 1' or p.style.name == 'Heading 2' or '标题' in p.style.name:
-                #     print(p.style.name + ' : ' + p.text.strip())
-                print(p.style.name)
+                if p.style.name == 'Heading 1' or p.style.name == 'Heading 2' or '标题' in p.style.name:
+                    print(p.style.name + ' : ' + p.text.strip())
+                # print(p.style.name)
         except:
             print('处理错误！ ：' + filepath)
 
