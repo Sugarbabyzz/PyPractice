@@ -122,7 +122,7 @@ def process_word_report(filepath, filename, province):
             if key in k:
                 result_dict['chapter_number'] = chapter_number_map.get(key)
         result_dict['content'] = v.strip()
-        print('-----' + result_dict['chapter_number'] + ' - ' + result_dict['chapter'])
+        print('----- ' + result_dict['chapter_number'] + ' - ' + result_dict['chapter'] + ' -----')
         # for key, value in result_dict.items():
         #     print(key + ': ' + value)
 
