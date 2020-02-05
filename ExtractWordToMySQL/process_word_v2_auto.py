@@ -162,7 +162,7 @@ if __name__ == '__main__':
             # 默认是docx文件，如果是doc需要先转成docx
             # 调用word解析程序，参数：（路径，文件名，省份）
             try:
-                process_word_report(filepath, filename[:-5], dirname.replace('评估报告', ''))
+                process_word_report(filepath, filename, dirname.replace('评估报告', ''))
             except Exception as err:
                 print('处理错误！ ： ' + filepath)
                 error_files.append(filepath + '\n错误日志：' + str(err))
