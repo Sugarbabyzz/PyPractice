@@ -150,6 +150,7 @@ if __name__ == '__main__':
     # 处理  评估报告
     rootpath = 'data/评估报告处理中/待处理'
     error_files = []
+    processed_files = []
     for dirname in os.listdir(rootpath):
         if dirname == '.DS_Store':
             continue
@@ -165,9 +166,14 @@ if __name__ == '__main__':
             except Exception as err:
                 print('处理错误！ ： ' + filepath)
                 error_files.append(filepath + '\n错误日志：' + str(err))
+            processed_files.append(datetime.datetime.now().strftime(
+                '%Y-%m-%d %H:%M:%S') + '：' + dirname + ' - ' + filename + ' Done！')
+        # 打印日志
+        with open('processing_log.txt', 'a') as f:
+            for file in processed_files:
+                f.write(file + '\n')
 
-    print('----------------------------------------')
-    print(error_files)
+    # 保存处理出错的文件
     with open('error_files.txt', 'a') as file_object:
         for file in error_files:
             file_object.write(file + '\n\n')
