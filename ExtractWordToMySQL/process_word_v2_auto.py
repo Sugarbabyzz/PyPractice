@@ -24,8 +24,8 @@ def extra_from_table(table, doc_number, filename, flag):
     for row in table.rows[1:]:
         try:
             extra_result_dict = {}
-            extra_result_dict['doc_name'] = filename
-            extra_result_dict['doc_number'] = doc_number
+            extra_result_dict['report_name'] = filename
+            extra_result_dict['report_number'] = doc_number
             extra_result_dict['type'] = row.cells[0].text.replace('\n', '')
             extra_result_dict['number'] = row.cells[1].text
             extra_result_dict['assess_points'] = row.cells[2].text
@@ -50,10 +50,13 @@ def extra_from_table(table, doc_number, filename, flag):
 def process_word_report(filepath, filename, province):
     # 读取文档
     try:
+        if filename.endswith('.doc'):
+            filepath = 'data/评估报告/对应docx/' + filename[:-4] + '.docx'
         docx_file = docx.Document(filepath)
     except:
         print('can`t open ' + filepath + ' ！！！')
 
+    print(filepath + '----' + filename)
     # 处理文档内容
     # 1、解析并存储 报告基本信息 （报告编号、省份、年份）
     content = ''
@@ -148,7 +151,7 @@ def process_word_report(filepath, filename, province):
 if __name__ == '__main__':
 
     # 处理  评估报告
-    rootpath = 'data/评估报告处理中/待处理'
+    rootpath = 'data/评估报告/处理中'
     error_files = []
     processed_files = []
     for dirname in os.listdir(rootpath):

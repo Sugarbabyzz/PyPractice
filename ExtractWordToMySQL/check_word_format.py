@@ -6,7 +6,7 @@ import os
 
 # check 标题格式是否符合要求
 # cncert
-rootpath = 'data/评估报告处理中/待处理'
+rootpath = 'data/评估报告/待处理'
 count = 0
 for dirname in os.listdir(rootpath):
     dirpath = rootpath + '/' + dirname
