@@ -166,12 +166,15 @@ if __name__ == '__main__':
             except Exception as err:
                 print('处理错误！ ： ' + filepath)
                 error_files.append(filepath + '\n错误日志：' + str(err))
+
             processed_files.append(datetime.datetime.now().strftime(
                 '%Y-%m-%d %H:%M:%S') + '：' + dirname + ' - ' + filename + ' Done！')
+
         # 打印日志
         with open('processing_log.txt', 'a') as f:
             for file in processed_files:
                 f.write(file + '\n')
+            processed_files = []
 
     # 保存处理出错的文件
     with open('error_files.txt', 'a') as file_object:
