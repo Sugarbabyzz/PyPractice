@@ -27,7 +27,7 @@ out
 *.jpg
 
 # office
-.xlsx
-.xls
-.docx
-.doc
+*.xlsx
+*.xls
+*.docx
+*.doc
