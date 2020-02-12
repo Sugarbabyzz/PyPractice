@@ -34,3 +34,15 @@ data/评估报告/处理中/江苏评估报告/02江苏移动“视频会员管�
 data/评估报告/处理中/黑龙江评估报告/【黑龙江联通】【2019-XAPG–HLGLT-03】【sop平台】.docx
 错误日志：local variable 'docx_file' referenced before assignment
 
+data/评估报告/处理中/黑龙江评估报告/【黑龙江联通】【2019-XAPG–HLGLT-03】【sop平台】.docx
+错误日志：local variable 'docx_file' referenced before assignment
+
+data/评估报告/处理中/太原评估报告/13太原-和智信-复评1107.docx
+错误日志：can only concatenate str (not "int") to str
+
+data/评估报告/处理中/太原评估报告/12太原-和验真-复评1107.docx
+错误日志：can only concatenate str (not "int") to str
+
+data/评估报告/处理中/太原评估报告/14太原-ESIM-复评1107.docx
+错误日志：can only concatenate str (not "int") to str
+
