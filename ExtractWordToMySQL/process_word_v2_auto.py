@@ -63,26 +63,36 @@ def process_word_report(filepath, filename, province):
     content = ''
     for para in docx_file.paragraphs[:20]:  # 读前20行即可获取基本信息
         content = content + '\n' + para.text
-
     # doc_number
-    match = re.match('(.*)(报告编号：|报告编号:)\s?(.*?)(\s)(.*)', content, re.S)
+    match = re.match('(.*)(报告编号：|报告编号:)\s*(.*?)(\s)(.*)', content, re.S)
     doc_number = match.group(3).strip() if match is not None else ''
     # year
     match = re.match('(.*)(\d{4})(\s*)年', content, re.S)
     year = match.group(2).strip() if match is not None else ''
-    year = doc_number[:4] if doc_number != '' else year
     for y in years:
-        if y in filename:
+        if y in filename or y in doc_number:
             year = y
     # business
     match = re.match('(.*)“(.*)”(.*)', filename, re.S)
     business = match.group(2).strip() if match is not None else ''
-    # operators
+    # operator
     operator = ''
     for opt in operators:
         if opt in filename:
             operator = opt
+    match = re.match('(.*)(被评估单位：|被评估单位:|委托单位：|委托单位:|申请单位：|申请单位:)\s*(.*?)(\s)(.*)', content, re.S)
+    if match is not None:
+        operator = match.group(3).strip()
     # province
+    # 从第一个表中解析基本信息
+    table = docx_file.tables[0]
+    for i in range(0, len(table.rows)):
+        if '委托单位' in table.rows[i].cells[0].text or '被评估单位' in table.rows[i].cells[0].text or '被测评单位' in table.rows[i].cells[0].text or '受评单位' in table.rows[i].cells[0].text:
+            if table.rows[i].cells[1].text != '':
+                operator = table.rows[i].cells[1].text
+        if '业务名称' in table.rows[i].cells[0].text:
+            if table.rows[i].cells[1].text != '':
+                business = table.rows[i].cells[1].text
 
     info_dict = {}
     info_dict['report_number'] = doc_number
@@ -143,8 +153,7 @@ def process_word_report(filepath, filename, province):
 
         # 存 业务名称 基本信息
         if result_dict['chapter'] == '业务名称':
-            if info_dict['report_business'] == '':
-                info_dict['report_business'] = re.sub('[^\w\u4e00-\u9fff()（）]+', '', result_dict['content'])
+            info_dict['report_business'] = re.sub('[^\w\u4e00-\u9fff()（）]+', '', result_dict['content'])
 
         # 将结果存入数据库
         # store_to_db('assess_report_content', result_dict)
@@ -165,18 +174,12 @@ def process_word_report(filepath, filename, province):
     #     extra_from_table(ensure_analysis_table, doc_number, filename, flag='ensure')
 
     # 4、存储 报告基本信息
-    # store_to_db('assess_report_info', info_dict)
+    store_to_db('assess_report_info', info_dict)
 
     for k, v in info_dict.items():
         print(k + ': ' + v)
 
 
-    table = docx_file.tables[0]
-    for i in range(0, len(table.rows)):
-        if '委托单位' in table.rows[i].cells[0].text:
-            print(table.rows[i].cells[1].text)
-        if '业务名称' in table.rows[i].cells[0].text:
-            print(table.rows[i].cells[1].text)
 # 主程序
 if __name__ == '__main__':
 
