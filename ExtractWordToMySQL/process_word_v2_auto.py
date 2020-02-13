@@ -86,6 +86,9 @@ def process_word_report(filepath, filename, dirname):
     match = re.match('(.*)(被评估单位：|被评估单位:|委托单位：|委托单位:|申请单位：|申请单位:)\s*(.*?)(\s)(.*)', content, re.S)
     if match is not None:
         operator = match.group(3).strip()
+    match = re.match('(.*)中国(.*?)公司(.*)', content, re.S)
+    if match is not None:
+        operator = '中国' + match.group(2).strip() + '公司'
     # province
     # 从第一个表中解析基本信息
     if docx_file.tables:
