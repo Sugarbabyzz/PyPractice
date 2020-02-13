@@ -47,7 +47,7 @@ def extra_from_table(table, doc_number, filename, flag):
 
 
 #  解析 评估报告
-def process_word_report(filepath, filename, province):
+def process_word_report(filepath, filename, dirname):
     # 读取文档
     try:
         # doc文件去读取对应docx文件
@@ -75,6 +75,9 @@ def process_word_report(filepath, filename, province):
     # business
     match = re.match('(.*)“(.*)”(.*)', filename, re.S)
     business = match.group(2).strip() if match is not None else ''
+    match = re.match('(.*)(业务名称：|业务名称:)\s*(.*?)(\s)(.*)', content, re.S)
+    if match is not None:
+        business = match.group(3).strip()
     # operator
     operator = ''
     for opt in operators:
@@ -85,22 +88,25 @@ def process_word_report(filepath, filename, province):
         operator = match.group(3).strip()
     # province
     # 从第一个表中解析基本信息
-    table = docx_file.tables[0]
-    for i in range(0, len(table.rows)):
-        if '委托单位' in table.rows[i].cells[0].text or '被评估单位' in table.rows[i].cells[0].text or '被测评单位' in table.rows[i].cells[0].text or '受评单位' in table.rows[i].cells[0].text:
-            if table.rows[i].cells[1].text != '':
-                operator = table.rows[i].cells[1].text
-        if '业务名称' in table.rows[i].cells[0].text:
-            if table.rows[i].cells[1].text != '':
-                business = table.rows[i].cells[1].text
+    if docx_file.tables:
+        table = docx_file.tables[0]
+        for i in range(0, len(table.rows)):
+            if '委托单位' in table.rows[i].cells[0].text or '被评估单位' in table.rows[i].cells[0].text or '被测评单位' in table.rows[i].cells[0].text or '受评单位' in table.rows[i].cells[0].text:
+                if table.rows[i].cells[1].text != '':
+                    operator = table.rows[i].cells[1].text.split('\n')[0].strip()
+            if '业务名称' in table.rows[i].cells[0].text:
+                if table.rows[i].cells[1].text != '':
+                    business = table.rows[i].cells[1].text.split('\n')[0].strip()
+            # print(table.rows[i].cells[0].text.split('\n')[0].strip() + ':' + table.rows[i].cells[1].text.split('\n')[0].strip())
 
     info_dict = {}
     info_dict['report_number'] = doc_number
     info_dict['report_name'] = filename
     info_dict['report_year'] = year
-    info_dict['report_province'] = province
+    info_dict['report_province'] = dirname.replace('评估报告', '')
     info_dict['report_business'] = business
     info_dict['report_operator'] = operator
+    info_dict['report_path'] = dirname + '/' + filename
 
     # 查看存储结果 （调试）
     print('-——————————————————-——————————————————-——————————————————-——————————————————-——————————————————-———————————')
@@ -153,7 +159,8 @@ def process_word_report(filepath, filename, province):
 
         # 存 业务名称 基本信息
         if result_dict['chapter'] == '业务名称':
-            info_dict['report_business'] = re.sub('[^\w\u4e00-\u9fff()（）]+', '', result_dict['content'])
+            if business == '':
+                info_dict['report_business'] = re.sub('[^\w\u4e00-\u9fff()（）]+', '', result_dict['content'])
 
         # 将结果存入数据库
         # store_to_db('assess_report_content', result_dict)
@@ -199,7 +206,7 @@ if __name__ == '__main__':
             # 默认是docx文件，如果是doc需要先转成docx（这里从<对应docx>文件夹下找）
             # 调用word解析程序，参数：（路径，文件名，省份）
             try:
-                process_word_report(filepath, filename, dirname.replace('评估报告', ''))
+                process_word_report(filepath, filename, dirname)
             except Exception as err:
                 print('处理错误！ ： ' + filepath)
                 error_files.append(filepath + '\n错误日志：' + str(err))
