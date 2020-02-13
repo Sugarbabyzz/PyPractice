@@ -52,7 +52,7 @@ def process_word_report(filepath, filename, dirname):
     try:
         # doc文件去读取对应docx文件
         if filename.endswith('.doc'):
-            filepath = 'data/评估报告/对应docx/' + filename[:-4] + '.docx'
+            filepath = 'data/评估报告/第一批对应docx/' + filename[:-4] + '.docx'
         docx_file = docx.Document(filepath)
     except Exception as err:
         print('can`t open ' + filepath + ' ！！！' + '\nerr' + str(err))
@@ -166,22 +166,25 @@ def process_word_report(filepath, filename, dirname):
                 info_dict['report_business'] = re.sub('[^\w\u4e00-\u9fff()（）]+', '', result_dict['content'])
 
         # 将结果存入数据库
-        # store_to_db('assess_report_content', result_dict)
+        store_to_db('assess_report_content', result_dict)
 
     # 3、解析并存储 表格
     # 首先确定 风险分析表 risk_analysis_table 和 保障能力分析表 ensure_analysis_table
-    # risk_analysis_table, ensure_analysis_table = '', ''
-    # for table in docx_file.tables:
-    #     cell = table.rows[0].cells[0]
-    #     if cell.text == '风险类型':
-    #         risk_analysis_table = table
-    #     elif cell.text == '保障能力类型':
-    #         ensure_analysis_table = table
-    # # 提取并存储 风险分析表 和 保障能力分析表
-    # if risk_analysis_table != '':
-    #     extra_from_table(risk_analysis_table, doc_number, filename, flag='risk')
-    # if ensure_analysis_table != '':
-    #     extra_from_table(ensure_analysis_table, doc_number, filename, flag='ensure')
+    risk_analysis_table, ensure_analysis_table = '', ''
+    for table in docx_file.tables:
+        cell = table.rows[0].cells[0]
+        # print(cell.text)
+        if '风险类型' in cell.text:
+            risk_analysis_table = table
+        elif '保障能力类型' in cell.text:
+            ensure_analysis_table = table
+    # 提取并存储 风险分析表 和 保障能力分析表
+    if risk_analysis_table != '':
+        extra_from_table(risk_analysis_table, doc_number, filename, flag='risk')
+        # print('risk working!')
+    if ensure_analysis_table != '':
+        extra_from_table(ensure_analysis_table, doc_number, filename, flag='ensure')
+        # print('ensure working!!!')
 
     # 4、存储 报告基本信息
     store_to_db('assess_report_info', info_dict)

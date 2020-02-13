@@ -7,12 +7,19 @@ operators = ['电信', '移动', '联通']
 # 年份
 years = ['2015', '2016', '2017', '2018', '2019', '2020']
 
-# db
+# localhost db
 host = 'localhost'
 database = 'process'
 user = 'root'
 password = '123456'
 port = 3306
+
+# 服务器 db
+# host = '192.168.10.231'
+# database = 'assess'
+# user = 'bj'
+# password = 'bj2016'
+# port = 3307
 
 chapter_number_map = {
     '一': '1',
