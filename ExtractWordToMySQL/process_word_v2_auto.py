@@ -66,6 +66,8 @@ def process_word_report(filepath, filename, dirname):
     # doc_number
     match = re.match('(.*)(报告编号：|报告编号:)\s*(.*?)(\s)(.*)', content, re.S)
     doc_number = match.group(3).strip() if match is not None else ''
+    if '-' not in doc_number:
+        doc_number = ''
     # year
     match = re.match('(.*)(\d{4})(\s*)年', content, re.S)
     year = match.group(2).strip() if match is not None else ''
@@ -75,7 +77,7 @@ def process_word_report(filepath, filename, dirname):
     # business
     match = re.match('(.*)“(.*)”(.*)', filename, re.S)
     business = match.group(2).strip() if match is not None else ''
-    match = re.match('(.*)(业务名称：|业务名称:)\s*(.*?)(\s)(.*)', content, re.S)
+    match = re.match('(.*)(业务名称：|业务名称:|系统名称：|系统名称:|产品名称：|产品名称:)\s*(.*?)(\s)(.*)', content, re.S)
     if match is not None:
         business = match.group(3).strip()
     # operator
@@ -100,7 +102,6 @@ def process_word_report(filepath, filename, dirname):
             if '业务名称' in table.rows[i].cells[0].text:
                 if table.rows[i].cells[1].text != '':
                     business = table.rows[i].cells[1].text.split('\n')[0].strip()
-            # print(table.rows[i].cells[0].text.split('\n')[0].strip() + ':' + table.rows[i].cells[1].text.split('\n')[0].strip())
 
     info_dict = {}
     info_dict['report_number'] = doc_number
@@ -161,36 +162,72 @@ def process_word_report(filepath, filename, dirname):
         #     print(key + ': ' + value)
 
         # 存 业务名称 基本信息
-        if result_dict['chapter'] == '业务名称':
-            if business == '':
-                info_dict['report_business'] = re.sub('[^\w\u4e00-\u9fff()（）]+', '', result_dict['content'])
+        if result_dict['chapter'] == '业务基本情况介绍' and business == '':
+            match = re.match('(.*?)“(.*?)”(.*)', result_dict['content'], re.S)
+            if match is not None:
+                business = match.group(2).strip()
+
+        if result_dict['chapter'] == '业务名称' and business == '':
+            business = re.sub('[^\w\u4e00-\u9fff()（）]+', '', result_dict['content'])
+
+        if result_dict['chapter'] == '评估对象' and business == '':
+            business = re.sub('[^\w\u4e00-\u9fff()（）]+', '', result_dict['content'])
 
         # 将结果存入数据库
-        store_to_db('assess_report_content', result_dict)
+        # store_to_db('assess_report_content', result_dict)
 
     # 3、解析并存储 表格
     # 首先确定 风险分析表 risk_analysis_table 和 保障能力分析表 ensure_analysis_table
-    risk_analysis_table, ensure_analysis_table = '', ''
-    for table in docx_file.tables:
-        cell = table.rows[0].cells[0]
-        # print(cell.text)
-        if '风险类型' in cell.text:
-            risk_analysis_table = table
-        elif '保障能力类型' in cell.text:
-            ensure_analysis_table = table
-    # 提取并存储 风险分析表 和 保障能力分析表
-    if risk_analysis_table != '':
-        extra_from_table(risk_analysis_table, doc_number, filename, flag='risk')
-        # print('risk working!')
-    if ensure_analysis_table != '':
-        extra_from_table(ensure_analysis_table, doc_number, filename, flag='ensure')
-        # print('ensure working!!!')
+    # risk_analysis_table, ensure_analysis_table = '', ''
+    # for table in docx_file.tables:
+    #     cell = table.rows[0].cells[0]
+    #     # print(cell.text)
+    #     if '风险类型' in cell.text:
+    #         risk_analysis_table = table
+    #     elif '保障能力类型' in cell.text:
+    #         ensure_analysis_table = table
+    # # 提取并存储 风险分析表 和 保障能力分析表
+    # if risk_analysis_table != '':
+    #     extra_from_table(risk_analysis_table, doc_number, filename, flag='risk')
+    #     # print('risk working!')
+    # if ensure_analysis_table != '':
+    #     extra_from_table(ensure_analysis_table, doc_number, filename, flag='ensure')
+    #     # print('ensure working!!!')
 
-    # 4、存储 报告基本信息
+    # 4、存储 报告基本信息 （业务名称）
+    # 融媒体中心的报告，从第一张表格中解析业务名称
+    if docx_file.tables and business == '':
+        table = docx_file.tables[0]
+        if table.columns[0].cells[0].text.strip() == '被检查企业':
+            if table.columns[3].cells[0].text.strip() != '':
+                business = table.columns[3].cells[0].text.strip()
+
+        if business == '':
+            for i in range(0, len(table.columns)):
+                c = table.columns[i].cells[0].text.strip()
+                match = re.match('(.*?)“(.*?)”(.*)', c, re.S)
+                if match is not None:
+                    business = match.group(2).strip()
+                    break
+
+        # 如果业务名称没有被引号括起来
+        if business == '' and len(docx_file.tables) > 1:
+            table = docx_file.tables[1]
+            if table.columns[2].cells[0].text.strip() != '':
+                business = table.columns[2].cells[0].text.strip()
+    # 确定最终的业务名称
+    info_dict['report_business'] = business
+    # 存 基本信息 到数据库
     store_to_db('assess_report_info', info_dict)
 
     for k, v in info_dict.items():
         print(k + ': ' + v)
+
+    # 打印有问题的文件日志到txt
+    if info_dict['report_year'] == '2009' or info_dict['report_year'] == '' or info_dict['report_operator'] == '' or \
+            info_dict['report_business'] == '':
+        with open('something_wrong_files.txt', 'a') as file_object:
+            file_object.write(filepath + '\n')
 
 
 # 主程序
@@ -220,16 +257,16 @@ if __name__ == '__main__':
             processed_files.append(datetime.datetime.now().strftime(
                 '%Y-%m-%d %H:%M:%S') + '：' + dirname + ' - ' + filename + ' Done！')
 
-        # 打印日志到txt
-        with open('processing_log.txt', 'a') as f:
-            for file in processed_files:
-                f.write(file + '\n')
-            processed_files = []
-
-    # 打印处理出错的文件日志到txt
-    with open('error_files.txt', 'a') as file_object:
-        for file in error_files:
-            file_object.write(file + '\n\n')
+    #     # 打印日志到txt
+    #     with open('processing_log.txt', 'a') as f:
+    #         for file in processed_files:
+    #             f.write(file + '\n')
+    #         processed_files = []
+    #
+    # # 打印处理出错的文件日志到txt
+    # with open('error_files.txt', 'a') as file_object:
+    #     for file in error_files:
+    #         file_object.write(file + '\n\n')
 
 
 
