@@ -12,11 +12,10 @@ print(num_map_dic)
 
 #  2、在表头写上序号
 no_number_entity = []  # 无对应序号的单位
-zongbiao = []  # 总表
 error_entity = []  # 出现错误的公司
 count = 0
 
-rootpath = 'data'
+rootpath = 'data'  # 程序开始的文件夹
 for street_dir in os.listdir(rootpath):
     street_path = rootpath + '/' + street_dir
     for com_dir in os.listdir(street_path):
@@ -24,38 +23,33 @@ for street_dir in os.listdir(rootpath):
         for filename in os.listdir(com_path):
             try:
                 if '总表' in filename:
-                    zongbiao.append(filepath)
-                    # print('总表：' + zongbiao)
                     continue
                 filepath = com_path + '/' + filename
                 entity_name = filename[:-5]
                 entity_number = num_map_dic.get(entity_name.replace('(', '（').replace(')', '）'))
                 if entity_number is None:
                     no_number_entity.append(filepath)
-                    # print('无对应序号的' + no_number_entity)
                     continue
                 print(filepath + '    ' + entity_name + ': ' + entity_number)
-                # wb = load_workbook(filepath)
-                # ws = wb.active
-                # ws['A52'] = entity_number
-                # wb.save(filepath)
+                wb = load_workbook(filepath)
+                ws = wb.active
+                ws['A52'] = entity_number
+                wb.save(filepath)
                 count += 1
             except:
                 print('---------------------' + filepath + '  出现错误！ ---------------------')
                 error_entity.append(filepath)
 
 
-print('------------------------------------------------------------------------------------')
-print('统计如下：')
-print('已处理文件：')
-print(count)
-print('无对应序号的文件：')
-print(no_number_entity)
-print('出现错误的文件：')
-print(error_entity)
-print('总表：')
-print(zongbiao)
-
+with open('processing_log.txt', 'a') as f:
+    f.write('------------------------------------------------------------------------------------')
+    f.write('统计如下：\n')
+    f.write('已处理文件：')
+    f.write(count)
+    f.write('\n无对应序号的文件：')
+    f.write(no_number_entity)
+    f.write('\n出现错误的文件：')
+    f.write(error_entity)
 
 
 
