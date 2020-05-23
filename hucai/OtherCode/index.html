@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>list</title>
+    <!-- ZUI 标准版压缩后的 CSS 文件 -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/zui/1.9.1/css/zui.min.css">
+    <!-- ZUI Javascript 依赖 jQuery -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/zui/1.9.1/lib/jquery/jquery.js"></script>
+    <!-- ZUI 标准版压缩后的 JavaScript 文件 -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/zui/1.9.1/js/zui.min.js"></script>
+</head>
+<body>
+    <button type="button" id="start" class="btn">开始</button>
+    <button type="button" id="save" class="btn">保存</button>
+    <a href="{:U('Index/city')}">处理city</a>
+    <table class="table" id="table">
+        <volist id="rs" name="rs">
+            <tr data-flag="0" data-id="{$rs.id}">
+                <td data-tag="id">{$rs.id}</td>
+                <td data-tag="type">{$rs.type}</td>
+                <td data-tag="url">{$rs.url}</td>
+                <td data-tag="flag">{$rs.flag}</td>
+            </tr>
+        </volist>
+    </table>
+    <script>
+        var base_url = 'http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2019/';
+        var city = [];
+        $(function(){
+            $('#start').click(function(event) {
+                var $tr = $('#table tr[data-flag=0]').first();
+
+                var fnGetTr = function(){
+                    if($tr.data('flag')==0){
+                        $tr.data('flag', 1);
+                        $.post(location.href, { action : 'gethtml', id : $tr.data('id') }, function(data, textStatus, xhr) {
+                            //console.log(data.info);
+                            var $ctr = $(data.info.html).find('.citytable .citytr');
+                            $ctr.each(function(index, el) {
+                                var $td = $(el).children();
+
+                                city.push({
+                                    code : $.trim($td.eq(0).text()),
+                                    name : $.trim($td.eq(1).text()),
+                                    children_url : base_url + $td.eq(1).children('a').attr('href')
+                                });
+
+                            });
+                            $tr = $tr.next('[data-flag=0]');
+                            if($tr.length>0){
+                                fnGetTr();
+                            }
+                            else{
+                                alert('finish');
+                                console.log(city);
+                            }
+                        });
+                    }
+                }
+                fnGetTr();
+            });
+
+            $('#save').click(function(event) {
+                var data = {
+                    table : 'city',
+                    save : city,
+                    //name : [],
+                    //children_url : []
+                }
+/*                $(city).each(function(index, el) {
+                    data.code.push(el.code);
+                    data.name.push(el.name);
+                    data.children_url.push(el.children_url);
+                });*/
+                console.log(data);
+                $.post('{:U("Index/save")}?table=city', data, function(rs) {
+                    console.log(rs);
+                });
+            });;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<script>
+    var fn;
+
+    function randomNum(minNum,maxNum){
+        switch(arguments.length){
+            case 1:
+                return parseInt(Math.random()*minNum+1,10);
+            break;
+            case 2:
+                return parseInt(Math.random()*(maxNum-minNum+1)+minNum,10);
+            break;
+                default:
+                    return 0;
+                break;
+        }
+    }
+
+
+    $(function(){
+
+        if(location.href.indexOf('index.html')==54 || location.href=='http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2019/'){
+            var data = [];
+            $('table.provincetable .provincetr').each(function(i, tr) {
+                $(tr).children().each(function(j, td) {
+                    var province = {
+                        name : $.trim($(td).text()),
+                        url : 'http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2019/' + $(td).children('a').attr('href'),
+                    }
+                    if(province.name!=''){
+                        data.push(province);
+                    }
+                });
+            });
+            console.log(data);
+            var len = data.length;
+            var id = 0;
+            console.log(len);
+
+            if(len>0){
+                var getCity = function(){
+                    if(id==len){
+                        clearTimeout(fn);
+                        alert('finish');
+                        return false;
+                    }
+
+                    var d = data[id];
+                    console.log(d);
+
+                    $.get('http://io.zonecode/Home/Index/url?url=' + d.url, function(html) {
+                        var t = randomNum(10, 50) * 100;
+                        console.log(t);
+
+                        fn = setTimeout(function(){
+                            id ++;
+                            getCity();
+                        }, t);
+                    });
+
+
+
+
+                }
+
+                getCity();
+            }
+
+
+
+        }
+
+    });
+</script>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{$Think.ACTION_NAME}</title>
+<!-- ZUI 标准版压缩后的 CSS 文件 -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/zui/1.9.1/css/zui.min.css">
+
+    <!-- ZUI Javascript 依赖 jQuery -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/zui/1.9.1/lib/jquery/jquery.js"></script>
+    <!-- ZUI 标准版压缩后的 JavaScript 文件 -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/zui/1.9.1/js/zui.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery-scrollTo/2.1.2/jquery.scrollTo.min.js"></script>
+    <style>
+        #toolbar{ position: fixed; width: 100%; bottom:0;left:0; background: #fff; border-top: 1px solid #ccc;padding: 8px; }
+        tr.acc td{ background: #ddf4df }
+        body{ padding: 10px 10px 58px 10px; }
+        #toolbar .per{ float: right; width: 33.3% }
+    </style>
+</head>
+<body>
+    <div id="toolbar"> 
+
+        <div class="per">
+            <strong>
+                <span class="progressbar-value">0</span>%
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span><span class="progress-num">0</span>/{$total}</span>
+            </strong>            
+            <div class="progress">
+                <div class="progress-bar progress-bar-success"></div>
+            </div>
+        </div>
+
+
+
+        <button type="button" id="get_html" class="btn">抓html</button>
+        &nbsp;&nbsp;
+        <button type="button" id="save" class="btn">保存table_data</button>
+        &nbsp;&nbsp;
+        <a href="{:U('Index/index')}">首页</a>
+        &nbsp;&nbsp;
+        <a href="{:U('Index/city')}">处理city</a>
+        &nbsp;&nbsp;
+        <a href="{:U('Index/county')}">处理county</a>
+        &nbsp;&nbsp;
+        <a href="{:U('Index/town')}">处理town</a>
+        
+    </div>
+    <table class="table table-bordered" id="table">
+        <volist id="rs" name="rs">
+            <tr data-flag="0" data-id="{$rs.id}">
+                <td data-tag="i">{$i}</td>
+                <td data-tag="code">{$rs.code}</td>
+                <td data-tag="name">{$rs.name}</td>
+                <td data-tag="children_url">{$rs.children_url}</td>
+            </tr>
+        </volist>
+    </table>
+    <script>
+        var base_url = 'http://www.stats.gov.cn/tjsj/tjbz/tjyqhdmhcxhfdm/2019/';
+        var table_data = [];
+        var total = {$total};
+        var fn;
+
+        function randomNum(minNum,maxNum){
+            switch(arguments.length){
+                case 1:
+                    return parseInt(Math.random()*minNum+1,10);
+                break;
+                case 2:
+                    return parseInt(Math.random()*(maxNum-minNum+1)+minNum,10);
+                break;
+                    default:
+                        return 0;
+                    break;
+            }
+        }
+
+        function getTr($tr){
+            $tr.addClass('acc');
+            $.scrollTo($tr.prev().prev(), 0);
+            var cidx = $tr.index();
+            $('#toolbar .progress-num').html(cidx);
+
+            var percent = cidx / total * 100;
+            $('#toolbar .progressbar-value').html(percent.toFixed(2));
+            $('#toolbar .progress-bar').width(percent +'%');
+
+
+            var $td = $tr.children();
+            var url = $td.filter('[data-tag=children_url]').text();
+            console.log(url);
+            $.post('{:U("Index/url")}?url='+ url, function(rs) {
+                //console.log('-----'+url);
+
+                var pre_url = '';
+                $(url.split('/')).each(function(p, u) {
+                    if(u.indexOf('.html')==-1){
+                        pre_url += u + '/';
+                    }
+                    
+                });
+                console.log('pre_url：' + pre_url);
+
+                console.log(rs);
+                if(rs.status){
+                    var $page = $(rs.info.html);
+                    var $table = $page.find('.countytable, .towntable, .villagetable');
+                    if($table.length>0){
+
+                        var $ctr = $table.find('.countytr, .towntr, .villagetr');
+
+                        $ctr.each(function(index, el) {
+                            var $td = $(el).children();
+
+                            var $a = $td.eq(1).children('a');
+
+                            table_data.push({
+                                code : $.trim($td.eq(0).text()),
+                                name : $.trim($td.eq(1).text()),
+                                children_url : $a.length>0 ?  ( pre_url + $a.attr('href') ) : ''
+                            });
+
+                        });
+
+                        //var t = rs.info.flag ? 0 : randomNum(10, 50) * 100 * 0 ;
+                        var t = 0 ;
+                        //t = 2000;
+                        console.log(t);
+
+                        //return false;
+
+                        $tr = $tr.next('[data-flag=0]');
+                        if($tr.length>0){
+                            setTimeout(function(){
+                                getTr($tr);
+                            }, t);
+                        }
+                        else{
+                            alert('finish');
+                            console.log(table_data);
+                        }
+ 
+
+
+                    }
+                    else{
+                        //未找到表格
+                        alert('table error');
+                        $('#get_html').click();
+                    }
+                }
+                else{
+                    //alert('url error');
+                    $('#get_html').click();
+                }
+            }).error(function() {
+                $tr.removeClass('acc');
+                //alert("ajax error");
+                $('#get_html').click();
+            });
+
+        }
+
+
+        $(function(){
+            $('#get_html').click(function(event) {
+                var $tr = $('#table tr:not(.acc)').first();
+                getTr($tr);
+            });
+
+
+            $('#save').click(function(event) {
+                var a = $('#table tr.acc').length;
+                var b = $('#table tr').length;
+                if(a!=b || a==0){
+                    alert('请抓取html再保存');
+                    return false;
+                }
+                if(confirm('确定保存数据？')){
+                    var data = {
+                        table : '{$table}',
+                        save : table_data,
+                        //name : [],
+                        //children_url : []
+                    }
+                    console.log(data);
+                    $.post('{:U("Index/save")}?table={$table}', data, function(rs) {
+                        console.log(rs);
+                    });
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>
