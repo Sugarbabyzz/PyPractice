@@ -11,7 +11,9 @@ import jieba
 import jieba.posseg as pseg
 import pymongo
 
+
 class MilitaryGraph:
+
     def __init__(self):
         cur = '/'.join(os.path.abspath(__file__).split('/')[:-1])
         self.datapath = os.path.join(cur, 'data/military.json')
@@ -19,6 +21,7 @@ class MilitaryGraph:
         db_name = 'military_qa'
         col_name = 'data'
         self.col = self.conn[db_name][col_name]
+        # 键是属性，值是属性在问题中可能问的方式
         self.attributes ={'同型': ['同型'], '机高': ['机高'],
                           '战斗全重': ['战斗全重'], '水下排水量': ['水下排水量'],
                           '处理器': ['处理器'], '主炮': ['主炮'],
@@ -138,6 +141,7 @@ class MilitaryGraph:
                              '核潜艇': ['核潜艇'], '武装直升机': ['武装直升机', '直升机'],
                              '布/扫雷车': ['布/扫雷车', '扫雷车', '扫雷车'], '潜舰导弹': ['潜舰导弹', '导弹'],
                              '主战坦克': ['主战坦克', '坦克']}
+        # 构建武器实体字典，键和值相同
         self.weapons = self.load_weapons()
         self.weapon_dict = {i:i for i in self.weapons}
         self.countries = {'荷兰': ['荷兰'], '阿根廷': ['阿根廷'], '瑞士': ['瑞士'],
@@ -254,14 +258,23 @@ class MilitaryGraph:
 
     '''构造映射字典'''
     def build_dict(self, dict):
+        # 键为问句中可能出现的表述方式，值为库中存储的标准表述
         wd_dict = {}
         for cate, wds in dict.items():
             for wd in wds:
                 wd_dict[wd] = cate
         return wd_dict
 
+    '''将实体标记和实体词加入到jieba当中'''
+    def add_jieba(self, wds, tag):
+        for wd in wds:
+            jieba.add_word(wd, tag=tag, freq=300000)
+        return
+    """ ---------------------------- 上面为初始化内容 ----------------------------"""
+
     '''检测单位'''
     def detect_entity(self, question):
+        # 识别 单位 和 时间
         units = [i[0] + i[1] for i in self.unit_pattern.findall(question) if i]
         times = self.time_pattern.findall(question)
         return times, units
@@ -314,19 +327,16 @@ class MilitaryGraph:
         num_standrd = float(num) * plus
         return num_standrd
 
-    '''将实体标记和实体词加入到jieba当中'''
-    def add_jieba(self, wds, tag):
-        for wd in wds:
-            jieba.add_word(wd, tag=tag, freq=300000)
-        return
-
     '''问句解析'''
     def question_parser(self, question):
+        # 检测问句中的单位和时间
         times, units = self.detect_entity(question)
         self.add_jieba(times, 'n_time')
         self.add_jieba(units, 'n_unit')
+        # 根据之前设定的jieba分词词典，利用pseg对问句分词，遍历 词和词性
         wds = [(i.word, i.flag) for i in pseg.cut(question)]
         parser_dict = {}
+        # 将词存到解析字典的对应列表中
         parser_dict['n_attrs'] = [wd for wd,flag in wds if flag == 'n_attr']
         parser_dict['n_times'] = [wd for wd,flag in wds if flag == 'n_time']
         parser_dict['n_bigs'] = [wd for wd,flag in wds if flag == 'n_big']
@@ -336,6 +346,7 @@ class MilitaryGraph:
         parser_dict['n_mosts'] = [wd for wd,flag in wds if flag == 'n_most']
         parser_dict['n_units'] = [wd for wd,flag in wds if flag == 'n_unit']
         parser_dict['n_weapons'] = [wd for wd,flag in wds if flag == 'n_weapon']
+        # 将问句涉及的所有模式（标签）存在解析字典这个列表中
         parser_dict['pattern'] = [flag for wd, flag in wds if flag in ['n_attr', 'n_time', 'n_big', 'n_small', 'n_unit', 'n_country', 'n_compare', 'n_most', 'n_weapon']]
         # parser_dict['wds'] = wds
         return parser_dict
@@ -344,12 +355,13 @@ class MilitaryGraph:
     def search_answer(self, parser_dict):
         print('step1:问句解析 >>', parser_dict)
         pattern = parser_dict['pattern']
-        print('step2:查询模板 >>',pattern)
+        print('step2:查询模板 >>', pattern)
         search_data = []
         condition = {}
         targets = ['名称']
         search_flag = 1
 
+        # 根据提问的不同模式，做出不同的响应
         if pattern in [['n_country', 'n_small'], ['n_small', 'n_country']]:
             country = self.country_dict.get(parser_dict.get('n_countries')[0])
             n_small = self.small_dict.get(parser_dict.get('n_smalls')[0])
@@ -540,6 +552,7 @@ class MilitaryGraph:
             targets.append(n_attr)
             search_data.append({'condition':condition, 'targets':targets})
 
+        # 根据 查询模式词，在MongoDB查询结果
         result = self.query_mongo(search_flag, search_data)
         return result
 
@@ -576,7 +589,9 @@ class MilitaryGraph:
 
     '问答主函数'
     def qa_main(self, question):
+        # 利用jieba分词解析，parser_dict中，以之前设定的标签为key，value为问句中标签对应的词
         parser_dict = self.question_parser(question)
+        # 根据parser_dict去mongodb中查询。
         results = self.search_answer(parser_dict)
         if results == [[]]:
             print('小勇：对不起，目前暂时还无法回答此类问题...')
@@ -585,6 +600,7 @@ class MilitaryGraph:
             for result in results:
                 print(result)
         return
+
 
 if __name__ == '__main__':
     handler = MilitaryGraph()
