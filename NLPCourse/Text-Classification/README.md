@@ -1,3 +1,0 @@
-- 五类标签：EnterSports、Military、Economics、Technology、Government
-- traindata
-    - 共有2500条数据，每类数据500条。
