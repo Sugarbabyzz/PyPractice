@@ -24,11 +24,9 @@ gen/
 out
 
 .DS_Store
-*.jpg
 
 # office
 *.xlsx
 *.xls
 *.docx
 *.doc
-Liwenhao/data/HSI.csv

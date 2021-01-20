@@ -3,7 +3,7 @@ import numpy as np
 # import modin.pandas as pd
 
 # 不含header和index读取和写回excel的操作
-df = pd.read_excel('data/test.xlsx', header=None, index_col=None)
+df = pd.read_excel('../PythonDataAnalyse/data/test.xlsx', header=None, index_col=None)
 print(df)
 df.to_excel('data/test_back.xlsx', index=None, header=None)
 """ 一、生成数据表 """
@@ -131,6 +131,7 @@ print(df_inner.query('city == ["beijing", "shanghai"]').price.sum())
 """ 七、数据汇总 """
 # 1、分类汇总
 # 对所有列进行计数汇总
+print(df_inner.groupby('city'))
 print(df_inner.groupby('city').count())
 # 对特定ID列进行计数汇总
 print(df_inner.groupby('city')['id'].count())
